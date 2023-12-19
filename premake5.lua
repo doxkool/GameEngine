@@ -6,6 +6,7 @@ outputdir = "%{cfg.buildcfg}_%{cfg.system}_%{cfg.architecture}"
 
 -- Include directories relative to root folder.
 IncludeDir = {}
+IncludeDir["spdlog"] = "Engine/vendors/spdlog"
 IncludeDir["GLFW"] = "Engine/vendors/GLFW/include"
 IncludeDir["GLEW"] = "Engine/vendors/GLEW/include"
 
@@ -20,12 +21,14 @@ project "Engine"
 
    files 
    {
-    "%{prj.name}/src/**"
+    "%{prj.name}/src/**",
+    "spdlog/**.h"
    }
 
    includedirs
    {
       "Engine/src",
+      "%{IncludeDir.spdlog}",
       "%{IncludeDir.GLFW}",
       "%{IncludeDir.GLEW}"
    }
@@ -38,7 +41,7 @@ project "Engine"
 
    links
    {
-      "glfw3.lib",
+      "GLFW3.lib",
       "glew32s.lib"
    }
 

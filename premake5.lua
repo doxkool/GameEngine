@@ -6,7 +6,8 @@ outputdir = "%{cfg.buildcfg}_%{cfg.system}_%{cfg.architecture}"
 
 -- Include directories relative to root folder.
 IncludeDir = {}
-
+IncludeDir["GLFW"] = "Engine/vendors/GLFW/include"
+IncludeDir["GLEW"] = "Engine/vendors/GLEW/include"
 
 project "Engine"
    kind "ConsoleApp"
@@ -25,17 +26,20 @@ project "Engine"
    includedirs
    {
       "Engine/src",
-
+      "%{IncludeDir.GLFW}",
+      "%{IncludeDir.GLEW}"
    }
 
    libdirs
    {
-
+        "Engine/vendors/GLFW/lib",
+        "Engine/vendors/GLEW/lib"
    }
 
    links
    {
-
+      "glfw3.lib",
+      "glew32s.lib"
    }
 
    filter "system.windows"

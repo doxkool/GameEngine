@@ -41,8 +41,8 @@ project "Engine"
 
    links
    {
-      "GLFW3.lib",
-      "glew32s.lib"
+      "glfw3.lib",
+      "glew32.lib"
    }
 
    filter "system.windows"

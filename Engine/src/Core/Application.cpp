@@ -7,6 +7,9 @@ namespace Engine
 		const char *AppName = title;
 		Application instance(AppName, Window_Width, Window_Height, Resizable);
 
+		spdlog::info("Welcome to spdlog!");
+		spdlog::set_level(spdlog::level::debug);
+
 		// Initialize GLFW
 		instance.initGLFW(4, 4, Resizable);
 		// Initialize the window
@@ -44,17 +47,18 @@ namespace Engine
 		//INIT GLFW
 		if (!glfwInit())
 		{
-			//LOG_E_CRITICAL("ERROR::GLFW_INIT_FAILED");
+			spdlog::critical("ERROR::GLFW_INIT_FAILED");
 			glfwTerminate();
 		}
 		else {
-			//LOG_E_TRACE("GLFW_INIT_SUCCESS");
+			spdlog::debug("GLFW_INIT_SUCCESS");
 		}
 
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, GL_VER_MAJOR);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, GL_VER_MINOR);
 		glfwWindowHint(GLFW_RESIZABLE, Resizable);
+		spdlog::debug("Using OpenGL v{}.{}", GL_VER_MAJOR, GL_VER_MINOR);
 	}
 
 	void Application::initWindow(const char* title, int width, int height)
@@ -68,6 +72,7 @@ namespace Engine
 		glfwSetFramebufferSizeCallback(Window, framebuffer_resize_callback);
 
 		glfwMakeContextCurrent(Window);
+		spdlog::debug("New instance initialize : '{}' {}x{}", title, height, width);
 	}
 
 	int Application::Get_WindowShouldClose()

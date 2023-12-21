@@ -2,6 +2,8 @@
 
 #include "Platforms/OpenGL.h"
 
+#include "Core/Logger.h"
+
 namespace Engine
 {
 	struct Game;

@@ -1,12 +1,16 @@
 #pragma once
 
 #include "Platforms/OpenGL.h"
-
 #include "Core/Logger.h"
 
 namespace Engine
 {
-	struct Game;
+	//struct InstanceSpec
+	//{
+	//	std::string AppName = "No Name";
+	//	const int Window_Width;
+	//	int Window_Height;
+	//};
 
 	void framebuffer_resize_callback(GLFWwindow* Window, int Window_Width, int Window_Height);
 
@@ -30,6 +34,7 @@ namespace Engine
 		private:
 
 		// Variables
+
 		// Window
 		const int Window_Width;
 		const int Window_Height;

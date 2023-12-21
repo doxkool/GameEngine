@@ -7,9 +7,16 @@ namespace Engine
 		const char *AppName = title;
 		Application instance(AppName, Window_Width, Window_Height, Resizable);
 
+		// Initialize GLFW
+		instance.initGLFW(4, 4, Resizable);
+		// Initialize the window
+		instance.initWindow(title, Window_Width, Window_Height);
+
 		while (!instance.Get_WindowShouldClose())
 		{
-		
+			instance.Update();
+			instance.Render();
+			
 		}
 
 		return true;
@@ -21,30 +28,75 @@ namespace Engine
 	Window_Height(Window_Height)
 	{
 		//Init variables
-		//this->Window = nullptr;
-		//this->FrameBuffer_Width = this->Window_Width;
-		//this->FrameBuffer_Height = this->Window_Height;
-
-		// Initialize GLFW
-		initGLFW(4,4);
-		initWindow(title, Window_Width, Window_Height);
-
+		this->Window = nullptr;
+		this->FrameBuffer_Width = this->Window_Width;
+		this->FrameBuffer_Height = this->Window_Height;
 	}
 
 	Application::~Application()
 	{
-		//glfwDestroyWindow(this->Window);
+		glfwDestroyWindow(Window);
 		glfwTerminate();
+	}
+
+	void Application::initGLFW(const int GL_VER_MAJOR, const int GL_VER_MINOR, bool Resizable)
+	{
+		//INIT GLFW
+		if (!glfwInit())
+		{
+			//LOG_E_CRITICAL("ERROR::GLFW_INIT_FAILED");
+			glfwTerminate();
+		}
+		else {
+			//LOG_E_TRACE("GLFW_INIT_SUCCESS");
+		}
+
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, GL_VER_MAJOR);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, GL_VER_MINOR);
+		glfwWindowHint(GLFW_RESIZABLE, Resizable);
+	}
+
+	void Application::initWindow(const char* title, int width, int height)
+	{
+		if (nullptr == Window)
+		{
+			Window = glfwCreateWindow(width, height, title, NULL, NULL);
+		}
+
+		glfwGetFramebufferSize(Window, &FrameBuffer_Width, &FrameBuffer_Height);
+		glfwSetFramebufferSizeCallback(Window, framebuffer_resize_callback);
+
+		glfwMakeContextCurrent(Window);
 	}
 
 	int Application::Get_WindowShouldClose()
 	{
-		//return glfwWindowShouldClose(this->Window);
-		return 0;
+		return glfwWindowShouldClose(Window);
 	}
 
 	void Application::Set_WindowShouldClose()
 	{
-		//glfwSetWindowShouldClose(this->Window, GLFW_TRUE);
+		glfwSetWindowShouldClose(Window, GLFW_TRUE);
 	}
+
+	void Application::Update()
+	{
+		glfwPollEvents();
+	}
+
+	void Application::Render()
+	{
+		glClearColor(0.2f, 0.2f, 0.2f, 1.f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+
+		glfwSwapBuffers(Window);
+
+		glFlush();
+	}
+
+	void framebuffer_resize_callback(GLFWwindow* Window, int Window_Width, int Window_Height)
+	{
+		glViewport(0, 0, Window_Width, Window_Height);
+	};
 }

@@ -21,8 +21,5 @@
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Engine\src\Entry.cpp" />
-    <ClCompile Include="Engine\src\Platforms\OpenGL.cpp">
-      <Filter>Platforms</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

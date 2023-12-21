@@ -14,7 +14,7 @@ project "Engine"
    kind "ConsoleApp"
    language "C++"
    cppdialect "C++17"
-   staticruntime "on"
+   staticruntime "off"
 
    targetdir ("bin/" .. outputdir)
    objdir ("bin-int/" .. outputdir)
@@ -42,7 +42,8 @@ project "Engine"
    links
    {
       "glfw3.lib",
-      "glew32.lib"
+      "glew32.lib",
+      "opengl32.lib"
    }
 
    filter "system.windows"

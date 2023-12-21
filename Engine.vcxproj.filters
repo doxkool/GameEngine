@@ -27,5 +27,6 @@
     <ClCompile Include="Engine\src\Core\Application.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\src\Core\Logger.cpp" />
   </ItemGroup>
 </Project>

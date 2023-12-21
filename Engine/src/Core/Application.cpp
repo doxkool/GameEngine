@@ -8,9 +8,10 @@ namespace Engine
 	{
 		const char *AppName = title;
 		Application instance(AppName, Window_Width, Window_Height, Resizable);
+
+		Log::Init();
 	
-		spdlog::info("Welcome to spdlog!");
-		spdlog::set_level(spdlog::level::debug);
+		LOG_E_INFO("Starting new instance...");
 	
 		// Initialize GLFW
 		instance.initGLFW(4, 4, Resizable);
@@ -21,7 +22,6 @@ namespace Engine
 		{
 			instance.Update();
 			instance.Render();
-			
 		}
 	
 		return true;
@@ -49,18 +49,18 @@ namespace Engine
 		//INIT GLFW
 		if (!glfwInit())
 		{
-			spdlog::critical("ERROR::GLFW_INIT_FAILED");
+			LOG_E_CRITICAL("ERROR::GLFW_INIT_FAILED");
 			glfwTerminate();
 		}
 		else {
-			spdlog::debug("GLFW_INIT_SUCCESS");
+			LOG_E_DEBUG("GLFW_INIT_SUCCESS");
 		}
 
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, GL_VER_MAJOR);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, GL_VER_MINOR);
 		glfwWindowHint(GLFW_RESIZABLE, Resizable);
-		spdlog::debug("Using OpenGL v{}.{}", GL_VER_MAJOR, GL_VER_MINOR);
+		LOG_E_DEBUG("Using OpenGL v{}.{}", GL_VER_MAJOR, GL_VER_MINOR);
 	}
 
 	void Application::initWindow(const char* title, int width, int height)
@@ -68,13 +68,15 @@ namespace Engine
 		if (nullptr == Window)
 		{
 			Window = glfwCreateWindow(width, height, title, NULL, NULL);
+			LOG_E_DEBUG("New GLFW instance : '{}' {}x{}", title, width, height);
 		}
 
 		glfwGetFramebufferSize(Window, &FrameBuffer_Width, &FrameBuffer_Height);
 		glfwSetFramebufferSizeCallback(Window, framebuffer_resize_callback);
 
 		glfwMakeContextCurrent(Window);
-		spdlog::debug("New instance initialized : '{}' {}x{}", title, height, width);
+		LOG_E_INFO("New instance created.");
+		
 	}
 
 	int Application::Get_WindowShouldClose()

@@ -5,12 +5,6 @@
 
 namespace Engine
 {
-	//struct InstanceSpec
-	//{
-	//	std::string AppName = "No Name";
-	//	const int Window_Width;
-	//	int Window_Height;
-	//};
 
 	void framebuffer_resize_callback(GLFWwindow* Window, int Window_Width, int Window_Height);
 

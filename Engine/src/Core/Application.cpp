@@ -1,36 +1,36 @@
 #include "Core/Application.h"
 
-#include "Entry.h"
+#include "EntryPoint.h"
 
 namespace Engine
 {
-	bool Start_Application(const char* title, const int Window_Width, const int Window_Height, bool Resizable)
+	bool Start_NewInstance(const char* title, const int Window_Width, const int Window_Height, bool Resizable)
 	{
 		const char *AppName = title;
 		Application instance(AppName, Window_Width, Window_Height, Resizable);
-
+	
 		spdlog::info("Welcome to spdlog!");
 		spdlog::set_level(spdlog::level::debug);
-
+	
 		// Initialize GLFW
 		instance.initGLFW(4, 4, Resizable);
 		// Initialize the window
 		instance.initWindow(title, Window_Width, Window_Height);
-
+	
 		while (!instance.Get_WindowShouldClose())
 		{
 			instance.Update();
 			instance.Render();
 			
 		}
-
+	
 		return true;
 	}
 
 	Application::Application(const char *title, const int Window_Width, const int Window_Height, bool Resizable)
-	:
-	Window_Width(Window_Width),
-	Window_Height(Window_Height)
+		:
+		Window_Width(Window_Width),
+		Window_Height(Window_Height)
 	{
 		//Init variables
 		this->Window = nullptr;

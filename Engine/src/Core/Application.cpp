@@ -1,5 +1,7 @@
 #include "Core/Application.h"
 
+#include "Entry.h"
+
 namespace Engine
 {
 	bool Start_Application(const char* title, const int Window_Width, const int Window_Height, bool Resizable)
@@ -72,7 +74,7 @@ namespace Engine
 		glfwSetFramebufferSizeCallback(Window, framebuffer_resize_callback);
 
 		glfwMakeContextCurrent(Window);
-		spdlog::debug("New instance initialize : '{}' {}x{}", title, height, width);
+		spdlog::debug("New instance initialized : '{}' {}x{}", title, height, width);
 	}
 
 	int Application::Get_WindowShouldClose()

@@ -15,17 +15,15 @@
     <ClInclude Include="Engine\src\Core\Logger.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\src\Defines.h" />
     <ClInclude Include="Engine\src\Platforms\OpenGL.h">
       <Filter>Platforms</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\src\Entry.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Application.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\src\Core\Logger.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\src\Entry.cpp" />
   </ItemGroup>
 </Project>

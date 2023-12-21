@@ -2,11 +2,11 @@
 
 #include "Platforms/OpenGL.h"
 
+#include "Core/Logger.h"
+
 namespace Engine
 {
 	struct Game;
-
-	bool Start_Application(const char* title, const int Window_Width, const int Window_Height, bool Resizable);
 
 	void framebuffer_resize_callback(GLFWwindow* Window, int Window_Width, int Window_Height);
 

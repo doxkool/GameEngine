@@ -11,7 +11,7 @@ IncludeDir["GLFW"] = "Engine/vendors/GLFW/include"
 IncludeDir["GLEW"] = "Engine/vendors/GLEW/include"
 
 project "Engine"
-   kind "ConsoleApp"
+   kind "SharedLib"
    language "C++"
    cppdialect "C++17"
    staticruntime "off"
@@ -53,6 +53,50 @@ project "Engine"
       defines { "DEBUG" }
       symbols "On"
 
+   filter "configurations:Release"
+      defines { "NDEBUG" }
+      optimize "on"
+
+project "Game"
+   kind "ConsoleApp"
+   language "C++"
+   cppdialect "C++17"
+   staticruntime "on"
+   
+   targetdir ("bin/" .. outputdir)
+   objdir ("bin-int/" .. outputdir)
+   
+   
+   files 
+   {
+      "%{prj.name}/src/Entry.h"
+   }
+   
+   includedirs
+   {
+      "Engine/src",
+      "%{IncludeDir.spdlog}",
+      "%{IncludeDir.GLFW}",
+      "%{IncludeDir.GLEW}"
+   }
+   
+   libdirs
+   {
+      "bin/Debug_windows_x86_64"
+   }
+   
+   links
+   {
+      "Engine.lib"
+   }
+   
+   filter "system.windows"
+      systemversion "latest"
+   
+   filter "configurations:Debug"
+      defines { "DEBUG" }
+      symbols "On"
+   
    filter "configurations:Release"
       defines { "NDEBUG" }
       optimize "on"

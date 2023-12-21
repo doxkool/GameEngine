@@ -1,5 +1,4 @@
-#include "Core\Application.h"
-
+#include "Entry.h"
 
 void main()
 {

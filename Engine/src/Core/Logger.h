@@ -47,10 +47,6 @@ typedef enum loglevel {
 	LOG_LEVEL_TRACE = 5,
 } log_level;
 
-void initialize_logging();
-bool init_logFile();
-void shutdown_logging();
-
 extern void log_output(loglevel level, const char* message, ...);
 
 // Logs a fatal level message.

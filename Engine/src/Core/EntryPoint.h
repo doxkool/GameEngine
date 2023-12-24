@@ -2,7 +2,12 @@
 
 #include "Engine.h"
 
-int main(int argc, char** argv)
+#include "Core\Application.h"
+
+extern Engine::Application* Engine::CreateApplication(AppSpec);
+
+int main()
 {
-	
+	Engine::AppSpec Spec;
+	auto app = Engine::CreateApplication(Spec);
 }

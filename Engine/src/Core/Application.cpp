@@ -6,15 +6,13 @@ namespace Engine
 {
 	Application* Application::instance = nullptr;
 
-	Application::Application(const char *title, const int Window_Width, const int Window_Height, bool Resizable)
-		:
-		Window_Width(Window_Width),
-		Window_Height(Window_Height)
+	Application::Application(const AppSpec& specification)
+		: m_spec(specification)
 	{
 		//Init variables
 		this->Window = nullptr;
-		this->FrameBuffer_Width = this->Window_Width;
-		this->FrameBuffer_Height = this->Window_Height;
+		this->FrameBuffer_Width = this->c_Window_Width;
+		this->FrameBuffer_Height = this->c_Window_Height;
 
 		Log::Init();
 
@@ -23,9 +21,9 @@ namespace Engine
 		instance = this;
 
 		// Initialize GLFW
-		initGLFW(4, 4, Resizable);
+		initGLFW(4, 4, m_spec.Resizable);
 		// Initialize the window
-		initWindow(title, Window_Width, Window_Height);
+		initWindow(m_spec.title, m_spec.Window_Width, m_spec.Window_Height);
 	}
 
 	Application::~Application()
@@ -53,11 +51,11 @@ namespace Engine
 		LOG_E_DEBUG("Using OpenGL v{}.{}", GL_VER_MAJOR, GL_VER_MINOR);
 	}
 
-	void Application::initWindow(const char* title, int width, int height)
+	void Application::initWindow(std::string title, int width, int height)
 	{
 		if (nullptr == Window)
 		{
-			Window = glfwCreateWindow(width, height, title, NULL, NULL);
+			Window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
 			LOG_E_DEBUG("New GLFW instance : '{}' {}x{}", title, width, height);
 		}
 

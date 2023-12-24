@@ -1,9 +1,5 @@
-#include <Engine.h>
+#include "Engine.h"
 
 #include <Core/EntryPoint.h>
 
-
-void main()
-{
-	Engine::Start_NewInstance("OpenGL", 1920, 1080, true);
-}
+Engine::Application instance("OpenGL", 1920, 1080, false);

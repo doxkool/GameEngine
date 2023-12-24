@@ -3,10 +3,14 @@
 #include "Platforms/OpenGL.h"
 #include "Core/Logger.h"
 
+int main(int argc, char** argv);
+
 namespace Engine
 {
 
 	void framebuffer_resize_callback(GLFWwindow* Window, int Window_Width, int Window_Height);
+
+	
 
 	class Application
 	{
@@ -17,6 +21,7 @@ namespace Engine
 			// Functions
 			void initGLFW(const int GL_VER_MAJOR, const int GL_VER_MINOR, bool Resizable);
 			void initWindow(const char* title, int width, int height);
+			void Run();
 			void Update();
 			void Render();
 
@@ -24,6 +29,7 @@ namespace Engine
 			void Set_WindowShouldClose();
 
 			GLFWwindow* Window;
+			static Application* instance;
 
 		private:
 

@@ -1,31 +1,10 @@
 #include "Core/Application.h"
 
-#include "EntryPoint.h"
+//#include "EntryPoint.h"
 
 namespace Engine
 {
-	bool Start_NewInstance(const char* title, const int Window_Width, const int Window_Height, bool Resizable)
-	{
-		const char *AppName = title;
-		Application instance(AppName, Window_Width, Window_Height, Resizable);
-
-		Log::Init();
-	
-		LOG_E_INFO("Starting new instance...");
-	
-		// Initialize GLFW
-		instance.initGLFW(4, 4, Resizable);
-		// Initialize the window
-		instance.initWindow(title, Window_Width, Window_Height);
-	
-		while (!instance.Get_WindowShouldClose())
-		{
-			instance.Update();
-			instance.Render();
-		}
-	
-		return true;
-	}
+	Application* Application::instance = nullptr;
 
 	Application::Application(const char *title, const int Window_Width, const int Window_Height, bool Resizable)
 		:
@@ -36,6 +15,17 @@ namespace Engine
 		this->Window = nullptr;
 		this->FrameBuffer_Width = this->Window_Width;
 		this->FrameBuffer_Height = this->Window_Height;
+
+		Log::Init();
+
+		LOG_E_INFO("Starting new instance...");
+
+		instance = this;
+
+		// Initialize GLFW
+		initGLFW(4, 4, Resizable);
+		// Initialize the window
+		initWindow(title, Window_Width, Window_Height);
 	}
 
 	Application::~Application()
@@ -76,6 +66,8 @@ namespace Engine
 
 		glfwMakeContextCurrent(Window);
 		LOG_E_INFO("New instance created.");
+
+		Run();
 		
 	}
 
@@ -87,6 +79,15 @@ namespace Engine
 	void Application::Set_WindowShouldClose()
 	{
 		glfwSetWindowShouldClose(Window, GLFW_TRUE);
+	}
+
+	void Application::Run()
+	{
+		while (!Get_WindowShouldClose())
+		{
+			Update();
+			Render();
+		}
 	}
 
 	void Application::Update()

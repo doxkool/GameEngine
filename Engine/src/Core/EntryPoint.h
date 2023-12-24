@@ -1,6 +1,8 @@
 #pragma once
 
-namespace Engine
+#include "Engine.h"
+
+int main(int argc, char** argv)
 {
-	extern bool Start_NewInstance(const char* title, const int Window_Width, const int Window_Height, bool Resizable);
+	
 }

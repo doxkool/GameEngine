@@ -2,6 +2,8 @@
 
 //#include "EntryPoint.h"
 
+
+
 namespace Engine
 {
 	Application* Application::instance = nullptr;
@@ -18,10 +20,19 @@ namespace Engine
 
 		LOG_E_INFO("Starting new instance...");
 
+		// Set working directory here
+		if (m_spec.WorkingDirectory.empty())
+		{
+			LOG_E_ERROR ("No working directory defined!");
+		}
+
+		LOG_E_INFO("Working directory : {}", m_spec.WorkingDirectory);
+
 		instance = this;
 
 		// Initialize GLFW
 		initGLFW(4, 4, m_spec.Resizable);
+
 		// Initialize the window
 		initWindow(m_spec.title, m_spec.Window_Width, m_spec.Window_Height);
 	}

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Core/Base.h"
+
 #include "Platforms/OpenGL.h"
 #include "Core/Logger.h"
 
@@ -12,10 +14,11 @@ namespace Engine
 
 	struct AppSpec
 	{
-		std::string title = "My App";
-		int Window_Width = 1280;
-		int Window_Height = 720;
-		bool Resizable = true;
+		std::string title = "Game";
+		std::string WorkingDirectory;
+		int Window_Width = 1920;
+		int Window_Height = 1080;
+		bool Resizable = false;
 	};
 
 	class Application
@@ -37,11 +40,10 @@ namespace Engine
 			GLFWwindow* Window;
 			static Application* instance;
 
-			AppSpec m_spec;
-
 		private:
 
 		// Variables
+		AppSpec m_spec;
 		
 		// Window
 		//const char c_title;

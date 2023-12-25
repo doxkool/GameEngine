@@ -1,8 +1,13 @@
 #pragma once
 
-#include <memory>
+#include "Core/Base.h"
 
 #include <spdlog/spdlog.h>
+
+#pragma warning(push, 0)
+#include <spdlog/spdlog.h>
+#include <spdlog/fmt/ostr.h>
+#pragma warning(pop)
 
 namespace Engine
 {
@@ -12,10 +17,10 @@ namespace Engine
 		static void Init();
 
 		static std::shared_ptr<spdlog::logger>& GetEngineLogger() { return s_EngineLogger; }
-		static std::shared_ptr<spdlog::logger>& GetAppLogger() { return s_AppLogger; }
+		static std::shared_ptr<spdlog::logger>& GetGameLogger() { return s_GameLogger; }
 	private:
 		static std::shared_ptr<spdlog::logger> s_EngineLogger;
-		static std::shared_ptr<spdlog::logger> s_AppLogger;
+		static std::shared_ptr<spdlog::logger> s_GameLogger;
 	};
 }
 
@@ -28,9 +33,9 @@ namespace Engine
 #define LOG_E_CRITICAL(...)			Engine::Log::GetEngineLogger()->critical(__VA_ARGS__)
 
 // Client log macros
-#define LOG_A_TRACE(...)			Engine::Log::GetAppLogger()->trace(__VA_ARGS__)
-#define LOG_A_DEBUG(...)			Engine::Log::GetAppLogger()->debug(__VA_ARGS__)
-#define LOG_A_INFO(...)				Engine::Log::GetAppLogger()->info(__VA_ARGS__)
-#define LOG_A_WARN(...)				Engine::Log::GetAppLogger()->warn(__VA_ARGS__)
-#define LOG_A_ERROR(...)			Engine::Log::GetAppLogger()->error(__VA_ARGS__)
-#define LOG_A_CRITICAL(...)			Engine::Log::GetAppLogger()->critical(__VA_ARGS__)
+#define LOG_G_TRACE(...)			Engine::Log::GetGameLogger()->trace(__VA_ARGS__)
+#define LOG_G_DEBUG(...)			Engine::Log::GetGameLogger()->debug(__VA_ARGS__)
+#define LOG_G_INFO(...)				Engine::Log::GetGameLogger()->info(__VA_ARGS__)
+#define LOG_G_WARN(...)				Engine::Log::GetGameLogger()->warn(__VA_ARGS__)
+#define LOG_G_ERROR(...)			Engine::Log::GetGameLogger()->error(__VA_ARGS__)
+#define LOG_G_CRITICAL(...)			Engine::Log::GetGameLogger()->critical(__VA_ARGS__)

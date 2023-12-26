@@ -14,8 +14,10 @@ namespace Engine
 		Sinks.emplace_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
 		Sinks.emplace_back(std::make_shared<spdlog::sinks::basic_file_sink_mt>("Engine.log", true));
 
-		Sinks[0]->set_pattern("[%T] [%^%l%$] %n: %v");
-		Sinks[1]->set_pattern("[%T] [%l] %n: %v");
+		Sinks[0]->set_pattern("[%T] [%^%l%$]	[%n]   	%v");
+		Sinks[1]->set_pattern("[%T] [%l]	[%n]   	%v");
+
+		
 
 		s_EngineLogger = std::make_shared<spdlog::logger>("Engine", begin(Sinks), end(Sinks));
 		spdlog::register_logger(s_EngineLogger);
@@ -26,6 +28,8 @@ namespace Engine
 		spdlog::register_logger(s_GameLogger);
 		s_GameLogger->set_level(spdlog::level::trace);
 		s_GameLogger->flush_on(spdlog::level::trace);
+		
+		LOG_E_INFO("====== New logging session ======");
 
 		if (GetEngineLogger)
 		{

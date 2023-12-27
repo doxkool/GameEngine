@@ -31,7 +31,7 @@ namespace Engine
 		instance = this;
 
 		// Initialize GLFW
-		initGLFW(4, 4, m_spec.Resizable);
+		initGLFW(4, 5, m_spec.Resizable);
 
 		// Initialize the window
 		initWindow(m_spec.title, m_spec.Window_Width, m_spec.Window_Height);
@@ -59,14 +59,18 @@ namespace Engine
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, GL_VER_MAJOR);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, GL_VER_MINOR);
 		glfwWindowHint(GLFW_RESIZABLE, Resizable);
+
 		LOG_E_TRACE("GL_VER_MAJOR is set to : {}", GL_VER_MAJOR);
 		LOG_E_TRACE("GL_VER_MINOR is set to : {}", GL_VER_MINOR);
-		LOG_E_DEBUG("Using OpenGL version {}.{}", GL_VER_MAJOR, GL_VER_MINOR);
 		LOG_E_TRACE("GLFW_RESIZABLE is set to : {}", Resizable);
+		LOG_E_INFO("Using OpenGL version {}.{}", GL_VER_MAJOR, GL_VER_MINOR);
 	}
 
 	void Application::initWindow(std::string title, int width, int height)
 	{
+		//INIT GLEW (NEEDS WINDOW AND OPENGL CONTEXT)
+		glewExperimental = GL_TRUE;
+
 		if (nullptr == Window)
 		{
 			Window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
@@ -77,7 +81,23 @@ namespace Engine
 		glfwSetFramebufferSizeCallback(Window, framebuffer_resize_callback);
 
 		glfwMakeContextCurrent(Window);
-		
+
+		//Error
+		if (glewInit() != GLEW_OK)
+		{
+			LOG_E_CRITICAL("ERROR! GLEW_INIT_FAILED");
+			glfwTerminate();
+		}		
+
+		std::string glVendor = std::string((const char*)glGetString(GL_VENDOR));
+		std::string glRenderer = std::string((const char*)glGetString(GL_RENDERER));
+		std::string glVersion = std::string((const char*)glGetString(GL_VERSION));
+
+		LOG_E_INFO("OpenGL Information :");
+		LOG_E_INFO("	{}", glVendor);
+		LOG_E_INFO("	{}", glRenderer);
+		LOG_E_INFO("	{}", glVersion);
+
 		LOG_E_INFO("====== Instance '{}' created ======", title);
 
 		Run();

@@ -6,6 +6,7 @@
 #include "Platforms/OpenGL/OpenGL_API.h"
 #include "Platforms/Windows/WinWindow.h"
 #include "Core/Logger.h"
+#include "Core/Time.h"
 
 int main();
 
@@ -21,6 +22,12 @@ namespace Engine
 		bool Resizable = false;
 	};
 
+	struct EngineStats
+	{
+		double FPS = 0.0;
+		double Frame_Time = 0.0;
+	};
+
 	class Application
 	{
 		public:
@@ -33,18 +40,20 @@ namespace Engine
 			void Set_WindowShouldClose();
 
 			Window& GetWindow() { return *m_Window; }
-
 			static Application& Get() { return *s_instance; }
 
 		private:
-			bool Running = true;
 
+			TimeStep m_TimeStep;
+
+			EngineStats m_EngineStats;
 			static Application* s_instance;
-
 			AppSpec m_spec;
-
 			Pointer<Window> m_Window;
 
+			Perf perf;
+
+			float AppRunTime = 0.0f;
 	};
 
 	// To be defined in CLIENT

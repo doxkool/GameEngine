@@ -7,7 +7,6 @@ namespace Engine
 	Application::Application(const AppSpec& specification)
 		: m_spec(specification)
 	{
-
 		Log::Init();
 
 		// Set working directory here
@@ -22,6 +21,8 @@ namespace Engine
 
 		m_Window = Window::Create(WindowProps(m_spec.title));
 
+		WinWindow::EnableVsync(1);
+
 		Application::Run();
 	}
 
@@ -32,12 +33,30 @@ namespace Engine
 
 	void Application::Run()
 	{
-		// TODO : Replace 'true' by glfwWindowShouldClose
+		// TODO : Remove as soon glfwSetWindowTitle has been moved to WinWindow
+		Application& application = Application::Get();
+		GLFWwindow* window = static_cast<GLFWwindow*>(application.GetWindow().GetNativeWindow());
+
 		while (!Get_WindowShouldClose())
 		{
+
+			perf.StartTime(Time::GetTime());
+
+			std::string FPS = std::to_string(perf.Get_FPS());
+			std::string ms = std::to_string(perf.Get_FrameTime());
+
+			std::string newTitle = m_spec.title + " " + FPS + "FPS / " + ms + "ms";
+
+			// TODO : Add a function to update the window title in WinWindow
+			glfwSetWindowTitle(window, newTitle.c_str());
+
 			WinWindow::Update();
 			WinWindow::Render();
+
+			perf.EndTime();
 		}
+
+		LOG_E_TRACE("Total session runtime : {}", m_TimeStep.Get_Seconds());
 	}
 
 	int Application::Get_WindowShouldClose()
@@ -49,7 +68,7 @@ namespace Engine
 	}
 
 	void Application::Set_WindowShouldClose()
-	{
+	{	
 		Application& application = Application::Get();
 		GLFWwindow* window = static_cast<GLFWwindow*>(application.GetWindow().GetNativeWindow());
 

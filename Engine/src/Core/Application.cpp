@@ -31,24 +31,41 @@ namespace Engine
 		OpenGLAPI::Shutdown();
 	}
 
-	void Application::Run()
+	void Application::ShowEngineStats(EngineStats options)
 	{
+		std::string FPS;
+		std::string ms;
+
+		if (options.Show_FPS)
+		{
+			FPS = std::to_string(perf.Get_FPS());
+		}
+		if (options.Show_Frame_Time)
+		{
+			ms = std::to_string(perf.Get_FrameTime());
+		}
+
+		std::string newTitle = m_spec.title + " " + FPS + "FPS / " + ms + "ms";
+
 		// TODO : Remove as soon glfwSetWindowTitle has been moved to WinWindow
 		Application& application = Application::Get();
 		GLFWwindow* window = static_cast<GLFWwindow*>(application.GetWindow().GetNativeWindow());
+
+		// TODO : Add a function to update the window title in WinWindow
+		glfwSetWindowTitle(window, newTitle.c_str());
+	}
+
+	void Application::Run()
+	{
+		m_EngineStats.Show_FPS = true;
+		m_EngineStats.Show_Frame_Time = true;
 
 		while (!Get_WindowShouldClose())
 		{
 
 			perf.StartTime(Time::GetTime());
 
-			std::string FPS = std::to_string(perf.Get_FPS());
-			std::string ms = std::to_string(perf.Get_FrameTime());
-
-			std::string newTitle = m_spec.title + " " + FPS + "FPS / " + ms + "ms";
-
-			// TODO : Add a function to update the window title in WinWindow
-			glfwSetWindowTitle(window, newTitle.c_str());
+			ShowEngineStats(m_EngineStats);
 
 			WinWindow::Update();
 			WinWindow::Render();

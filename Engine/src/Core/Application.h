@@ -24,8 +24,8 @@ namespace Engine
 
 	struct EngineStats
 	{
-		double FPS = 0.0;
-		double Frame_Time = 0.0;
+		bool Show_FPS = false;
+		bool Show_Frame_Time = false;
 	};
 
 	class Application
@@ -35,6 +35,8 @@ namespace Engine
 			~Application();
 
 			void Run();
+
+			void ShowEngineStats(EngineStats options);
 
 			int Get_WindowShouldClose();
 			void Set_WindowShouldClose();
@@ -47,6 +49,7 @@ namespace Engine
 			TimeStep m_TimeStep;
 
 			EngineStats m_EngineStats;
+
 			static Application* s_instance;
 			AppSpec m_spec;
 			Pointer<Window> m_Window;

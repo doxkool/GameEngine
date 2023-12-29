@@ -55,8 +55,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Engine\src;Engine\vendors\spdlog;Engine\vendors\GLFW\include;Engine\vendors\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;ENGINE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>Engine\src;Engine\vendors\spdlog;Engine\vendors\GLFW\include;Engine\vendors\GLEW\include;Engine\vendors\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -68,7 +68,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>glfw3.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>Engine\vendors\GLFW\lib;Engine\vendors\GLEW\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -76,8 +76,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Engine\src;Engine\vendors\spdlog;Engine\vendors\GLFW\include;Engine\vendors\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;N_ENGINE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>Engine\src;Engine\vendors\spdlog;Engine\vendors\GLFW\include;Engine\vendors\GLEW\include;Engine\vendors\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -99,14 +99,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Engine\src\Core\Application.h" />
+    <ClInclude Include="Engine\src\Core\Base.h" />
     <ClInclude Include="Engine\src\Core\EntryPoint.h" />
     <ClInclude Include="Engine\src\Core\Logger.h" />
+    <ClInclude Include="Engine\src\Core\OSDetection.h" />
+    <ClInclude Include="Engine\src\Core\Time.h" />
+    <ClInclude Include="Engine\src\Core\Window.h" />
     <ClInclude Include="Engine\src\Engine.h" />
-    <ClInclude Include="Engine\src\Platforms\OpenGL.h" />
+    <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL_API.h" />
+    <ClInclude Include="Engine\src\Platforms\Windows\WinWindow.h" />
+    <ClInclude Include="Engine\src\Renderer\Camera.h" />
+    <ClInclude Include="Engine\src\Renderer\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Application.cpp" />
     <ClCompile Include="Engine\src\Core\Logger.cpp" />
+    <ClCompile Include="Engine\src\Core\Window.cpp" />
+    <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL_API.cpp" />
+    <ClCompile Include="Engine\src\Platforms\Windows\WinWindow.cpp" />
+    <ClCompile Include="Engine\src\Renderer\Renderer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

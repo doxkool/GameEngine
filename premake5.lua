@@ -9,6 +9,7 @@ IncludeDir = {}
 IncludeDir["spdlog"] = "Engine/vendors/spdlog"
 IncludeDir["GLFW"] = "Engine/vendors/GLFW/include"
 IncludeDir["GLEW"] = "Engine/vendors/GLEW/include"
+IncludeDir["GLM"] = "Engine/vendors/glm"
 
 project "Engine"
 	kind "StaticLib"
@@ -35,7 +36,8 @@ project "Engine"
 	   "Engine/src",
 	   "%{IncludeDir.spdlog}",
 	   "%{IncludeDir.GLFW}",
-	   "%{IncludeDir.GLEW}"
+	   "%{IncludeDir.GLEW}",
+	   "%{IncludeDir.GLM}"
 	}
 	
 	libdirs
@@ -47,7 +49,7 @@ project "Engine"
 	links
 	{
 	   "glfw3.lib",
-	   "glew32.lib",
+	   "glew32s.lib",
 	   "opengl32.lib"
 	}
 	
@@ -55,11 +57,11 @@ project "Engine"
 	   systemversion "latest"
 	
 	filter "configurations:Debug"
-	   defines { "DEBUG" }
+	   defines { "ENGINE_DEBUG" }
 	   symbols "On"
 	
 	filter "configurations:Release"
-	   defines { "NDEBUG" }
+	   defines { "N_ENGINE_DEBUG" }
 	   optimize "on"
 
 project "Game"
@@ -82,7 +84,8 @@ project "Game"
 	   "Engine/src",
 	   "%{IncludeDir.spdlog}",
 	   "%{IncludeDir.GLFW}",
-	   "%{IncludeDir.GLEW}"
+	   "%{IncludeDir.GLEW}",
+	   "%{IncludeDir.GLM}"
 	}
 	
 	libdirs
@@ -99,9 +102,9 @@ project "Game"
 	   systemversion "latest"
 	
 	filter "configurations:Debug"
-	   defines { "DEBUG" }
+	   defines { "GAME_DEBUG" }
 	   symbols "On"
 	
 	filter "configurations:Release"
-	   defines { "NDEBUG" }
+	   defines { "N_GAME_DEBUG" }
 	   optimize "on"

@@ -7,9 +7,15 @@
     <Filter Include="Platforms">
       <UniqueIdentifier>{DDACA145-4917-56BC-9255-0762FEFE3311}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{7CCE658F-689B-C09A-91B4-AE427DE0F528}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\src\Core\Application.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\src\Core\Base.h">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Engine\src\Core\EntryPoint.h">
@@ -18,15 +24,35 @@
     <ClInclude Include="Engine\src\Core\Logger.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\src\Core\OSDetection.h">
+      <Filter>Core</Filter>
+    </ClInclude>
     <ClInclude Include="Engine\src\Engine.h" />
-    <ClInclude Include="Engine\src\Platforms\OpenGL.h">
+    <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL_API.h">
       <Filter>Platforms</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\src\Renderer\Camera.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\src\Renderer\Renderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\src\Core\Time.h" />
+    <ClInclude Include="Engine\src\Platforms\Windows\WinWindow.h" />
+    <ClInclude Include="Engine\src\Core\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Application.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\src\Core\Logger.cpp" />
+    <ClCompile Include="Engine\src\Core\Logger.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\Renderer\Renderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL_API.cpp" />
+    <ClCompile Include="Engine\src\Platforms\Windows\WinWindow.cpp" />
+    <ClCompile Include="Engine\src\Core\Window.cpp" />
   </ItemGroup>
 </Project>

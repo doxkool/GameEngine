@@ -11,3 +11,14 @@
 #else
 	#define ENGINE_DEBUGBREAK()
 #endif
+
+namespace Engine
+{
+	template<typename T>
+	using Pointer = std::unique_ptr<T>;
+	template<typename T, typename ... Args>
+	constexpr Pointer<T> CreateScope(Args&& ... args)
+	{
+		return std::make_unique<T>(std::forward<Args>(args)...);
+	}
+}

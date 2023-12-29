@@ -101,4 +101,10 @@ namespace Engine
 	{
 		glfwSwapBuffers(m_Window);
 	}
+
+	// Enable or disable Vsync : 1 = true or 0 = false
+	void WinWindow::EnableVsync(int enabled)
+	{
+		glfwSwapInterval(enabled);
+	}
 }

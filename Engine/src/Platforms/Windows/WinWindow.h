@@ -17,6 +17,7 @@ namespace Engine
 
 			static void Render();
 			static void Update();
+			static void EnableVsync(int enabled);
 
 			void SwapBuffer();
 

@@ -27,25 +27,4 @@ namespace Engine {
 	private:
 		float m_Time;
 	};
-
-	class Perf
-	{
-		public:
-			void StartTime(float start_time){ m_Frames++; m_Start_Time = start_time; }
-
-			void EndTime(){ m_End_Time = m_Start_Time; m_Frames = 0; }
-
-			float Get_FPS(){ return (m_Frames / (m_Start_Time - m_End_Time)); }
-
-			float Get_FrameTime(){ return ((m_Start_Time - m_End_Time) * 1000); }
-
-		private:
-			float m_Start_Time = 0.0;
-			float m_End_Time = 0.0;
-			int m_Frames = 0;
-
-			float FPS = 0.0;
-			float MS = 0.0;
-	};
-
 }

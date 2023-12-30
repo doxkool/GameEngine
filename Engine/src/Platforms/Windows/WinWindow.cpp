@@ -43,8 +43,6 @@ namespace Engine
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
 		glfwWindowHint(GLFW_RESIZABLE, true);
 
-		//LOG_E_TRACE("GLFW_RESIZABLE is set to : {}", m_Data.resizable);
-
 		glewExperimental = GL_TRUE;
 		
 		m_Window = glfwCreateWindow(m_Data.Width, m_Data.Height, m_Data.Title.c_str(), NULL, NULL);
@@ -74,6 +72,7 @@ namespace Engine
 
 	void WinWindow::Shutdown()
 	{
+		LOG_E_DEBUG("Clossing WinWindow...");
 		glfwDestroyWindow(m_Window);
 		glfwTerminate();
 	}
@@ -106,5 +105,6 @@ namespace Engine
 	void WinWindow::EnableVsync(int enabled)
 	{
 		glfwSwapInterval(enabled);
+		LOG_E_DEBUG("vSync set to : {}", enabled);
 	}
 }

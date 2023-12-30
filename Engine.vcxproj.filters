@@ -34,12 +34,10 @@
     <ClInclude Include="Engine\src\Renderer\Camera.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\src\Renderer\Renderer.h">
-      <Filter>Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\src\Core\Time.h" />
     <ClInclude Include="Engine\src\Platforms\Windows\WinWindow.h" />
     <ClInclude Include="Engine\src\Core\Window.h" />
+    <ClInclude Include="Engine\src\Core\Utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Application.cpp">
@@ -47,9 +45,6 @@
     </ClCompile>
     <ClCompile Include="Engine\src\Core\Logger.cpp">
       <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\src\Renderer\Renderer.cpp">
-      <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL_API.cpp" />
     <ClCompile Include="Engine\src\Platforms\Windows\WinWindow.cpp" />

@@ -20,32 +20,28 @@ namespace Engine
 		s_instance = this;
 
 		m_Window = Window::Create(WindowProps(m_spec.title));
-
-		WinWindow::EnableVsync(1);
-
-		Application::Run();
 	}
 
 	Application::~Application()
 	{
-		OpenGLAPI::Shutdown();
+		LOG_E_DEBUG("Clossing Application...");
 	}
 
 	void Application::ShowEngineStats(EngineStats options)
 	{
-		std::string FPS;
-		std::string ms;
+		std::string str_FPS;
+		std::string str_FrameTime;
 
 		if (options.Show_FPS)
 		{
-			FPS = std::to_string(perf.Get_FPS());
+			str_FPS = std::to_string(perf.Get_FPS());
 		}
 		if (options.Show_Frame_Time)
 		{
-			ms = std::to_string(perf.Get_FrameTime());
+			str_FrameTime = std::to_string(perf.Get_FrameTime());
 		}
 
-		std::string newTitle = m_spec.title + " " + FPS + "FPS / " + ms + "ms";
+		std::string newTitle = m_spec.title + " " + str_FPS + "fps / " + str_FrameTime + "ms";
 
 		// TODO : Remove as soon glfwSetWindowTitle has been moved to WinWindow
 		Application& application = Application::Get();
@@ -63,17 +59,17 @@ namespace Engine
 		while (!Get_WindowShouldClose())
 		{
 
-			perf.StartTime(Time::GetTime());
+			perf.StartPerfCounter();
 
 			ShowEngineStats(m_EngineStats);
 
 			WinWindow::Update();
 			WinWindow::Render();
 
-			perf.EndTime();
+			perf.EndPerfCounter();
 		}
 
-		LOG_E_TRACE("Total session runtime : {}", m_TimeStep.Get_Seconds());
+		LOG_E_DEBUG("Clossing the application...");
 	}
 
 	int Application::Get_WindowShouldClose()

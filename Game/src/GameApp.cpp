@@ -23,11 +23,10 @@ public:
 Engine::Application* Engine::CreateApplication(Engine::AppSpec)
 {
 	AppSpec Spec;
-	Spec.title = "OpenGL";
+	Spec.title = "Sandbox";
 	Spec.WorkingDirectory = "../Game";
 	Spec.Window_Height = 1080;
 	Spec.Window_Width = 1920;
-	Spec.Resizable = true;
 
 	return new Game(Spec);
 }

@@ -7,6 +7,7 @@
 #include "Platforms/Windows/WinWindow.h"
 #include "Core/Logger.h"
 #include "Core/Time.h"
+#include "Core/Utilities.h"
 
 int main();
 
@@ -19,7 +20,6 @@ namespace Engine
 		std::string WorkingDirectory;
 		int Window_Width = 1920;
 		int Window_Height = 1080;
-		bool Resizable = false;
 	};
 
 	struct EngineStats

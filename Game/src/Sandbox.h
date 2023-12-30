@@ -8,9 +8,6 @@ class Sandbox
 		Sandbox();
 		virtual ~Sandbox() = default;
 
-		//TODO - setup timetick function
-		//void OnUpdate(Engine::Timetick tt) override;
-
 	private:
 
 };

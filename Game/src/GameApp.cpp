@@ -24,7 +24,7 @@ Engine::Application* Engine::CreateApplication(Engine::AppSpec)
 {
 	AppSpec Spec;
 	Spec.title = "Sandbox";
-	Spec.WorkingDirectory = "../Game";
+	//Spec.WorkingDirectory = "../Game";
 	Spec.Window_Height = 1080;
 	Spec.Window_Width = 1920;
 

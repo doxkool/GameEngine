@@ -69,10 +69,6 @@ namespace Engine
 		GLFWwindow* window = static_cast<GLFWwindow*>(application.GetWindow().GetNativeWindow());
 
 		glfwSwapBuffers(window);
-	}
-
-	void OpenGLAPI::Shutdown()
-	{
-		glfwTerminate();
+		glFlush();
 	}
 }

@@ -4,6 +4,8 @@
 
 #include "Core/Logger.h"
 
+#include "Core/Window.h"
+
 #include "Core/Application.h"
 
 
@@ -19,7 +21,7 @@ namespace Engine
 			static void Update();
 			static void EnableVsync(int enabled);
 
-			void SwapBuffer();
+			static void SwapBuffer();
 
 			virtual void* GetNativeWindow() const { return m_Window; }
 
@@ -38,15 +40,12 @@ namespace Engine
 
 			GLFWwindow* m_Window;
 
-			//int FrameBuffer_Width;
-			//int FrameBuffer_Height;
-
 			// Get monitor current resolution width
 			int max_width = GetSystemMetrics(SM_CXSCREEN);
 			
 			// Get monitor current resolution hieght
 			int max_hieght = GetSystemMetrics(SM_CYSCREEN);
-
-			
 	};
+
+	static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 }

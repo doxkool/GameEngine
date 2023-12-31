@@ -10,9 +10,9 @@ namespace Engine
 		void StartPerfCounter() { m_Frames++; m_Start_Time = Time::GetTime(); }
 		// Run this at the END of what you want to monitor.
 		void EndPerfCounter() { m_End_Time = m_Start_Time; m_Frames = 0; }
-
+		// Return the frames per seconds.
 		double Get_FPS() { return (m_Frames / (m_Start_Time - m_End_Time)); }
-
+		// Return the last frame time in mililseconds.
 		double Get_FrameTime() { return ((m_Start_Time - m_End_Time) * 1000); }
 
 	private:

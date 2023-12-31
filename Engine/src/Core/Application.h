@@ -2,12 +2,13 @@
 
 #include "Core/Base.h"
 
-#include "Core/Window.h"
 #include "Platforms/OpenGL/OpenGL_API.h"
 #include "Platforms/Windows/WinWindow.h"
+
 #include "Core/Logger.h"
 #include "Core/Time.h"
 #include "Core/Utilities.h"
+#include "Core/Input.h"
 
 int main();
 

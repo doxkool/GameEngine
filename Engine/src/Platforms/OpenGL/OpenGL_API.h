@@ -22,8 +22,6 @@ namespace Engine
 			static void Clear();
 			static void SwapBuffer();
 
-			static void Shutdown();
-
 		private:
 		
 		

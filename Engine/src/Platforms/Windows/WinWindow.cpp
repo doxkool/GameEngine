@@ -1,7 +1,5 @@
 #include "Platforms/Windows/WinWindow.h"
 
-#include "Core/Application.h"
-
 
 namespace Engine
 {
@@ -68,6 +66,8 @@ namespace Engine
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 
+		glfwSetKeyCallback(m_Window, key_callback);
+
 	}
 
 	void WinWindow::Shutdown()
@@ -84,21 +84,18 @@ namespace Engine
 
 	void WinWindow::Render()
 	{
-		// TODO : Fix the manual resolution input
-		OpenGLAPI::Set_Viewport(1920, 1080, 1920, 1080);
 		OpenGLAPI::Set_ClearColor(glm::vec4(0.2f, 0.2f, 0.2f, 1.f));
 		OpenGLAPI::Clear();
 
-		Application& application = Application::Get();
-		GLFWwindow* window = static_cast<GLFWwindow*>(application.GetWindow().GetNativeWindow());
-
-		// TODO : Fix the issue with m_Window
-		glfwSwapBuffers(window);
+		SwapBuffer();
 	}
 
 	void WinWindow::SwapBuffer()
 	{
-		glfwSwapBuffers(m_Window);
+		Application& application = Application::Get();
+		GLFWwindow* window = static_cast<GLFWwindow*>(application.GetWindow().GetNativeWindow());
+
+		glfwSwapBuffers(window);
 	}
 
 	// Enable or disable Vsync : 1 = true or 0 = false
@@ -106,5 +103,10 @@ namespace Engine
 	{
 		glfwSwapInterval(enabled);
 		LOG_E_DEBUG("vSync set to : {}", enabled);
+	}
+
+	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+	{
+		Input::UpdateInput(window, key, scancode, action, mods);
 	}
 }

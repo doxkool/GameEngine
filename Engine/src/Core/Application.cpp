@@ -7,12 +7,14 @@ namespace Engine
 	Application::Application(const AppSpec& specification)
 		: m_spec(specification)
 	{
-		Log::Init();
-
-		// Set working directory here
+		Logger::Init();
+		
+		// Check if the working directory is empty
 		if (m_spec.WorkingDirectory.empty())
 		{
-			LOG_E_ERROR ("No working directory defined!");
+			LOG_E_WARN ("No custom working directory defined.");
+
+			m_spec.WorkingDirectory = "/";
 		}
 
 		LOG_E_INFO("Setting working directory to : '{}'", m_spec.WorkingDirectory);
@@ -20,6 +22,8 @@ namespace Engine
 		s_instance = this;
 
 		m_Window = Window::Create(WindowProps(m_spec.title));
+
+		OpenGLAPI::Set_Viewport(m_spec.Window_Width, m_spec.Window_Height, m_spec.Window_Width, m_spec.Window_Height);
 	}
 
 	Application::~Application()
@@ -68,8 +72,6 @@ namespace Engine
 
 			perf.EndPerfCounter();
 		}
-
-		LOG_E_DEBUG("Clossing the application...");
 	}
 
 	int Application::Get_WindowShouldClose()

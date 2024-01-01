@@ -13,18 +13,17 @@
 
 namespace Engine
 {
-	class OpenGLAPI
+	class OpenGL_API
 	{
 		public:
 			static void Init();
 			static void Set_Viewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height);
 			static void Set_ClearColor(const glm::vec4& color);
 			static void Clear();
+			//static void Draw(Shader shaderProgram);
 			static void SwapBuffer();
 
 		private:
-		
-		
 
 	};
 

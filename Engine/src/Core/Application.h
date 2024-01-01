@@ -10,6 +10,8 @@
 #include "Core/Utilities.h"
 #include "Core/Input.h"
 
+#include "Renderer/Shader.h"
+
 int main();
 
 namespace Engine

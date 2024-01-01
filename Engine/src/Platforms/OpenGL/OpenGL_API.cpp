@@ -28,7 +28,7 @@ namespace Engine
 		LOG_E_DEBUG("Window resolution changed to : {}x{}", Window_Width, Window_Height);
 	};
 
-	void OpenGLAPI::Init()
+	void OpenGL_API::Init()
 	{
 
 		//Check GLEW is initialized correctly
@@ -48,22 +48,29 @@ namespace Engine
 		#endif
 	}
 
-	void OpenGLAPI::Set_Viewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height)
+	void OpenGL_API::Set_Viewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height)
 	{
 		glViewport(x, y, width, height);
 	}
 
-	void OpenGLAPI::Set_ClearColor(const glm::vec4& color)
+	void OpenGL_API::Set_ClearColor(const glm::vec4& color)
 	{
 		glClearColor(color.r , color.g, color.b, color.a);
 	}
 
-	void OpenGLAPI::Clear()
+	void OpenGL_API::Clear()
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	}
 
-	void OpenGLAPI::SwapBuffer()
+	//void OpenGL_API::Draw(Shader shaderProgram)
+	//{
+	//	glUseProgram(shaderProgram);
+	//	glBindVertexArray(VAO);
+	//	glDrawArrays(GL_TRIANGLES, 0, 3);
+	//}
+
+	void OpenGL_API::SwapBuffer()
 	{
 		Application& application = Application::Get();
 		GLFWwindow* window = static_cast<GLFWwindow*>(application.GetWindow().GetNativeWindow());

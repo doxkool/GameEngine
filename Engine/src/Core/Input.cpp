@@ -15,12 +15,10 @@ namespace Engine
 		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 		{
 			//camera.move(dt, FORWARD);
-			LOG_E_DEBUG("Key 'W' pressed!");
 		}
 		if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
 		{
 			//camera.move(dt, BACKWARD);
-			LOG_E_DEBUG("Key 'S' pressed!");
 		}
 		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
 		{

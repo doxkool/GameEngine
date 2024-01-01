@@ -23,7 +23,8 @@ namespace Engine
 
 		m_Window = Window::Create(WindowProps(m_spec.title));
 
-		OpenGLAPI::Set_Viewport(m_spec.Window_Width, m_spec.Window_Height, m_spec.Window_Width, m_spec.Window_Height);
+		OpenGL_API::Set_Viewport(m_spec.Window_Width, m_spec.Window_Height, m_spec.Window_Width, m_spec.Window_Height);
+
 	}
 
 	Application::~Application()

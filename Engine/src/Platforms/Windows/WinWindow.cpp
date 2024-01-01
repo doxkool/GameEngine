@@ -51,7 +51,7 @@ namespace Engine
 
 		glfwMakeContextCurrent(m_Window);
 
-		OpenGLAPI::Init();
+		OpenGL_API::Init();
 
 		std::string glVendor = std::string((const char*)glGetString(GL_VENDOR));
 		std::string glRenderer = std::string((const char*)glGetString(GL_RENDERER));
@@ -84,8 +84,9 @@ namespace Engine
 
 	void WinWindow::Render()
 	{
-		OpenGLAPI::Set_ClearColor(glm::vec4(0.2f, 0.2f, 0.2f, 1.f));
-		OpenGLAPI::Clear();
+		OpenGL_API::Set_ClearColor(glm::vec4(0.2f, 0.2f, 0.2f, 1.f));
+		OpenGL_API::Clear();
+		//OpenGL_API::Draw();
 
 		SwapBuffer();
 	}

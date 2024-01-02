@@ -1,13 +1,25 @@
-#include "Platforms/OpenGL/OpenGL_Shader.h"
+#include "Renderer/Shader.h"
 
 namespace Engine
 {
-	Ref<Shader> Shader::CreateVertexShader(const std::string& filepath)
+	// Constructor that build the Shader Program from 2 different shaders
+	Shader::Shader(const char* vertexFile, const char* fragmentFile)
+		: m_VertexFile(vertexFile), m_FragmentFile(fragmentFile)
 	{
-		return CreateRef<OpenGL_Shader>(GL_VERTEX_SHADER, filepath);
+		OpenGL_Shader GL_Shader(m_VertexFile, m_FragmentFile);
+
+		GL_ShaderProgram = GL_Shader.Get_ShaderProgram();
 	}
-	Ref<Shader> Shader::CreateFragmentShader(const std::string& filepath)
+
+	// Activates the Shader Program
+	void Shader::Activate()
 	{
-		return CreateRef<OpenGL_Shader>(GL_FRAGMENT_SHADER, filepath);
+		
+	}
+
+	// Deletes the Shader Program
+	void Shader::Delete()
+	{
+		
 	}
 }

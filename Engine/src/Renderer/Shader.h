@@ -1,25 +1,26 @@
 #pragma once
-#include "Core/Base.h"
 
-#include <string>
-#include <unordered_map>
+#include "Platforms/OpenGL/OpenGL_API.h"
 
-#include <glm/glm.hpp>
+#include "Core/Logger.h"
 
 namespace Engine
 {
 	class Shader
 	{
-		public:
-			virtual ~Shader() = default;
+	public:
+		// Constructor that build the Shader Program from 2 different shaders
+		Shader(const char* vertexFile, const char* fragmentFile);
 
-			//virtual void Bind() const = 0;
-			//virtual void Unbind() const = 0;
+		// Activates the Shader Program
+		void Activate();
+		// Deletes the Shader Program
+		void Delete();
+	private:
 
-			static Ref<Shader> CreateVertexShader(const std::string& filepath);
-			static Ref<Shader> CreateFragmentShader(const std::string& filepath);
+		const char* m_VertexFile;
+		const char* m_FragmentFile;
 
-		private:
-
+		unsigned int GL_ShaderProgram;
 	};
 }

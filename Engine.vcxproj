@@ -111,6 +111,7 @@
     <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL_API.h" />
     <ClInclude Include="Engine\src\Platforms\Windows\WinWindow.h" />
     <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL_Shader.h" />
+    <ClInclude Include="Engine\src\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Application.cpp" />
@@ -120,6 +121,7 @@
     <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL_API.cpp" />
     <ClCompile Include="Engine\src\Platforms\Windows\WinWindow.cpp" />
     <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL_Shader.cpp" />
+    <ClCompile Include="Engine\src\Renderer\Shader.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

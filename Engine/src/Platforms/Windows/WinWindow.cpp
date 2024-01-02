@@ -51,13 +51,11 @@ namespace Engine
 
 		glfwMakeContextCurrent(m_Window);
 
-		OpenGL_API::Init();
-
 		std::string glVendor = std::string((const char*)glGetString(GL_VENDOR));
 		std::string glRenderer = std::string((const char*)glGetString(GL_RENDERER));
 		std::string glVersion = std::string((const char*)glGetString(GL_VERSION));
 
-		LOG_E_INFO("OpenGL Information :");
+		LOG_E_INFO("OpenGL_API Information :");
 		LOG_E_INFO("	{}", glVendor);
 		LOG_E_INFO("	{}", glRenderer);
 		LOG_E_INFO("	{}", glVersion);

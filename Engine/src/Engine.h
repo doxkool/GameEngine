@@ -5,12 +5,11 @@
 #include "Core/Input.h"
 
 #include "Platforms/Windows/WinWindow.h"
-#include "Platforms/OpenGL/OpenGL_API.h"
 
-//#include "Core/Shader.h"
-//#include "Platforms/OpenGL/OpenGL_Shader.h"
+#include "Renderer/Shader.h"
 
-//#include "Renderer/Shader.h"
+//#include "Renderer/Mesh.h"
+//#include "Renderer/Model.h"
 //#include "Renderer/Camera.h"
 //#include "Renderer/VertexBuffer.h"
 //#include "Renderer/VertexArray.h"

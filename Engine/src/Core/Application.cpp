@@ -61,6 +61,12 @@ namespace Engine
 		m_EngineStats.Show_FPS = true;
 		m_EngineStats.Show_Frame_Time = true;
 
+		OpenGL opengl;
+
+		opengl.BuildShaders();
+
+		opengl.LoadVerticesBuffer();
+
 		while (!Get_WindowShouldClose())
 		{
 
@@ -71,8 +77,18 @@ namespace Engine
 			WinWindow::Update();
 			WinWindow::Render();
 
+			opengl.Set_ClearColor(glm::vec4(0.2f, 0.2f, 0.2f, 1.f));
+
+			opengl.Clear();
+
+			opengl.Draw();
+
+			WinWindow::SwapBuffer();
+
 			perf.EndPerfCounter();
 		}
+
+		opengl.Shutdown();
 	}
 
 	int Application::Get_WindowShouldClose()

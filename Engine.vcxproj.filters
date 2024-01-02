@@ -7,6 +7,12 @@
     <Filter Include="Platforms">
       <UniqueIdentifier>{DDACA145-4917-56BC-9255-0762FEFE3311}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platforms\OpenGL_API">
+      <UniqueIdentifier>{719BB998-5D94-D8EA-86C6-BD6F721EB8F6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platforms\Windows">
+      <UniqueIdentifier>{17E40808-83FA-069E-CC71-92BF38C7D725}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Renderer">
       <UniqueIdentifier>{7CCE658F-689B-C09A-91B4-AE427DE0F528}</UniqueIdentifier>
     </Filter>
@@ -31,12 +37,9 @@
     <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL_API.h">
       <Filter>Platforms</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\src\Core\Time.h" />
-    <ClInclude Include="Engine\src\Platforms\Windows\WinWindow.h" />
-    <ClInclude Include="Engine\src\Core\Window.h" />
-    <ClInclude Include="Engine\src\Core\Utilities.h" />
-    <ClInclude Include="Engine\src\Core\Input.h" />
+    <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL_API.h" />
     <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL_Shader.h" />
+    <ClInclude Include="Engine\src\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Application.cpp">
@@ -45,10 +48,11 @@
     <ClCompile Include="Engine\src\Core\Logger.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\src\Platforms\Windows\WinWindow.cpp">
+      <Filter>Platforms\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL_API.cpp" />
-    <ClCompile Include="Engine\src\Platforms\Windows\WinWindow.cpp" />
-    <ClCompile Include="Engine\src\Core\Window.cpp" />
-    <ClCompile Include="Engine\src\Core\Input.cpp" />
     <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL_Shader.cpp" />
+    <ClCompile Include="Engine\src\Renderer\Shader.cpp" />
   </ItemGroup>
 </Project>

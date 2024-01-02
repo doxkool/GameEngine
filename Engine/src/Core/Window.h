@@ -12,7 +12,7 @@ namespace Engine {
 		uint32_t Width;
 		uint32_t Height;
 
-		WindowProps(const std::string& title = "OpenGL Engine",
+		WindowProps(const std::string& title = "OpenGL_API Engine",
 			uint32_t width = 1920,
 			uint32_t height = 1080)
 			: Title(title), Width(width), Height(height)

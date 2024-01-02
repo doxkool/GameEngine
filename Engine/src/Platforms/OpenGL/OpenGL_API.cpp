@@ -63,29 +63,6 @@ namespace Engine
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	}
 
-	//void OpenGL_API::Draw(Shader shaderProgram)
-	//{
-	//	glUseProgram(shaderProgram);
-	//	glBindVertexArray(VAO);
-	//	glDrawArrays(GL_TRIANGLES, 0, 3);
-	//}
-
-	void OpenGL_API::SwapBuffer()
-	{
-		Application& application = Application::Get();
-		GLFWwindow* window = static_cast<GLFWwindow*>(application.GetWindow().GetNativeWindow());
-
-		glfwSwapBuffers(window);
-		glFlush();
-	}
-
-	//unsigned int OpenGL_API::LoadShaders()
-	//{
-	//	OpenGL_Shader GL_Shader_Inst("Game/Shaders/vertex_basic.glsl", "Game/Shaders/fragment_basic.glsl");
-	//
-	//	return GL_Shader_Inst.Get_ShaderProgram();
-	//}
-
 	unsigned int OpenGL_API::LoadVerticesBuffer()
 	{
 		float vertices[] = {

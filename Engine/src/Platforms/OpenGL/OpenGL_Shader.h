@@ -1,30 +1,21 @@
 #pragma once
 
-#include "Renderer/Shader.h"
-
-#include <glm/glm.hpp>
-
-#include <GL/glew.h>
-
-typedef unsigned int GLenum;
 
 namespace Engine
 {
-	class OpenGL_Shader : public Shader
+	class OpenGL_Shader
 	{
 		public:
-			OpenGL_Shader(const GLenum type, const std::string& filepath);
+			OpenGL_Shader(const char* vertexFile, const char* fragmentFile);
 			virtual ~OpenGL_Shader();
 
-			//virtual void Bind() const override;
-			//virtual void Unbind() const override;
+			unsigned int Get_ShaderProgram();
+
 
 		private:
-			std::string loadShaderFile();
-			GLuint CreateShaderProgram(GLenum type);
-			void linkProgram(GLuint shader);
+			const char* m_VertexFile;
+			const char* m_FragmentFile;
 
-			uint32_t m_RendererID;
-			std::string m_FilePath;
+			unsigned int m_ShaderProgram;
 	};
 }

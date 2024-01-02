@@ -98,7 +98,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\src\Renderer\Buffer.h" />
     <ClInclude Include="Engine\src\Core\Application.h" />
     <ClInclude Include="Engine\src\Core\Base.h" />
     <ClInclude Include="Engine\src\Core\EntryPoint.h" />
@@ -111,30 +110,16 @@
     <ClInclude Include="Engine\src\Engine.h" />
     <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL_API.h" />
     <ClInclude Include="Engine\src\Platforms\Windows\WinWindow.h" />
-    <ClInclude Include="Engine\src\Renderer\Camera.h" />
-    <ClInclude Include="Engine\src\Renderer\ElementsBuffer.h" />
-    <ClInclude Include="Engine\src\Renderer\VertexArray_OLD.h" />
-    <ClInclude Include="Engine\src\Renderer\VertexBuffer.h" />
-    <ClInclude Include="Engine\src\Renderer\Shader.h" />
     <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL_Shader.h" />
-    <ClInclude Include="Engine\src\Renderer\VertexArray.h" />
-    <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL_VertexArray.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\src\Renderer\Buffer.cpp" />
     <ClCompile Include="Engine\src\Core\Application.cpp" />
     <ClCompile Include="Engine\src\Core\Input.cpp" />
     <ClCompile Include="Engine\src\Core\Logger.cpp" />
     <ClCompile Include="Engine\src\Core\Window.cpp" />
     <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL_API.cpp" />
-    <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL_VertexArray.cpp" />
     <ClCompile Include="Engine\src\Platforms\Windows\WinWindow.cpp" />
-    <ClCompile Include="Engine\src\Renderer\ElementsBuffer.cpp" />
-    <ClCompile Include="Engine\src\Renderer\VertexArray_OLD.cpp" />
-    <ClCompile Include="Engine\src\Renderer\VertexBuffer.cpp" />
-    <ClCompile Include="Engine\src\Renderer\Shader.cpp" />
     <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL_Shader.cpp" />
-    <ClCompile Include="Engine\src\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

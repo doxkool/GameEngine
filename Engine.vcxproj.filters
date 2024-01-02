@@ -31,22 +31,12 @@
     <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL_API.h">
       <Filter>Platforms</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\src\Renderer\Camera.h">
-      <Filter>Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\src\Core\Time.h" />
     <ClInclude Include="Engine\src\Platforms\Windows\WinWindow.h" />
     <ClInclude Include="Engine\src\Core\Window.h" />
     <ClInclude Include="Engine\src\Core\Utilities.h" />
     <ClInclude Include="Engine\src\Core\Input.h" />
-    <ClInclude Include="Engine\src\Renderer\ElementsBuffer.h" />
-    <ClInclude Include="Engine\src\Renderer\VertexArray_OLD.h" />
-    <ClInclude Include="Engine\src\Renderer\VertexBuffer.h" />
-    <ClInclude Include="Engine\src\Renderer\Shader.h" />
     <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL_Shader.h" />
-    <ClInclude Include="Engine\src\Renderer\VertexArray.h" />
-    <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL_VertexArray.h" />
-    <ClInclude Include="Engine\src\Renderer\Buffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Application.cpp">
@@ -59,13 +49,6 @@
     <ClCompile Include="Engine\src\Platforms\Windows\WinWindow.cpp" />
     <ClCompile Include="Engine\src\Core\Window.cpp" />
     <ClCompile Include="Engine\src\Core\Input.cpp" />
-    <ClCompile Include="Engine\src\Renderer\ElementsBuffer.cpp" />
-    <ClCompile Include="Engine\src\Renderer\VertexArray_OLD.cpp" />
-    <ClCompile Include="Engine\src\Renderer\VertexBuffer.cpp" />
-    <ClCompile Include="Engine\src\Renderer\Shader.cpp" />
     <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL_Shader.cpp" />
-    <ClCompile Include="Engine\src\Renderer\VertexArray.cpp" />
-    <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL_VertexArray.cpp" />
-    <ClCompile Include="Engine\src\Renderer\Buffer.cpp" />
   </ItemGroup>
 </Project>

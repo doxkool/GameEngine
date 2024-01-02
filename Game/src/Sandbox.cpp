@@ -6,7 +6,7 @@ Sandbox::Sandbox()
 
 	LOG_G_INFO("Starting Sandbox...");
 
-	Engine::Shader Shader("Game/Shaders/vertex_basic.glsl", "Game/Shaders/fragment_basic.glsl");
+	//Engine::Shader Shader("Game/Shaders/vertex_basic.glsl", "Game/Shaders/fragment_basic.glsl");
 
 	Engine::WinWindow::EnableVsync(1);
 	

@@ -16,14 +16,19 @@ namespace Engine
 	class OpenGL_API
 	{
 		public:
-			void Init();
+			OpenGL_API();
+
 			void Set_Viewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height);
+
 			void Set_ClearColor(const glm::vec4& color);
+
 			void Clear();
 
 			unsigned int LoadVerticesBuffer();
 
 			void Draw(unsigned int shaderProgram);
+
+			unsigned int Get_ShaderProgram();
 
 			void Shutdown();
 

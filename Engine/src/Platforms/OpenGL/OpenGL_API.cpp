@@ -28,7 +28,7 @@ namespace Engine
 		LOG_E_DEBUG("Window resolution changed to : {}x{}", Window_Width, Window_Height);
 	};
 
-	void OpenGL_API::Init()
+	OpenGL_API::OpenGL_API()
 	{
 
 		//Check GLEW is initialized correctly
@@ -90,6 +90,11 @@ namespace Engine
 		glBindVertexArray(0);
 
 		return VAO;
+	}
+
+	unsigned int OpenGL_API::Get_ShaderProgram()
+	{
+		return m_shaderProgram;
 	}
 
 	void OpenGL_API::Draw(unsigned int shaderProgram)

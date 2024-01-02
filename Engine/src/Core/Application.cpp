@@ -22,9 +22,6 @@ namespace Engine
 		s_instance = this;
 
 		m_Window = Window::Create(WindowProps(m_spec.title));
-
-		OpenGL_API::Set_Viewport(m_spec.Window_Width, m_spec.Window_Height, m_spec.Window_Width, m_spec.Window_Height);
-
 	}
 
 	Application::~Application()
@@ -61,11 +58,11 @@ namespace Engine
 		m_EngineStats.Show_FPS = true;
 		m_EngineStats.Show_Frame_Time = true;
 
-		OpenGL opengl;
+		Render_Instance.LoadShaders("Game/Shaders/vertex_basic.glsl", "Game/Shaders/fragment_basic.glsl");
 
-		opengl.BuildShaders();
+		//GL_Instance.LoadVerticesBuffer();
 
-		opengl.LoadVerticesBuffer();
+		//unsigned int ShaderProgram = GL_Instance.Get_ShaderProgram();
 
 		while (!Get_WindowShouldClose())
 		{
@@ -77,18 +74,18 @@ namespace Engine
 			WinWindow::Update();
 			WinWindow::Render();
 
-			opengl.Set_ClearColor(glm::vec4(0.2f, 0.2f, 0.2f, 1.f));
+			//GL_Instance.Set_ClearColor(glm::vec4(0.2f, 0.2f, 0.2f, 1.f));
 
-			opengl.Clear();
+			//GL_Instance.Clear();
 
-			opengl.Draw();
+			//GL_Instance.Draw(ShaderProgram);
 
 			WinWindow::SwapBuffer();
 
 			perf.EndPerfCounter();
 		}
 
-		opengl.Shutdown();
+		//GL_Instance.Shutdown();
 	}
 
 	int Application::Get_WindowShouldClose()

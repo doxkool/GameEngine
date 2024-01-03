@@ -2,16 +2,20 @@
 
 #include "Engine.h"
 
-class Sandbox
+class Sandbox : public Engine::Layer
 {
 	public:
 		Sandbox();
 		virtual ~Sandbox() = default;
 
-		void OnUpdate(Engine::TimeStep ts);
+		virtual void OnAttach() override;
+		virtual void OnDetach() override;
+
+		virtual void OnUpdate(Engine::TimeStep ts) override;
 
 	private:
 
-		//Engine::Ref<Engine::Shader> m_DefaultShader;
+		Engine::OpenGL opengl;
+		unsigned int ShaderProgram;
 
 };

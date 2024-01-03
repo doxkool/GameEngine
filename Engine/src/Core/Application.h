@@ -6,6 +6,7 @@
 
 #include "Platforms/Windows/WinWindow.h"
 
+#include "Core/LayerStack.h"
 #include "Core/Logger.h"
 #include "Core/Time.h"
 #include "Core/Utilities.h"
@@ -36,6 +37,9 @@ namespace Engine
 			Application(const AppSpec& specification);
 			~Application();
 
+			void PushLayer(Layer* layer);
+			void PushOverlay(Layer* layer);
+
 			void Run();
 
 			void ShowEngineStats(EngineStats options);
@@ -55,6 +59,7 @@ namespace Engine
 			static Application* s_instance;
 			AppSpec m_spec;
 			Pointer<Window> m_Window;
+			LayerStack m_LayerStack;
 
 			Perf perf;
 

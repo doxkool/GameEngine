@@ -1,15 +1,8 @@
 #pragma once
 
-#include "Platforms/OpenGL/OpenGL_API.h"
+#include "Platforms/OpenGL/OpenGL.h"
 
 namespace Engine {
-
-	class Time
-	{
-	public:
-		// Return glfwGetTime()
-		static float GetTime() { return glfwGetTime(); }
-	};
 
 	class TimeStep
 	{
@@ -18,6 +11,8 @@ namespace Engine {
 		TimeStep(float time = 0.0f)
 			: m_Time(time)
 		{}
+
+		float GetTime() { return glfwGetTime(); }
 
 		operator float() const { return m_Time; }
 

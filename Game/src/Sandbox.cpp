@@ -6,7 +6,7 @@ Sandbox::Sandbox()
 
 	LOG_G_INFO("Starting Sandbox...");
 
-	//Engine::WinWindow::EnableVsync(1);
+	Engine::WinWindow::EnableVsync(1);
 }
 
 void Sandbox::OnUpdate(Engine::TimeStep ts)

@@ -14,12 +14,12 @@ namespace Engine
 	class OpenGL
 	{
 	public:
-		OpenGL(const char* vertexShaderFile, const char* fragmentShaderFile);
+		OpenGL();
 		virtual ~OpenGL();
 
 		std::string ReadShaderFile(const char* ShaderFile);
 
-		void LoadShaders();
+		void LoadShaders(const char* vertexShaderFile, const char* fragmentShaderFile);
 
 		void Set_ClearColor(const glm::vec4& color);
 

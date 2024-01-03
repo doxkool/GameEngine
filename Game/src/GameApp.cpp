@@ -11,7 +11,7 @@ public:
 	Game(const Engine::AppSpec& specification)
 		: Engine::Application(specification)
 	{
-		new Sandbox();
+		PushLayer(new Sandbox());
 	}
 
 	~Game()
@@ -24,7 +24,7 @@ Engine::Application* Engine::CreateApplication(Engine::AppSpec)
 {
 	AppSpec Spec;
 	Spec.title = "Sandbox";
-	//Spec.WorkingDirectory = "../Game";
+	Spec.WorkingDirectory = "../Game";
 	Spec.Window_Height = 1080;
 	Spec.Window_Width = 1920;
 

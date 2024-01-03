@@ -7,7 +7,7 @@ namespace Engine
 	{
 	public:
 		// Run this at the START of what you want to monitor.
-		void StartPerfCounter() { m_Frames++; m_Start_Time = Time::GetTime(); }
+		void StartPerfCounter(TimeStep ts) { m_Frames++; m_Start_Time = ts.GetTime(); }
 		// Run this at the END of what you want to monitor.
 		void EndPerfCounter() { m_End_Time = m_Start_Time; m_Frames = 0; }
 		// Return the frames per seconds.

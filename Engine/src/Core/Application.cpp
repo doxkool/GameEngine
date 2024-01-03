@@ -29,6 +29,18 @@ namespace Engine
 		LOG_E_DEBUG("Clossing Application...");
 	}
 
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
+	}
+
+	void Application::PushOverlay(Layer* layer)
+	{
+		m_LayerStack.PushOverlay(layer);
+		layer->OnAttach();
+	}
+
 	void Application::ShowEngineStats(EngineStats options)
 	{
 		std::string str_FPS;
@@ -58,36 +70,24 @@ namespace Engine
 		m_EngineStats.Show_FPS = true;
 		m_EngineStats.Show_Frame_Time = true;
 
-		OpenGL opengl("Game/Shaders/vertex_basic.glsl", "Game/Shaders/fragment_basic.glsl");
-
-		opengl.LoadShaders();
-
-		opengl.LoadVerticesBuffer();
-
-		unsigned int ShaderProgram = opengl.Get_ShaderProgram();
-
 		while (!Get_WindowShouldClose())
 		{
+			
+			TimeStep timestep;
 
-			perf.StartPerfCounter();
+			perf.StartPerfCounter(timestep);
 
 			ShowEngineStats(m_EngineStats);
 
+			for (Layer* layer : m_LayerStack)
+				layer->OnUpdate(timestep);
+
 			WinWindow::Update();
-			//WinWindow::Render();
-
-			opengl.Set_ClearColor(glm::vec4(0.2f, 0.2f, 0.2f, 1.f));
-
-			opengl.Clear();
-
-			opengl.Draw(ShaderProgram);
 
 			WinWindow::SwapBuffer();
 
 			perf.EndPerfCounter();
 		}
-
-		opengl.Shutdown();
 	}
 
 	int Application::Get_WindowShouldClose()

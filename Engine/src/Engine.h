@@ -3,6 +3,7 @@
 #include "Core/Application.h"
 #include "Core/Logger.h"
 #include "Core/Input.h"
+#include "Core/LayerStack.h"
 
 #include "Platforms/Windows/WinWindow.h"
 #include "Platforms/OpenGL/OpenGL.h"

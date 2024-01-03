@@ -27,8 +27,7 @@ namespace Engine
 		LOG_E_DEBUG("Window resolution changed to : {}x{}", Window_Width, Window_Height);
 	};
 
-	OpenGL::OpenGL(const char* vertexShaderFile, const char* fragmentShaderFile)
-		: m_vertexShaderFile(vertexShaderFile), m_fragmentShaderFile(fragmentShaderFile)
+	OpenGL::OpenGL()
 	{
 		//Check GLEW is initialized correctly
 		if (glewInit() != GLEW_OK)
@@ -76,8 +75,11 @@ namespace Engine
 		return src;
 	}
 
-	void OpenGL::LoadShaders()
+	void OpenGL::LoadShaders(const char* vertexShaderFile, const char* fragmentShaderFile)
 	{
+		m_vertexShaderFile = vertexShaderFile;
+		m_fragmentShaderFile = fragmentShaderFile;
+
 		std::string str_src;
 		const GLchar* src;
 

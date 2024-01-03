@@ -15,11 +15,11 @@ namespace Engine
 			void LoadShaders(const char* vertexSourceFile, const char* fragmentSourceFile);
 
 		private:
-			Shader Shaders;
-			unsigned int m_ShaderProgram;
-
-			const char* m_vertexSourceFile;
-			const char* m_fragmentSourceFile;
+			//Shader Shaders;
+			//unsigned int m_ShaderProgram;
+			//
+			//const char* m_vertexSourceFile;
+			//const char* m_fragmentSourceFile;
 
 	};
 }

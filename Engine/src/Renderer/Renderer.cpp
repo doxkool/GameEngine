@@ -5,6 +5,7 @@ namespace Engine
 	
 	Renderer::Renderer()
 	{
+
 	}
 
 	Renderer::~Renderer()
@@ -13,6 +14,6 @@ namespace Engine
 
 	void Renderer::LoadShaders(const char* vertexSourceFile, const char* fragmentSourceFile)
 	{
-		m_ShaderProgram = Shaders.LoadShader(vertexSourceFile, fragmentSourceFile);
+		//m_ShaderProgram = Shaders.LoadShader(vertexSourceFile, fragmentSourceFile);
 	}
 }

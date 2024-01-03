@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Platforms/OpenGL/OpenGL_Shader.h"
-
 #include "Core/Logger.h"
 
 namespace Engine

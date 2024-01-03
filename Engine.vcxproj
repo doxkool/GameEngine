@@ -108,22 +108,16 @@
     <ClInclude Include="Engine\src\Core\Utilities.h" />
     <ClInclude Include="Engine\src\Core\Window.h" />
     <ClInclude Include="Engine\src\Engine.h" />
-    <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL_API.h" />
+    <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL.h" />
     <ClInclude Include="Engine\src\Platforms\Windows\WinWindow.h" />
-    <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL_Shader.h" />
-    <ClInclude Include="Engine\src\Renderer\Shader.h" />
-    <ClInclude Include="Engine\src\Renderer\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Application.cpp" />
     <ClCompile Include="Engine\src\Core\Input.cpp" />
     <ClCompile Include="Engine\src\Core\Logger.cpp" />
     <ClCompile Include="Engine\src\Core\Window.cpp" />
-    <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL_API.cpp" />
+    <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL.cpp" />
     <ClCompile Include="Engine\src\Platforms\Windows\WinWindow.cpp" />
-    <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL_Shader.cpp" />
-    <ClCompile Include="Engine\src\Renderer\Shader.cpp" />
-    <ClCompile Include="Engine\src\Renderer\Renderer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

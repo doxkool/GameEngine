@@ -27,9 +27,9 @@ namespace Engine
 
 	unsigned int Shader::LoadShader(const char* vertexFile, const char* fragmentFile)
 	{
-		OpenGL_Shader GL_Shader(m_VertexFile, m_FragmentFile);
+		//OpenGL_Shader GL_Shader(m_VertexFile, m_FragmentFile);
 
-		return GL_Shader.Get_ShaderProgram();
+		return NULL;
 	}
 
 	// Activates the Shader Program

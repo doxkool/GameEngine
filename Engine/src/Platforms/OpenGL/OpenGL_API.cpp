@@ -48,6 +48,10 @@ namespace Engine
 		#endif
 	}
 
+	void OpenGL_API::LoadShaders(const char* vertexSourceFile, const char* fragmentSourceFile)
+	{
+	}
+
 	void OpenGL_API::Set_Viewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height)
 	{
 		glViewport(x, y, width, height);

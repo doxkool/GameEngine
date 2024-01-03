@@ -2,7 +2,7 @@
 
 #include "Core/Base.h"
 
-#include "Platforms/OpenGL/OpenGL_API.h"
+#include "Platforms/OpenGL/OpenGL.h"
 
 #include "Platforms/Windows/WinWindow.h"
 
@@ -10,8 +10,6 @@
 #include "Core/Time.h"
 #include "Core/Utilities.h"
 #include "Core/Input.h"
-
-#include "Renderer/Renderer.h"
 
 int main();
 
@@ -49,8 +47,6 @@ namespace Engine
 			static Application& Get() { return *s_instance; }
 
 		private:
-			
-			Renderer Render_Instance;
 
 			TimeStep m_TimeStep;
 

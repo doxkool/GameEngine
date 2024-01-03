@@ -82,11 +82,7 @@ namespace Engine
 
 	void WinWindow::Render()
 	{
-		OpenGL_API::Set_ClearColor(glm::vec4(0.2f, 0.2f, 0.2f, 1.f));
-		OpenGL_API::Clear();
-		//OpenGL_API::Draw();
-
-		SwapBuffer();
+		
 	}
 
 	void WinWindow::SwapBuffer()

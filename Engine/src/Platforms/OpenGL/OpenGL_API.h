@@ -18,11 +18,13 @@ namespace Engine
 		public:
 			OpenGL_API();
 
+			void LoadShaders(const char* vertexSourceFile, const char* fragmentSourceFile);
+
 			void Set_Viewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height);
 
-			void Set_ClearColor(const glm::vec4& color);
+			static void Set_ClearColor(const glm::vec4& color);
 
-			void Clear();
+			static void Clear();
 
 			unsigned int LoadVerticesBuffer();
 

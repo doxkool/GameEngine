@@ -5,8 +5,9 @@
 #include "Core/Input.h"
 
 #include "Platforms/Windows/WinWindow.h"
+#include "Platforms/OpenGL/OpenGL.h"
 
-#include "Renderer/Shader.h"
+//#include "Renderer/Shader.h"
 
 //#include "Renderer/Mesh.h"
 //#include "Renderer/Model.h"

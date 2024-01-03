@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Platforms/OpenGL/OpenGL_API.h"
+//#include "Platforms/OpenGL/OpenGL_API.h"
 
 #include "Core/Logger.h"
 
@@ -34,6 +34,7 @@ namespace Engine
 		private:
 			virtual void Init(const WindowProps& props);
 			virtual void Shutdown();
+
 		private:
 
 			Window_Data m_Data;

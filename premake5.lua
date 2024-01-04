@@ -1,4 +1,4 @@
-workspace "GameEngine"
+workspace "Poutine Engine"
    architecture "x64"
    configurations { "Debug", "Release" }
 
@@ -10,6 +10,7 @@ IncludeDir["spdlog"] = "Engine/vendors/spdlog"
 IncludeDir["GLFW"] = "Engine/vendors/GLFW/include"
 IncludeDir["GLEW"] = "Engine/vendors/GLEW/include"
 IncludeDir["GLM"] = "Engine/vendors/glm"
+IncludeDir["IMGUI"] = "Engine/vendors/imgui"
 
 project "Engine"
 	kind "StaticLib"
@@ -37,7 +38,8 @@ project "Engine"
 	   "%{IncludeDir.spdlog}",
 	   "%{IncludeDir.GLFW}",
 	   "%{IncludeDir.GLEW}",
-	   "%{IncludeDir.GLM}"
+	   "%{IncludeDir.GLM}",
+	   "%{IncludeDir.IMGUI}"
 	}
 	
 	libdirs

@@ -61,6 +61,7 @@
     <ClInclude Include="Engine\src\Renderer\Camera.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\src\Core\Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Application.cpp">
@@ -87,5 +88,6 @@
     <ClCompile Include="Engine\src\Platforms\Windows\WinWindow.cpp">
       <Filter>Platforms\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\src\Core\Texture.cpp" />
   </ItemGroup>
 </Project>

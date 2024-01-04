@@ -10,6 +10,7 @@ Sandbox::Sandbox()
 	Engine::WinWindow::EnableVsync(1);
 
 	opengl.LoadShaders("Game/Shaders/vertex_basic.glsl", "Game/Shaders/fragment_basic.glsl");
+
 	opengl.LoadVerticesBuffer();
 
 	ShaderProgram = opengl.Get_ShaderProgram();

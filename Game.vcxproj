@@ -96,11 +96,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Game\src\GameApp.cpp" />
-    <ClCompile Include="Game\src\Sandbox.cpp" />
+    <ClInclude Include="Game\src\Sandbox.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game\src\Sandbox.h" />
+    <ClCompile Include="Game\src\GameApp.cpp" />
+    <ClCompile Include="Game\src\Sandbox.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

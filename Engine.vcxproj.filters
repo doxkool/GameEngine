@@ -7,7 +7,7 @@
     <Filter Include="Platforms">
       <UniqueIdentifier>{DDACA145-4917-56BC-9255-0762FEFE3311}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platforms\OpenGL_API">
+    <Filter Include="Platforms\OpenGL">
       <UniqueIdentifier>{719BB998-5D94-D8EA-86C6-BD6F721EB8F6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Platforms\Windows">
@@ -27,37 +27,65 @@
     <ClInclude Include="Engine\src\Core\EntryPoint.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\src\Core\Input.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\src\Core\Layer.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\src\Core\LayerStack.h">
+      <Filter>Core</Filter>
+    </ClInclude>
     <ClInclude Include="Engine\src\Core\Logger.h">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Engine\src\Core\OSDetection.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\src\Core\Time.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\src\Core\Utilities.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\src\Core\Window.h">
+      <Filter>Core</Filter>
+    </ClInclude>
     <ClInclude Include="Engine\src\Engine.h" />
-    <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL_API.h" />
-    <ClInclude Include="Engine\src\Core\Input.h" />
-    <ClInclude Include="Engine\src\Core\Time.h" />
-    <ClInclude Include="Engine\src\Core\Utilities.h" />
-    <ClInclude Include="Engine\src\Platforms\Windows\WinWindow.h" />
-    <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL.h" />
-    <ClInclude Include="Engine\src\Core\LayerStack.h" />
-    <ClInclude Include="Engine\src\Core\Layer.h" />
-    <ClInclude Include="Engine\src\Core\Window.h" />
+    <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL.h">
+      <Filter>Platforms\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\src\Platforms\Windows\WinWindow.h">
+      <Filter>Platforms\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\src\Renderer\Camera.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Application.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\src\Core\Input.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\Core\Layer.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\Core\LayerStack.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
     <ClCompile Include="Engine\src\Core\Logger.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\Core\Window.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL.cpp">
+      <Filter>Platforms\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="Engine\src\Platforms\Windows\WinWindow.cpp">
       <Filter>Platforms\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\src\Core\Input.cpp" />
-    <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL.cpp" />
-    <ClCompile Include="Engine\src\Core\LayerStack.cpp" />
-    <ClCompile Include="Engine\src\Core\Layer.cpp" />
-    <ClCompile Include="Engine\src\Core\Window.cpp" />
   </ItemGroup>
 </Project>

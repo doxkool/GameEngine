@@ -15,6 +15,8 @@ namespace Engine
 	struct Vertex {
 		glm::vec3 position;
 		glm::vec3 color;
+		//glm::vec2 texcoord;
+		//glm::vec3 normal;
 	};
 
 	class OpenGL
@@ -30,7 +32,7 @@ namespace Engine
 
 		void Clear();
 
-		void LoadVBO(std::vector<Vertex> vertexArray);
+		void LoadVBO(std::vector<Vertex> vertexArray, std::vector<GLuint> indexArray);
 
 		void Draw(unsigned int shaderProgram);
 
@@ -42,9 +44,10 @@ namespace Engine
 		const char* m_vertexShaderFile;
 		const char* m_fragmentShaderFile;
 
-		unsigned int m_shaderProgram;
-		unsigned int VAO, VBO;
-		int nrOfVertices;
+		GLuint m_shaderProgram;
+		GLuint VAO, VBO, EBO;
+		unsigned nrOfVertices;
+		unsigned nrOfIndices;
 	};
 
 	void framebuffer_resize_callback(GLFWwindow* Window, int Window_Width, int Window_Height);

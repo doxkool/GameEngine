@@ -15,8 +15,6 @@ namespace Engine
 	struct Vertex {
 		glm::vec3 position;
 		glm::vec3 color;
-		glm::vec2 texcoord;
-		glm::vec3 normal;
 	};
 
 	class OpenGL
@@ -46,6 +44,7 @@ namespace Engine
 
 		unsigned int m_shaderProgram;
 		unsigned int VAO, VBO;
+		int nrOfVertices;
 	};
 
 	void framebuffer_resize_callback(GLFWwindow* Window, int Window_Width, int Window_Height);

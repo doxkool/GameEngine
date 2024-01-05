@@ -11,12 +11,20 @@ Sandbox::Sandbox()
 
 	opengl.LoadShaders("Game/Shaders/vertex_basic.glsl", "Game/Shaders/fragment_basic.glsl");
 
-		//Position						//Color
-		//glm::vec3(0.5f, -0.5f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f),   // bottom right
-		//glm::vec3(-0.5f, -0.5f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f),   // bottom left
-		//glm::vec3(0.0f, 0.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f)    // top
-
 	std::vector<Engine::Vertex> Triangle;
+
+	Engine::Vertex vertices[] =
+	{
+		//Position								//Color					
+		glm::vec3(0.5f, -0.5f, 0.0f),			glm::vec3(1.0f, 0.0f, 0.0f),
+		glm::vec3(-0.5f, -0.5f, 0.0f),			glm::vec3(0.0f, 1.0f, 0.0f),
+		glm::vec3(0.0f,  0.5f, 0.0f),			glm::vec3(0.0f, 0.0f, 1.0f)
+	};
+
+	for (size_t i = 0; i < sizeof(vertices) / sizeof(vertices[0]); i++)
+	{
+		Triangle.push_back(vertices[i]);
+	}
 
 	opengl.LoadVBO(Triangle);
 

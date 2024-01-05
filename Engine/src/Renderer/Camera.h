@@ -3,6 +3,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include "Core/Logger.h"
+
 namespace Engine
 {
 	enum direction { FORWARD = 0, BACKWARD, LEFT, RIGHT, UP, DOWN };

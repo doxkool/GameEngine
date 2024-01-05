@@ -62,6 +62,8 @@
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Engine\src\Core\Texture.h" />
+    <ClInclude Include="Engine\src\Core\Mesh.h" />
+    <ClInclude Include="Engine\src\Renderer\Primitives.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Application.cpp">
@@ -89,5 +91,6 @@
       <Filter>Platforms\Windows</Filter>
     </ClCompile>
     <ClCompile Include="Engine\src\Core\Texture.cpp" />
+    <ClCompile Include="Engine\src\Core\Mesh.cpp" />
   </ItemGroup>
 </Project>

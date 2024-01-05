@@ -8,14 +8,21 @@
 #include <glm/glm.hpp>
 
 #include "Core/Logger.h"
+//#include "Core/Mesh.h"
 
 namespace Engine
 {
+	struct Vertex {
+		glm::vec3 position;
+		glm::vec3 color;
+		glm::vec2 texcoord;
+		glm::vec3 normal;
+	};
+
 	class OpenGL
 	{
 	public:
 		OpenGL();
-		virtual ~OpenGL();
 
 		std::string ReadShaderFile(const char* ShaderFile);
 
@@ -25,7 +32,7 @@ namespace Engine
 
 		void Clear();
 
-		unsigned int LoadVerticesBuffer();
+		void LoadVBO(std::vector<Vertex> vertexArray);
 
 		void Draw(unsigned int shaderProgram);
 
@@ -39,7 +46,6 @@ namespace Engine
 
 		unsigned int m_shaderProgram;
 		unsigned int VAO, VBO;
-
 	};
 
 	void framebuffer_resize_callback(GLFWwindow* Window, int Window_Width, int Window_Height);

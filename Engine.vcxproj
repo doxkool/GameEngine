@@ -105,6 +105,7 @@
     <ClInclude Include="Engine\src\Core\Layer.h" />
     <ClInclude Include="Engine\src\Core\LayerStack.h" />
     <ClInclude Include="Engine\src\Core\Logger.h" />
+    <ClInclude Include="Engine\src\Core\Mesh.h" />
     <ClInclude Include="Engine\src\Core\OSDetection.h" />
     <ClInclude Include="Engine\src\Core\Texture.h" />
     <ClInclude Include="Engine\src\Core\Time.h" />
@@ -114,6 +115,7 @@
     <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL.h" />
     <ClInclude Include="Engine\src\Platforms\Windows\WinWindow.h" />
     <ClInclude Include="Engine\src\Renderer\Camera.h" />
+    <ClInclude Include="Engine\src\Renderer\Primitives.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Application.cpp" />
@@ -121,6 +123,7 @@
     <ClCompile Include="Engine\src\Core\Layer.cpp" />
     <ClCompile Include="Engine\src\Core\LayerStack.cpp" />
     <ClCompile Include="Engine\src\Core\Logger.cpp" />
+    <ClCompile Include="Engine\src\Core\Mesh.cpp" />
     <ClCompile Include="Engine\src\Core\Texture.cpp" />
     <ClCompile Include="Engine\src\Core\Window.cpp" />
     <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL.cpp" />

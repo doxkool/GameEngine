@@ -11,7 +11,14 @@ Sandbox::Sandbox()
 
 	opengl.LoadShaders("Game/Shaders/vertex_basic.glsl", "Game/Shaders/fragment_basic.glsl");
 
-	opengl.LoadVerticesBuffer();
+		//Position						//Color
+		//glm::vec3(0.5f, -0.5f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f),   // bottom right
+		//glm::vec3(-0.5f, -0.5f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f),   // bottom left
+		//glm::vec3(0.0f, 0.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f)    // top
+
+	std::vector<Engine::Vertex> Triangle;
+
+	opengl.LoadVBO(Triangle);
 
 	ShaderProgram = opengl.Get_ShaderProgram();
 }

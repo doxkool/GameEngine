@@ -46,10 +46,6 @@ namespace Engine
 		#endif
 	}
 
-	OpenGL::~OpenGL()
-	{
-	}
-
 	std::string OpenGL::ReadShaderFile(const char* ShaderFile)
 	{
 		std::string temp = "";
@@ -141,7 +137,7 @@ namespace Engine
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	}
 
-	unsigned int OpenGL::LoadVerticesBuffer()
+	void OpenGL::LoadVBO(std::vector<Vertex> vertexArray)
 	{
 		float vertices[] = {
 			// positions         // colors
@@ -171,8 +167,6 @@ namespace Engine
 		// You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
 		// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
 		glBindVertexArray(0);
-
-		return VAO;
 	}
 
 	unsigned int OpenGL::Get_ShaderProgram()

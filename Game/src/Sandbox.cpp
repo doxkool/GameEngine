@@ -11,8 +11,8 @@ Sandbox::Sandbox()
 
 	opengl.LoadShaders("Game/Shaders/vertex_basic.glsl", "Game/Shaders/fragment_basic.glsl");
 
-	std::vector<Engine::Vertex> Vertices;
-	std::vector<GLuint> Indices;
+	std::vector<Engine::Vertex*> Vertices;
+	std::vector<GLuint*> Indices;
 
 	Engine::Vertex quad_vertices[] =
 	{
@@ -25,7 +25,7 @@ Sandbox::Sandbox()
 
 	for (size_t i = 0; i < sizeof(quad_vertices) / sizeof(quad_vertices[0]); i++)
 	{
-		Vertices.push_back(quad_vertices[i]);
+		Vertices.push_back(&quad_vertices[i]);
 	}
 
 	GLuint quad_indices[] =
@@ -36,7 +36,7 @@ Sandbox::Sandbox()
 
 	for (size_t i = 0; i < sizeof(quad_indices) / sizeof(quad_indices[0]); i++)
 	{
-		Indices.push_back(quad_indices[i]);
+		Indices.push_back(&quad_indices[i]);
 	}
 
 	opengl.LoadVBO(Vertices, Indices);

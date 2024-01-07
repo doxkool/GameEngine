@@ -10,13 +10,15 @@
 #include "Core/Logger.h"
 //#include "Core/Mesh.h"
 
+//#include "Renderer/Primitives.h"
+
 namespace Engine
 {
 	struct Vertex {
 		glm::vec3 position;
 		glm::vec3 color;
-		//glm::vec2 texcoord;
-		//glm::vec3 normal;
+	//	//glm::vec2 texcoord;
+	//	//glm::vec3 normal;
 	};
 
 	class OpenGL
@@ -32,9 +34,11 @@ namespace Engine
 
 		void Clear();
 
-		void LoadVBO(std::vector<Vertex> vertexArray, std::vector<GLuint> indexArray);
+		void LoadVBO(std::vector<Vertex*> vertexArray, std::vector<GLuint*> indexArray);
 
 		void Draw(unsigned int shaderProgram);
+
+		void CreateQuad();
 
 		unsigned int Get_ShaderProgram();
 

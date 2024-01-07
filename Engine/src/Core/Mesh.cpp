@@ -52,12 +52,12 @@ namespace Engine
 		//Color
 		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, color));
 		glEnableVertexAttribArray(1);
-		//Texcoord
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, texcoord));
-		glEnableVertexAttribArray(2);
-		//Normal
-		glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, normal));
-		glEnableVertexAttribArray(3);
+		////Texcoord
+		//glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, texcoord));
+		//glEnableVertexAttribArray(2);
+		////Normal
+		//glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, normal));
+		//glEnableVertexAttribArray(3);
 
 		//BIND VAO 0
 		glBindVertexArray(0);

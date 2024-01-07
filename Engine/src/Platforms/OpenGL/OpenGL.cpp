@@ -137,7 +137,7 @@ namespace Engine
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	}
 
-	void OpenGL::LoadVBO(std::vector<Vertex> vertexArray, std::vector<GLuint> indexArray)
+	void OpenGL::LoadVBO(std::vector<Vertex*> vertexArray, std::vector<GLuint*> indexArray)
 	{
 		this->nrOfVertices = vertexArray.size();
 		this->nrOfIndices = indexArray.size();
@@ -148,14 +148,14 @@ namespace Engine
 		glBindVertexArray(VAO);
 
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
-		glBufferData(GL_ARRAY_BUFFER, this->nrOfVertices * sizeof(Vertex), &vertexArray[0], GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, this->nrOfVertices * sizeof(Vertex), vertexArray[0], GL_STATIC_DRAW);
 
 		//GEN EBO AND BIND AND SEND DATA
 		if (this->nrOfIndices > 0)
 		{
 			glGenBuffers(1, &EBO);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, this->nrOfIndices * sizeof(GLuint), &indexArray[0], GL_STATIC_DRAW);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, this->nrOfIndices * sizeof(GLuint), indexArray[0], GL_STATIC_DRAW);
 		}
 
 		// SET VERTEXATTRIBPOINTERS AND ENABLE (INPUT ASSEMBLY)
@@ -197,6 +197,11 @@ namespace Engine
 		{
 			glDrawElements(GL_TRIANGLES, this->nrOfIndices, GL_UNSIGNED_INT, 0);
 		}
+	}
+
+	void OpenGL::CreateQuad()
+	{
+		
 	}
 
 	void OpenGL::Shutdown()

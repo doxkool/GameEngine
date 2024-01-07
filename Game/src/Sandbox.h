@@ -15,7 +15,6 @@ class Sandbox : public Engine::Layer
 
 	private:
 
-		Engine::OpenGL opengl;
-		unsigned int ShaderProgram;
+		Engine::Renderer2D instance;
 
 };

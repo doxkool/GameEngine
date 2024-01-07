@@ -10,6 +10,8 @@
 
 //#include "Renderer/Primitives.h"
 
+#include "Renderer/Renderer2D.h"
+
 //#include "Renderer/Mesh.h"
 //#include "Renderer/Model.h"
 //#include "Renderer/Camera.h"

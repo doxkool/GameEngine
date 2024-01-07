@@ -64,6 +64,7 @@
     <ClInclude Include="Engine\src\Core\Texture.h" />
     <ClInclude Include="Engine\src\Core\Mesh.h" />
     <ClInclude Include="Engine\src\Renderer\Primitives.h" />
+    <ClInclude Include="Engine\src\Renderer\Renderer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Application.cpp">
@@ -92,5 +93,6 @@
     </ClCompile>
     <ClCompile Include="Engine\src\Core\Texture.cpp" />
     <ClCompile Include="Engine\src\Core\Mesh.cpp" />
+    <ClCompile Include="Engine\src\Renderer\Renderer2D.cpp" />
   </ItemGroup>
 </Project>

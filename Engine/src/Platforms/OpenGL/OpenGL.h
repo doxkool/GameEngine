@@ -10,16 +10,16 @@
 #include "Core/Logger.h"
 //#include "Core/Mesh.h"
 
-//#include "Renderer/Primitives.h"
+#include "Renderer/Primitives.h"
 
 namespace Engine
 {
-	struct Vertex {
-		glm::vec3 position;
-		glm::vec3 color;
+	//struct Vertex {
+	//	glm::vec3 position;
+	//	glm::vec3 color;
 	//	//glm::vec2 texcoord;
 	//	//glm::vec3 normal;
-	};
+	//};
 
 	class OpenGL
 	{

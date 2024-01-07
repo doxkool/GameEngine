@@ -51,6 +51,31 @@ namespace Engine
 		inline const unsigned getNrOfIndices() { return this->indices.size(); }
 	};
 
+	class Triangle : public Primitive
+	{
+	public:
+		Triangle()
+			: Primitive()
+		{
+			Vertex vertices[] =
+			{
+				//Position								//Color					
+				glm::vec3(0.0f, 0.5f, 0.f),				glm::vec3(1.f, 0.f, 0.f),
+				glm::vec3(-0.5f, -0.5f, 0.f),			glm::vec3(0.f, 1.f, 0.f),
+				glm::vec3(0.5f, -0.5f, 0.f),			glm::vec3(0.f, 0.f, 1.f)
+			};
+			unsigned nrOfVertices = sizeof(vertices) / sizeof(Vertex);
+
+			GLuint indices[] =
+			{
+				0, 1, 2	//Triangle 1
+			};
+			unsigned nrOfIndices = sizeof(indices) / sizeof(GLuint);
+
+			this->set(vertices, nrOfVertices, indices, nrOfIndices);
+		}
+	};
+
 	class Quad : public Primitive
 	{
 	public:

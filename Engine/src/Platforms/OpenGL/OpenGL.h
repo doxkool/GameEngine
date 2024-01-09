@@ -11,6 +11,7 @@
 //#include "Core/Mesh.h"
 
 #include "Renderer/Primitives.h"
+#include "Renderer/Shader.h"
 
 namespace Engine
 {
@@ -26,29 +27,22 @@ namespace Engine
 	public:
 		OpenGL();
 
-		std::string ReadShaderFile(const char* ShaderFile);
-
-		void LoadShaders(const char* vertexShaderFile, const char* fragmentShaderFile);
-
 		void Set_ClearColor(const glm::vec4& color);
 
 		void Clear();
 
 		void LoadVBO(std::vector<Vertex*> vertexArray, std::vector<GLuint*> indexArray);
 
-		void Draw(unsigned int shaderProgram);
+		void Draw(Shader* shader);
 
 		void CreateQuad();
 
-		unsigned int Get_ShaderProgram();
-
-		void Shutdown();
+		void Shutdown(Shader* shader);
 
 	private:
 		const char* m_vertexShaderFile;
 		const char* m_fragmentShaderFile;
 
-		GLuint m_shaderProgram;
 		GLuint VAO, VBO, EBO;
 		unsigned nrOfVertices;
 		unsigned nrOfIndices;

@@ -46,87 +46,6 @@ namespace Engine
 		#endif
 	}
 
-	std::string OpenGL::ReadShaderFile(const char* ShaderFile)
-	{
-		std::string temp = "";
-		std::string src = "";
-
-		std::ifstream in_file;
-
-		//Vertex
-		in_file.open(ShaderFile);
-
-		if (in_file.is_open())
-		{
-			while (std::getline(in_file, temp))
-				src += temp + "\n";
-		}
-		else
-		{
-			LOG_E_ERROR("ERROR::SHADER::COULD_NOT_OPEN_FILE: {}", ShaderFile);
-		}
-
-		in_file.close();
-
-		return src;
-	}
-
-	void OpenGL::LoadShaders(const char* vertexShaderFile, const char* fragmentShaderFile)
-	{
-		m_vertexShaderFile = vertexShaderFile;
-		m_fragmentShaderFile = fragmentShaderFile;
-
-		std::string str_src;
-		const GLchar* src;
-
-		// build and compile our shader program
-		// ------------------------------------
-		// vertex shader
-		unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-		str_src = this->ReadShaderFile(m_vertexShaderFile);
-		src = str_src.c_str();
-		glShaderSource(vertexShader, 1, &src, NULL);
-		glCompileShader(vertexShader);
-		// check for shader compile errors
-		int success;
-		char infoLog[512];
-		glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-		if (!success)
-		{
-			glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-			LOG_E_DEBUG("ERROR::SHADER::VERTEX::COMPILATION_FAILED\n");
-			LOG_E_DEBUG(infoLog);
-		}
-		// fragment shader
-		unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-		str_src = this->ReadShaderFile(m_fragmentShaderFile);
-		src = str_src.c_str();
-		glShaderSource(fragmentShader, 1, &src, NULL);
-		glCompileShader(fragmentShader);
-		// check for shader compile errors
-		glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
-		if (!success)
-		{
-			glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-			LOG_E_DEBUG("ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n");
-			LOG_E_DEBUG(infoLog);
-		}
-		// link shaders
-		m_shaderProgram = glCreateProgram();
-		glAttachShader(m_shaderProgram, vertexShader);
-		glAttachShader(m_shaderProgram, fragmentShader);
-		glLinkProgram(m_shaderProgram);
-		// check for linking errors
-		glGetProgramiv(m_shaderProgram, GL_LINK_STATUS, &success);
-		if (!success) {
-			glGetProgramInfoLog(m_shaderProgram, 512, NULL, infoLog);
-			LOG_E_DEBUG("ERROR::SHADER::PROGRAM::LINKING_FAILED\n");
-			LOG_E_DEBUG(infoLog);
-		}
-		glDeleteShader(vertexShader);
-		glDeleteShader(fragmentShader);
-	}
-
 	void OpenGL::Set_ClearColor(const glm::vec4& color)
 	{
 		glClearColor(color.r, color.g, color.b, color.a);
@@ -180,14 +99,18 @@ namespace Engine
 		glBindVertexArray(0);
 	}
 
-	unsigned int OpenGL::Get_ShaderProgram()
+	void OpenGL::Draw(Shader* shader)
 	{
-		return m_shaderProgram;
-	}
 
-	void OpenGL::Draw(unsigned int shaderProgram)
-	{
-		glUseProgram(shaderProgram);
+		glm::mat4 trans = glm::mat4(1.0f);
+		trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+		trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
+
+		glUseProgram(shader->ID);
+
+		unsigned int transformLoc = glGetUniformLocation(shader->ID, "camMatrix");
+		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+
 		glBindVertexArray(VAO);
 		if (this->nrOfIndices == 0)
 		{
@@ -204,12 +127,12 @@ namespace Engine
 		
 	}
 
-	void OpenGL::Shutdown()
+	void OpenGL::Shutdown(Shader* shader)
 	{
 		LOG_E_DEBUG("Closing OpenGL_API...");
 
 		glDeleteVertexArrays(1, &VAO);
 		glDeleteBuffers(1, &VBO);
-		glDeleteProgram(m_shaderProgram);
+		glDeleteProgram(shader->ID);
 	}
 }

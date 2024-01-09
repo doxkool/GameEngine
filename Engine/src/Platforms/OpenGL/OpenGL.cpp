@@ -28,6 +28,7 @@ namespace Engine
 	};
 
 	OpenGL::OpenGL()
+		: VAO(0), VBO(0), EBO(0), m_vertexShaderFile(""), m_fragmentShaderFile(""), nrOfVertices(0), nrOfIndices(0)
 	{
 		//Check GLEW is initialized correctly
 		if (glewInit() != GLEW_OK)
@@ -44,6 +45,9 @@ namespace Engine
 		
 			glDebugMessageCallback(OpenGL_DebugMsgCallback, nullptr);
 		#endif
+
+		// Enables the Depth Buffer
+		glEnable(GL_DEPTH_TEST);
 	}
 
 	void OpenGL::Set_ClearColor(const glm::vec4& color)

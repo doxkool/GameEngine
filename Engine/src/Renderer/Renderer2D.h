@@ -17,6 +17,7 @@ namespace Engine
 
 		void CreateTriangle();
 		void CreateQuad();
+		void CreateCube();
 
 		void Render();
 

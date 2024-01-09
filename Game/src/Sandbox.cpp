@@ -11,7 +11,7 @@ Sandbox::Sandbox()
 
 	instance.Init();
 
-	instance.CreateQuad();
+	instance.CreateCube();
 }
 
 Sandbox::~Sandbox()

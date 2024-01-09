@@ -26,7 +26,7 @@ namespace Engine
 	{
 		// TODO : Remove the next 3 lines, only for testing
 		glm::mat4 trans = glm::mat4(1.0f);
-		trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+		trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(1.0f, 1.0f, 1.0f));
 		trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
 		 
 		// Exports camera matrix

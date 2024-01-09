@@ -55,6 +55,26 @@ namespace Engine
 		opengl.LoadVBO(Vertices, Indices);
 	}
 
+	void Renderer2D::CreateCube()
+	{
+		Cube cube;
+
+		std::vector<Engine::Vertex*> Vertices;
+		std::vector<GLuint*> Indices;
+
+		for (size_t i = 0; i < cube.getNrOfVertices(); i++)
+		{
+			Vertices.push_back(&cube.getVertices()[i]);
+		}
+
+		for (size_t i = 0; i < cube.getNrOfIndices(); i++)
+		{
+			Indices.push_back(&cube.getIndices()[i]);
+		}
+
+		opengl.LoadVBO(Vertices, Indices);
+	}
+
 	void Renderer2D::Render()
 	{
 		shader.Activate();

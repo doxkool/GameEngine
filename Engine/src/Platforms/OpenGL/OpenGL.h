@@ -40,12 +40,12 @@ namespace Engine
 		void Shutdown();
 
 	private:
-		const char* m_vertexShaderFile;
-		const char* m_fragmentShaderFile;
+		const char* m_vertexShaderFile = "";
+		const char* m_fragmentShaderFile = "";
 
-		GLuint VAO, VBO, EBO;
-		unsigned nrOfVertices;
-		unsigned nrOfIndices;
+		GLuint VAO = 0, VBO = 0, EBO = 0;
+		unsigned nrOfVertices = 0;
+		unsigned nrOfIndices = 0;
 	};
 
 	void framebuffer_resize_callback(GLFWwindow* Window, int Window_Width, int Window_Height);

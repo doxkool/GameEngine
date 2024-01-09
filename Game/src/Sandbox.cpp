@@ -11,9 +11,13 @@ Sandbox::Sandbox()
 
 	instance.Init();
 
-	instance.CreateTriangle();
+	instance.CreateQuad();
 }
 
+Sandbox::~Sandbox()
+{
+	instance.Shutdown();
+}
 
 
 void Sandbox::OnAttach()

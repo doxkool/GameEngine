@@ -101,6 +101,7 @@ namespace Engine
 	// Deletes the Shader Program
 	void Shader::Delete()
 	{
+		LOG_E_TRACE("Deleting shader program...");
 		glDeleteProgram(ID);
 	}
 }

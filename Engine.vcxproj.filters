@@ -58,13 +58,12 @@
     <ClInclude Include="Engine\src\Platforms\Windows\WinWindow.h">
       <Filter>Platforms\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\src\Renderer\Camera.h">
-      <Filter>Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\src\Core\Texture.h" />
     <ClInclude Include="Engine\src\Core\Mesh.h" />
     <ClInclude Include="Engine\src\Renderer\Primitives.h" />
     <ClInclude Include="Engine\src\Renderer\Renderer2D.h" />
+    <ClInclude Include="Engine\src\Renderer\Camera.h" />
+    <ClInclude Include="Engine\src\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Application.cpp">
@@ -94,5 +93,7 @@
     <ClCompile Include="Engine\src\Core\Texture.cpp" />
     <ClCompile Include="Engine\src\Core\Mesh.cpp" />
     <ClCompile Include="Engine\src\Renderer\Renderer2D.cpp" />
+    <ClCompile Include="Engine\src\Renderer\Camera.cpp" />
+    <ClCompile Include="Engine\src\Renderer\Shader.cpp" />
   </ItemGroup>
 </Project>

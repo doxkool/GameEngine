@@ -99,18 +99,8 @@ namespace Engine
 		glBindVertexArray(0);
 	}
 
-	void OpenGL::Draw(Shader* shader)
+	void OpenGL::Draw()
 	{
-
-		glm::mat4 trans = glm::mat4(1.0f);
-		trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
-		trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
-
-		glUseProgram(shader->ID);
-
-		unsigned int transformLoc = glGetUniformLocation(shader->ID, "camMatrix");
-		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
-
 		glBindVertexArray(VAO);
 		if (this->nrOfIndices == 0)
 		{
@@ -122,17 +112,11 @@ namespace Engine
 		}
 	}
 
-	void OpenGL::CreateQuad()
+	void OpenGL::Shutdown()
 	{
-		
-	}
-
-	void OpenGL::Shutdown(Shader* shader)
-	{
-		LOG_E_DEBUG("Closing OpenGL_API...");
+		LOG_E_TRACE("Deleting VAO and VBO buffers...");
 
 		glDeleteVertexArrays(1, &VAO);
 		glDeleteBuffers(1, &VBO);
-		glDeleteProgram(shader->ID);
 	}
 }

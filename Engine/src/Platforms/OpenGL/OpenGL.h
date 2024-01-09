@@ -13,6 +13,8 @@
 #include "Renderer/Primitives.h"
 #include "Renderer/Shader.h"
 
+#include "Renderer/Camera.h"
+
 namespace Engine
 {
 	//struct Vertex {
@@ -33,11 +35,9 @@ namespace Engine
 
 		void LoadVBO(std::vector<Vertex*> vertexArray, std::vector<GLuint*> indexArray);
 
-		void Draw(Shader* shader);
+		void Draw();
 
-		void CreateQuad();
-
-		void Shutdown(Shader* shader);
+		void Shutdown();
 
 	private:
 		const char* m_vertexShaderFile;

@@ -6,7 +6,7 @@ class Sandbox : public Engine::Layer
 {
 	public:
 		Sandbox();
-		virtual ~Sandbox() = default;
+		virtual ~Sandbox();
 
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;

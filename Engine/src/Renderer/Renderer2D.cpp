@@ -12,9 +12,7 @@ namespace Engine
 
 	void Renderer2D::Init()
 	{
-		opengl.LoadShaders("Game/Shaders/vertex_basic.glsl", "Game/Shaders/fragment_basic.glsl");
-
-		ShaderProgram = opengl.Get_ShaderProgram();
+		shader.Init("Game/Shaders/vertex_basic.glsl", "Game/Shaders/fragment_basic.glsl");
 	}
 
 	void Renderer2D::CreateTriangle()
@@ -59,8 +57,16 @@ namespace Engine
 
 	void Renderer2D::Render()
 	{
+		shader.Activate();
+		camera.Matrix(&shader, "camMatrix");
 		opengl.Set_ClearColor(glm::vec4(0.2f, 0.2f, 0.2f, 1.f));
 		opengl.Clear();
-		opengl.Draw(ShaderProgram);
+		opengl.Draw();
+	}
+
+	void Renderer2D::Shutdown()
+	{
+		opengl.Shutdown();
+		shader.Delete();
 	}
 }

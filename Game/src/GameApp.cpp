@@ -23,10 +23,10 @@ public:
 Engine::Application* Engine::CreateApplication(Engine::AppSpec)
 {
 	AppSpec Spec;
-	Spec.title = "Sandbox";
+	Spec.title = "Engine Debug";
 	Spec.WorkingDirectory = "../Game";
-	Spec.Window_Height = 1080;
-	Spec.Window_Width = 1920;
+	Spec.Window_Height = 1000;
+	Spec.Window_Width = 1000;
 
 	return new Game(Spec);
 }

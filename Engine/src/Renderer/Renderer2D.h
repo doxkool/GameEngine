@@ -2,6 +2,7 @@
 
 #include "Platforms/OpenGL/OpenGL.h"
 
+#include "Renderer/Shader.h"
 #include "Renderer/Primitives.h"
 
 namespace Engine
@@ -19,8 +20,12 @@ namespace Engine
 
 		void Render();
 
+		void Shutdown();
+
 	private:
-		Engine::OpenGL opengl;
+		OpenGL opengl;
+		Shader shader;
+		Camera camera;
 		unsigned int ShaderProgram;
 
 	};

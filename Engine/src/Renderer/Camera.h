@@ -38,6 +38,8 @@ namespace Engine
 	
 			// Camera constructor to set up initial values
 			Camera();
+
+			void Create();
 	
 			// Updates the camera matrix to the Vertex Shader
 			void updateMatrix(float FOVdeg, float nearPlane, float farPlane);

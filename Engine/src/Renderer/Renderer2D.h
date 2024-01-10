@@ -13,11 +13,10 @@ namespace Engine
 		Renderer2D();
 		~Renderer2D();
 
-		void Init();
+		void Init(Camera* camera);
 
 		void CreateTriangle();
 		void CreateQuad();
-		void CreateCube();
 
 		void Render();
 
@@ -26,7 +25,7 @@ namespace Engine
 	private:
 		OpenGL opengl;
 		Shader shader;
-		Camera camera;
+		Camera* camera;
 		unsigned int ShaderProgram;
 
 	};

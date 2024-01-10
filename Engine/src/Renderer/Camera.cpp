@@ -4,6 +4,10 @@ namespace Engine
 {
 	Camera::Camera()
 	{
+	}
+
+	void Camera::Create()
+	{
 		
 	}
 	

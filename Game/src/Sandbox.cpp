@@ -1,5 +1,9 @@
 #include "Sandbox.h"
 
+// TODO :
+// - Expose inputs via abstraction layer to the application.
+// - Be able the position objects on screen.
+
 Sandbox::Sandbox()
 	: Layer("Sandbox")
 {
@@ -9,9 +13,11 @@ Sandbox::Sandbox()
 
 	Engine::WinWindow::EnableVsync(1);
 
-	instance.Init();
+	Engine::Camera camera;
 
-	instance.CreateCube();
+	instance.Init(&camera);
+
+	instance.CreateQuad();
 }
 
 Sandbox::~Sandbox()

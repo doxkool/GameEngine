@@ -16,5 +16,4 @@ class Sandbox : public Engine::Layer
 	private:
 
 		Engine::Renderer2D instance;
-
 };

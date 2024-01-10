@@ -4,13 +4,14 @@ namespace Engine
 {
 	Renderer2D::Renderer2D()
 	{
+	
 	}
 
 	Renderer2D::~Renderer2D()
 	{
 	}
 
-	void Renderer2D::Init()
+	void Renderer2D::Init(Camera* camera)
 	{
 		shader.Init("Game/Shaders/vertex_basic.glsl", "Game/Shaders/fragment_basic.glsl");
 	}
@@ -55,30 +56,10 @@ namespace Engine
 		opengl.LoadVBO(Vertices, Indices);
 	}
 
-	void Renderer2D::CreateCube()
-	{
-		Cube cube;
-
-		std::vector<Engine::Vertex*> Vertices;
-		std::vector<GLuint*> Indices;
-
-		for (size_t i = 0; i < cube.getNrOfVertices(); i++)
-		{
-			Vertices.push_back(&cube.getVertices()[i]);
-		}
-
-		for (size_t i = 0; i < cube.getNrOfIndices(); i++)
-		{
-			Indices.push_back(&cube.getIndices()[i]);
-		}
-
-		opengl.LoadVBO(Vertices, Indices);
-	}
-
 	void Renderer2D::Render()
 	{
 		shader.Activate();
-		camera.Matrix(&shader, "camMatrix");
+		camera->Matrix(&shader, "camMatrix");
 		opengl.Set_ClearColor(glm::vec4(0.2f, 0.2f, 0.2f, 1.f));
 		opengl.Clear();
 		opengl.Draw();

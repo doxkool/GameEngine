@@ -7,7 +7,7 @@ namespace Engine
 	Texture::Texture()
 	{
 		glGenTextures(1, &ID);
-		glBindTexture(GL_TEXTURE_2D, ID);
+		glBindTexture(GL_TEXTURE_2D, this->ID);
 
 		// set the texture wrapping parameters
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -16,6 +16,8 @@ namespace Engine
 		// set texture filtering parameters
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+		stbi_set_flip_vertically_on_load(true);
 	}
 
 	Texture::~Texture()
@@ -42,6 +44,6 @@ namespace Engine
 
 	void Texture::BindTexture()
 	{
-		glBindTexture(GL_TEXTURE_2D, ID);
+		glBindTexture(GL_TEXTURE_2D, this->ID);
 	}
 }

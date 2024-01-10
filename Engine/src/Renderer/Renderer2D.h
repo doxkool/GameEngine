@@ -15,10 +15,10 @@ namespace Engine
 		Renderer2D();
 		~Renderer2D();
 
-		void Init(Camera* camera);
+		void Init();
 
-		void CreateTriangle();
-		void CreateQuad();
+		void CreateTriangle(glm::vec2 position, const char* texturePath);
+		void CreateQuad(glm::vec2 position, const char* texturePath);
 
 		void Render();
 
@@ -28,7 +28,7 @@ namespace Engine
 		OpenGL opengl;
 		Shader shader;
 		Texture texture;
-		Camera* camera;
+		Camera camera;
 		unsigned int ShaderProgram;
 
 	};

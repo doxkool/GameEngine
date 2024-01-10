@@ -11,13 +11,15 @@ namespace Engine
 	{
 	}
 
-	void Renderer2D::Init(Camera* camera)
+	void Renderer2D::Init()
 	{
 		shader.Init("Game/Shaders/vertex_basic.glsl", "Game/Shaders/fragment_basic.glsl");
 	}
 
-	void Renderer2D::CreateTriangle()
+	void Renderer2D::CreateTriangle(glm::vec2 position, const char* texturePath)
 	{
+		texture.LoadTexture(texturePath);
+
 		Triangle triangle;
 
 		std::vector<Engine::Vertex*> Vertices;
@@ -36,9 +38,9 @@ namespace Engine
 		opengl.LoadVBO(Vertices, Indices);
 	}
 
-	void Renderer2D::CreateQuad()
+	void Renderer2D::CreateQuad(glm::vec2 position, const char* texturePath)
 	{
-		texture.LoadTexture("./Game/Textures/test.jpg");
+		texture.LoadTexture(texturePath);
 
 		Quad quad;
 		
@@ -61,10 +63,10 @@ namespace Engine
 	void Renderer2D::Render()
 	{
 		shader.Activate();
-		camera->Matrix(&shader, "camMatrix");
+		camera.Matrix(&shader, "camMatrix");
 		opengl.Set_ClearColor(glm::vec4(0.2f, 0.2f, 0.2f, 1.f));
 		opengl.Clear();
-		glBindTexture(GL_TEXTURE_2D, texture.ID);
+		texture.BindTexture();
 		opengl.Draw();
 	}
 

@@ -13,11 +13,9 @@ Sandbox::Sandbox()
 
 	Engine::WinWindow::EnableVsync(1);
 
-	Engine::Camera camera;
+	instance.Init();
 
-	instance.Init(&camera);
-
-	instance.CreateQuad();
+	instance.CreateQuad(glm::vec2(0.f, 0.f), "./Game/Textures/kira.jpg");
 }
 
 Sandbox::~Sandbox()

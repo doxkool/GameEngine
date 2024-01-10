@@ -16,6 +16,8 @@ namespace Engine
 	struct Vertex {
 		glm::vec3 position;
 		glm::vec3 color;
+		glm::vec2 texCoords;
+		//glm::vec3 normals;
 	};
 
 	class Primitive
@@ -59,10 +61,15 @@ namespace Engine
 		{
 			Vertex vertices[] =
 			{
-				//Position								//Color					
-				glm::vec3(0.0f, 0.5f, 0.f),				glm::vec3(1.f, 0.f, 0.f),
-				glm::vec3(-0.5f, -0.5f, 0.f),			glm::vec3(0.f, 1.f, 0.f),
-				glm::vec3(0.5f, -0.5f, 0.f),			glm::vec3(0.f, 0.f, 1.f)
+				//Position								//Color							//Texcoords			
+				glm::vec3(0.0f, 0.5f, 0.f),				glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.5f, 1.f),
+				glm::vec3(-0.5f, -0.5f, 0.f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f),
+				glm::vec3(0.5f, -0.5f, 0.f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f)
+
+				//Position								//Color							//Texcoords					//Normals
+				//glm::vec3(0.0f, 0.5f, 0.f),				glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.5f, 1.f),		glm::vec3(0.f, 0.f, 1.f),
+				//glm::vec3(-0.5f, -0.5f, 0.f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
+				//glm::vec3(0.5f, -0.5f, 0.f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, 1.f)
 			};
 			unsigned nrOfVertices = sizeof(vertices) / sizeof(Vertex);
 
@@ -84,11 +91,11 @@ namespace Engine
 		{
 			Vertex vertices[] =
 			{
-				//Position								//Color					
-				glm::vec3(-0.5f, 0.5f, 0.f),			glm::vec3(1.f, 0.f, 0.f),
-				glm::vec3(-0.5f, -0.5f, 0.f),			glm::vec3(0.f, 1.f, 0.f),
-				glm::vec3(0.5f, -0.5f, 0.f),			glm::vec3(0.f, 0.f, 1.f),
-				glm::vec3(0.5f, 0.5f, 0.f),				glm::vec3(1.f, 1.f, 0.f)
+				//Position								//Color							//Texcoords			
+				glm::vec3(-0.5f, 0.5f, 0.f),			glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.f, 1.f),
+				glm::vec3(-0.5f, -0.5f, 0.f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f),
+				glm::vec3(0.5f, -0.5f, 0.f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),
+				glm::vec3(0.5f, 0.5f, 0.f),				glm::vec3(1.f, 1.f, 0.f),		glm::vec2(1.f, 1.f)
 			};
 			unsigned nrOfVertices = sizeof(vertices) / sizeof(Vertex);
 

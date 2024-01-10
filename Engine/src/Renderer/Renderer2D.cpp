@@ -38,6 +38,8 @@ namespace Engine
 
 	void Renderer2D::CreateQuad()
 	{
+		texture.LoadTexture("./Game/Textures/test.jpg");
+
 		Quad quad;
 		
 		std::vector<Engine::Vertex*> Vertices;
@@ -62,6 +64,7 @@ namespace Engine
 		camera->Matrix(&shader, "camMatrix");
 		opengl.Set_ClearColor(glm::vec4(0.2f, 0.2f, 0.2f, 1.f));
 		opengl.Clear();
+		glBindTexture(GL_TEXTURE_2D, texture.ID);
 		opengl.Draw();
 	}
 

@@ -1,9 +1,12 @@
 #pragma once
 
+#include <stb_image.h>
+
 #include "Core/Application.h"
 #include "Core/Logger.h"
 #include "Core/Input.h"
 #include "Core/LayerStack.h"
+#include "Core/Texture.h"
 
 #include "Platforms/Windows/WinWindow.h"
 #include "Platforms/OpenGL/OpenGL.h"

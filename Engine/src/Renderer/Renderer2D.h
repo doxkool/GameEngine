@@ -1,5 +1,9 @@
 #pragma once
 
+#include "Core/Base.h"
+
+#include "Core/Model.h"
+#include "Core/Mesh.h"
 #include "Core/Texture.h"
 
 #include "Platforms/OpenGL/OpenGL.h"
@@ -27,7 +31,7 @@ namespace Engine
 	private:
 		OpenGL opengl;
 		Shader shader;
-		Texture texture;
+		Model model;
 		Camera camera;
 		unsigned int ShaderProgram;
 

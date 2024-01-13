@@ -2,74 +2,53 @@
 
 namespace Engine
 {
-	Mesh::Mesh(Primitive* primitive)
+	Mesh::Mesh(std::vector<Vertex>& vertices, std::vector<GLuint>& indices, std::vector<Texture>& textures)
 	{
-		this->vertices = vertices;
+		Mesh::vertices = vertices;
+		Mesh::indices = indices;
+		Mesh::textures = textures;
 
-		this->nrOfVertices = primitive->getNrOfVertices();
-		this->nrOfIndices = primitive->getNrOfIndices();
+		VAO.Bind();
+		// Generates Vertex Buffer Object and links it to vertices
+		VertexBuffer VBO(vertices);
+		// Generates Element Buffer Object and links it to indices
+		ElementBuffer EBO(indices);
 
-		this->vertexArray = new Vertex[this->nrOfVertices];
-		for (size_t i = 0; i < this->nrOfVertices; i++)
-		{
-			this->vertexArray[i] = primitive->getVertices()[i];
-		}
+		// Links VBO Position attributes to VAO
+		VAO.LinkAttrib(VBO, 0, 3, GL_FLOAT, sizeof(Vertex), (void*)0);
+		// Links VBO Color attributes to VAO
+		VAO.LinkAttrib(VBO, 1, 3, GL_FLOAT, sizeof(Vertex), (void*)(3 * sizeof(float)));
+		// Links VBO Texcoord attributes to VAO
+		VAO.LinkAttrib(VBO, 2, 2, GL_FLOAT, sizeof(Vertex), (void*)(6 * sizeof(float)));
+		// Links VBO Normal attributes to VAO
+		VAO.LinkAttrib(VBO, 3, 3, GL_FLOAT, sizeof(Vertex), (void*)(9 * sizeof(float)));
 
-		this->indexArray = new GLuint[this->nrOfIndices];
-		for (size_t i = 0; i < this->nrOfIndices; i++)
-		{
-			this->indexArray[i] = primitive->getIndices()[i];
-		}
-
-		this->initVAO();
-		this->render();
-		//this->updateModelMatrix();
+		// Unbind all to prevent accidentally modifying them
+		VAO.Unbind();
+		VBO.Unbind();
+		EBO.Unbind();
 	}
 
-	void Mesh::initVAO()
-	{
-		//Create VAO
-		glCreateVertexArrays(1, &this->VAO);
-		glBindVertexArray(this->VAO);
+	// TODO : Be able to load mesh from file.
+	//Mesh::Mesh(Vertex* vertices, GLuint* indices, Texture* textures)
+	//{
+	//	VAO.Bind();
+	//	// Generates Vertex Buffer Object and links it to vertices
+	//	VertexBuffer VBO(vertices);
+	//	// Generates Element Buffer Object and links it to indices
+	//	ElementBuffer EBO(indices);
+	//	// Links VBO attributes such as coordinates and colors to VAO
+	//	VAO.LinkAttrib(VBO, 0, 3, GL_FLOAT, sizeof(Vertex), (void*)0);
+	//	VAO.LinkAttrib(VBO, 1, 3, GL_FLOAT, sizeof(Vertex), (void*)(3 * sizeof(float)));
+	//	VAO.LinkAttrib(VBO, 2, 3, GL_FLOAT, sizeof(Vertex), (void*)(6 * sizeof(float)));
+	//	VAO.LinkAttrib(VBO, 3, 2, GL_FLOAT, sizeof(Vertex), (void*)(9 * sizeof(float)));
+	//	// Unbind all to prevent accidentally modifying them
+	//	VAO.Unbind();
+	//	VBO.Unbind();
+	//	EBO.Unbind();
+	//}
 
-		//GEN VBO AND BIND AND SEND DATA
-		glGenBuffers(1, &this->VBO);
-		glBindBuffer(GL_ARRAY_BUFFER, this->VBO);
-		glBufferData(GL_ARRAY_BUFFER, this->nrOfVertices * sizeof(Vertex), this->vertexArray, GL_STATIC_DRAW);
-
-		//GEN EBO AND BIND AND SEND DATA
-		if (this->nrOfIndices > 0)
-		{
-			glGenBuffers(1, &this->EBO);
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->EBO);
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, this->nrOfIndices * sizeof(GLuint), this->indexArray, GL_STATIC_DRAW);
-		}
-
-		//SET VERTEXATTRIBPOINTERS AND ENABLE (INPUT ASSEMBLY)
-		//Position
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, position));
-		glEnableVertexAttribArray(0);
-		//Color
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, color));
-		glEnableVertexAttribArray(1);
-		////Texcoord
-		//glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, texcoord));
-		//glEnableVertexAttribArray(2);
-		////Normal
-		//glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, normal));
-		//glEnableVertexAttribArray(3);
-
-		//BIND VAO 0
-		glBindVertexArray(0);
-	}
-
-	void Mesh::render()
-	{
-		glUseProgram(3);
-		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
-	}
-
+	// TODO : Use this function, not use at the moment.
 	void Mesh::updateModelMatrix()
 	{
 		this->ModelMatrix = glm::mat4(1.f);
@@ -79,5 +58,51 @@ namespace Engine
 		this->ModelMatrix = glm::rotate(this->ModelMatrix, glm::radians(this->rotation.z), glm::vec3(0.f, 0.f, 1.f));
 		this->ModelMatrix = glm::translate(this->ModelMatrix, this->position - this->origin);
 		this->ModelMatrix = glm::scale(this->ModelMatrix, this->scale);
+	}
+
+	// TODO : Finish this function
+	void Mesh::Draw
+	(
+		Shader& shader,
+		Camera& camera
+		)
+		//glm::mat4 matrix,
+		//glm::vec3 translation,
+		//glm::quat rotation,
+		//glm::vec3 scale
+		//)
+	{
+		// Bind shader to be able to access uniforms
+		shader.Activate();
+		VAO.Bind();
+
+		for (unsigned int i = 0; i < textures.size(); i++)
+		{
+			//textures[i].texUnit(shader, (type + num).c_str(), i);
+			textures[i].BindTexture();
+		}
+
+		// Take care of the camera Matrix
+		//glUniform3f(glGetUniformLocation(shader.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
+		camera.Matrix(&shader, "camMatrix");
+
+		// Initialize matrices
+		//glm::mat4 trans = glm::mat4(1.0f);
+		//glm::mat4 rot = glm::mat4(1.0f);
+		//glm::mat4 sca = glm::mat4(1.0f);
+
+		// Transform the matrices to their correct form
+		//trans = glm::translate(trans, translation);
+		//rot = glm::mat4_cast(rotation);
+		//sca = glm::scale(sca, scale);
+
+		// Push the matrices to the vertex shader
+		//glUniformMatrix4fv(glGetUniformLocation(shader.ID, "translation"), 1, GL_FALSE, glm::value_ptr(trans));
+		//glUniformMatrix4fv(glGetUniformLocation(shader.ID, "rotation"), 1, GL_FALSE, glm::value_ptr(rot));
+		//glUniformMatrix4fv(glGetUniformLocation(shader.ID, "scale"), 1, GL_FALSE, glm::value_ptr(sca));
+		//glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, glm::value_ptr(matrix));
+
+		// Draw the actual mesh
+		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 	}
 }

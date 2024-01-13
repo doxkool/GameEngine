@@ -4,7 +4,7 @@
 
 namespace Engine
 {
-	Texture::Texture()
+	Texture::Texture(const char* texturePath)
 	{
 		glGenTextures(1, &ID);
 		glBindTexture(GL_TEXTURE_2D, this->ID);
@@ -18,16 +18,9 @@ namespace Engine
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 		stbi_set_flip_vertically_on_load(true);
-	}
 
-	Texture::~Texture()
-	{
-	}
-
-	void Texture::LoadTexture(const char* texturePath)
-	{
 		int width, height, nrChannels;
-		
+
 		unsigned char* data = stbi_load(texturePath, &width, &height, &nrChannels, 0);
 		if (data)
 		{
@@ -40,6 +33,25 @@ namespace Engine
 			LOG_E_ERROR("Failed to load texture");
 		}
 		stbi_image_free(data);
+	}
+
+	Texture::~Texture()
+	{
+	}
+
+	void Texture::LoadTexture()
+	{
+		
+	}
+
+	void Texture::texUnit(Shader& shader, const char* uniform, GLuint unit)
+	{
+		// Gets the location of the uniform
+		GLuint texUni = glGetUniformLocation(shader.ID, uniform);
+		// Shader needs to be activated before changing the value of a uniform
+		shader.Activate();
+		// Sets the value of the uniform
+		glUniform1i(texUni, unit);
 	}
 
 	void Texture::BindTexture()

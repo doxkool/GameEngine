@@ -98,6 +98,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\src\Renderer\ElementBuffer.h" />
     <ClInclude Include="Engine\src\Renderer\Camera.h" />
     <ClInclude Include="Engine\src\Core\Application.h" />
     <ClInclude Include="Engine\src\Core\Base.h" />
@@ -118,8 +119,12 @@
     <ClInclude Include="Engine\src\Renderer\Primitives.h" />
     <ClInclude Include="Engine\src\Renderer\Renderer2D.h" />
     <ClInclude Include="Engine\src\Renderer\Shader.h" />
+    <ClInclude Include="Engine\src\Core\Model.h" />
+    <ClInclude Include="Engine\src\Renderer\VertexArray.h" />
+    <ClInclude Include="Engine\src\Renderer\VertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\src\Renderer\ElementBuffer.cpp" />
     <ClCompile Include="Engine\src\Renderer\Camera.cpp" />
     <ClCompile Include="Engine\src\Core\Application.cpp" />
     <ClCompile Include="Engine\src\Core\Input.cpp" />
@@ -133,6 +138,9 @@
     <ClCompile Include="Engine\src\Platforms\Windows\WinWindow.cpp" />
     <ClCompile Include="Engine\src\Renderer\Renderer2D.cpp" />
     <ClCompile Include="Engine\src\Renderer\Shader.cpp" />
+    <ClCompile Include="Engine\src\Core\Model.cpp" />
+    <ClCompile Include="Engine\src\Renderer\VertexArray.cpp" />
+    <ClCompile Include="Engine\src\Renderer\VertexBuffer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

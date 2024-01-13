@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Renderer/VertexBuffer.h"
+
 #include <GL/glew.h>
 
 #include <vector>
@@ -13,13 +15,6 @@
 
 namespace Engine
 {
-	struct Vertex {
-		glm::vec3 position;
-		glm::vec3 color;
-		glm::vec2 texCoords;
-		//glm::vec3 normals;
-	};
-
 	class Primitive
 	{
 	private:

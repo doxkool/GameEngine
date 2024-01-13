@@ -26,9 +26,9 @@ namespace Engine
 
 		void Clear();
 
-		void LoadVBO(std::vector<Vertex*> vertexArray, std::vector<GLuint*> indexArray);
+		//void LoadVBO(std::vector<Vertex*> vertexArray, std::vector<GLuint*> indexArray);
 
-		void Draw();
+		//void Draw();
 
 		void Shutdown();
 

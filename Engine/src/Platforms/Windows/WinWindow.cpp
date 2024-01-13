@@ -89,7 +89,7 @@ namespace Engine
 	{
 		Application& application = Application::Get();
 		GLFWwindow* window = static_cast<GLFWwindow*>(application.GetWindow().GetNativeWindow());
-
+		
 		glfwSwapBuffers(window);
 	}
 

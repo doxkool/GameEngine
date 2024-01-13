@@ -15,9 +15,9 @@ Sandbox::Sandbox()
 
 	instance.Init();
 
-	instance.CreateQuad(glm::vec2(0.f, 0.f), "./Game/Textures/kira.jpg");
+	instance.CreateQuad(glm::vec3(0.5f, 0.f, 0.f), "./Game/Textures/kira.jpg");
 
-	instance.CreateTriangle(glm::vec2(0.f, 0.f), "./Game/Textures/test.jpg");
+	instance.CreateTriangle(glm::vec3(-0.5f, 0.f, 0.f), "./Game/Textures/test.jpg");
 }
 
 Sandbox::~Sandbox()

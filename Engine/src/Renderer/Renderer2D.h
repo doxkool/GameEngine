@@ -11,6 +11,12 @@
 #include "Renderer/Shader.h"
 #include "Renderer/Primitives.h"
 
+// TODO : this is temporary
+#include "Core/Window.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 namespace Engine
 {
 	class Renderer2D
@@ -21,8 +27,8 @@ namespace Engine
 
 		void Init();
 
-		void CreateTriangle(glm::vec2 position, const char* texturePath);
-		void CreateQuad(glm::vec2 position, const char* texturePath);
+		void CreateTriangle(glm::vec3 position, const char* texturePath);
+		void CreateQuad(glm::vec3 position, const char* texturePath);
 
 		void Render();
 

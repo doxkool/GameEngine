@@ -14,7 +14,7 @@ namespace Engine
 
 		Model();
 
-		void LoadMesh(const Primitive& primitive, const char* texturePath);
+		void LoadMesh(const Primitive& primitive, glm::vec3 position, const char* texturePath);
 
 		void Draw(Shader& shader, Camera& camera);
 

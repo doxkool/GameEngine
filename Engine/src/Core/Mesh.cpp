@@ -2,11 +2,12 @@
 
 namespace Engine
 {
-	Mesh::Mesh(std::vector<Vertex>& vertices, std::vector<GLuint>& indices, std::vector<Texture>& textures)
+	Mesh::Mesh(std::vector<glm::vec3>& positions, std::vector<Vertex>& vertices, std::vector<GLuint>& indices, std::vector<Texture>& textures)
 	{
 		Mesh::vertices = vertices;
 		Mesh::indices = indices;
 		Mesh::textures = textures;
+		Mesh::positions = positions;
 
 		VAO.Bind();
 		// Generates Vertex Buffer Object and links it to vertices
@@ -86,6 +87,31 @@ namespace Engine
 		//glUniform3f(glGetUniformLocation(shader.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
 		camera.Matrix(&shader, "camMatrix");
 
+
+		// create transformations
+		glm::mat4 view = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+		glm::mat4 projection = glm::mat4(1.0f);
+		projection = glm::perspective(glm::radians(45.0f), (float)1000 / (float)1000, 0.1f, 100.0f);
+		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+
+		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "view"), 1, GL_FALSE, glm::value_ptr(view));
+
+		for (size_t i = 0; i < positions.size(); i++)
+		{
+			// calculate the model matrix for each object and pass it to shader before drawing
+			glm::mat4 model = glm::mat4(1.0f);
+			model = glm::translate(model, positions[i]);
+			float angle = 20.0f * i;
+			model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+
+			glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, glm::value_ptr(model));
+
+			// Draw the actual mesh
+			glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+		}
+		
+
 		// Initialize matrices
 		//glm::mat4 trans = glm::mat4(1.0f);
 		//glm::mat4 rot = glm::mat4(1.0f);
@@ -103,6 +129,6 @@ namespace Engine
 		//glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, glm::value_ptr(matrix));
 
 		// Draw the actual mesh
-		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+		//glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 	}
 }

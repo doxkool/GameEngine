@@ -16,11 +16,11 @@ namespace Engine
 		shader.Init("Game/Shaders/vertex_basic.glsl", "Game/Shaders/fragment_basic.glsl");
 	}
 
-	void Renderer2D::CreateTriangle(glm::vec2 position, const char* texturePath)
+	void Renderer2D::CreateTriangle(glm::vec3 position, const char* texturePath)
 	{
 		Triangle triangle;
 		
-		model.LoadMesh(triangle, texturePath);
+		model.LoadMesh(triangle, position, texturePath);
 
 		//Triangle triangle;
 		//
@@ -40,11 +40,11 @@ namespace Engine
 		//opengl.LoadVBO(Vertices, Indices);
 	}
 
-	void Renderer2D::CreateQuad(glm::vec2 position, const char* texturePath)
+	void Renderer2D::CreateQuad(glm::vec3 position, const char* texturePath)
 	{
 		Quad quad;
 
-		model.LoadMesh(quad, texturePath);
+		model.LoadMesh(quad, position, texturePath);
 
 		//model& = model_from_primitive;
 
@@ -77,10 +77,7 @@ namespace Engine
 
 		model.Draw(shader, camera);
 
-		//shader.Activate();
-		//camera.Matrix(&shader, "camMatrix");
-		//texture.BindTexture();
-		//opengl.Draw();
+		
 	}
 
 	void Renderer2D::Shutdown()

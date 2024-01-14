@@ -1,4 +1,4 @@
-#include "Renderer/VertexBuffer.h"
+#include "Renderer/Buffers/VertexBuffer.h"
 
 namespace Engine
 {

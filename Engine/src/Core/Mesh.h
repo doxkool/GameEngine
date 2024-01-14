@@ -19,14 +19,14 @@ namespace Engine
 	class Mesh
 	{
 		public:
-			Mesh(std::vector<glm::vec3>& positions, std::vector<Vertex>& vertices, std::vector<GLuint>& indices, std::vector<Texture>& textures);
+			Mesh(std::vector<glm::vec3>& translations, std::vector<Vertex>& vertices, std::vector<GLuint>& indices, std::vector<Texture>& textures);
 			//Mesh(Vertex* vertices, GLuint* indices, Texture* textures);
 
 			// mesh data
 			std::vector <Vertex> vertices;
 			std::vector <GLuint> indices;
 			std::vector <Texture> textures;
-			std::vector <glm::vec3> positions;
+			std::vector <glm::vec3> translations;
 
 			//void initVAO();
 			void updateModelMatrix();

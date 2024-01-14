@@ -66,8 +66,8 @@
     <ClInclude Include="Engine\src\Renderer\Shader.h" />
     <ClInclude Include="Engine\src\Core\Model.h" />
     <ClInclude Include="Engine\src\Renderer\VertexArray.h" />
-    <ClInclude Include="Engine\src\Renderer\VertexBuffer.h" />
-    <ClInclude Include="Engine\src\Renderer\ElementBuffer.h" />
+    <ClInclude Include="Engine\src\Renderer\Buffers\VertexBuffer.h" />
+    <ClInclude Include="Engine\src\Renderer\Buffers\ElementBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Application.cpp">
@@ -101,7 +101,7 @@
     <ClCompile Include="Engine\src\Renderer\Shader.cpp" />
     <ClCompile Include="Engine\src\Core\Model.cpp" />
     <ClCompile Include="Engine\src\Renderer\VertexArray.cpp" />
-    <ClCompile Include="Engine\src\Renderer\VertexBuffer.cpp" />
-    <ClCompile Include="Engine\src\Renderer\ElementBuffer.cpp" />
+    <ClCompile Include="Engine\src\Renderer\Buffers\VertexBuffer.cpp" />
+    <ClCompile Include="Engine\src\Renderer\Buffers\ElementBuffer.cpp" />
   </ItemGroup>
 </Project>

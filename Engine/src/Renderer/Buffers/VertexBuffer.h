@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Renderer/ElementBuffer.h"
+#include "Renderer/Buffers/ElementBuffer.h"
 
 #include <GL/glew.h>
 #include <glm/glm.hpp>

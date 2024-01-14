@@ -28,7 +28,6 @@ namespace Engine
 	};
 
 	OpenGL::OpenGL()
-		: VAO(0), VBO(0), EBO(0), m_vertexShaderFile(""), m_fragmentShaderFile(""), nrOfVertices(0), nrOfIndices(0)
 	{
 		//Check GLEW is initialized correctly
 		if (glewInit() != GLEW_OK)
@@ -58,13 +57,5 @@ namespace Engine
 	void OpenGL::Clear()
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-	}
-
-	void OpenGL::Shutdown()
-	{
-		LOG_E_TRACE("Deleting VAO and VBO buffers...");
-
-		glDeleteVertexArrays(1, &VAO);
-		glDeleteBuffers(1, &VBO);
 	}
 }

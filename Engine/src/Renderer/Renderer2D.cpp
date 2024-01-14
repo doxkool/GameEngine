@@ -22,22 +22,6 @@ namespace Engine
 		
 		model.LoadMesh(triangle, position, texturePath);
 
-		//Triangle triangle;
-		//
-		//std::vector<Engine::Vertex*> Vertices;
-		//std::vector<GLuint*> Indices;
-		//
-		//for (size_t i = 0; i < triangle.getNrOfVertices(); i++)
-		//{
-		//	Vertices.push_back(&triangle.getVertices()[i]);
-		//}
-		//
-		//for (size_t i = 0; i < triangle.getNrOfIndices(); i++)
-		//{
-		//	Indices.push_back(&triangle.getIndices()[i]);
-		//}
-		//
-		//opengl.LoadVBO(Vertices, Indices);
 	}
 
 	void Renderer2D::CreateQuad(glm::vec3 position, const char* texturePath)
@@ -45,28 +29,6 @@ namespace Engine
 		Quad quad;
 
 		model.LoadMesh(quad, position, texturePath);
-
-		//model& = model_from_primitive;
-
-		//Model& model = Model::Get();
-
-		//Quad quad;
-		//
-		//std::vector<Engine::Vertex*> Vertices;
-		//std::vector<GLuint*> Indices;
-		//
-		//for (size_t i = 0; i < quad.getNrOfVertices(); i++)
-		//{
-		//	Vertices.push_back(&quad.getVertices()[i]);
-		//}
-		//
-		//for (size_t i = 0; i < quad.getNrOfIndices(); i++)
-		//{
-		//	Indices.push_back(&quad.getIndices()[i]);
-		//}
-
-		//opengl.LoadVBO(Vertices, Indices);
-
 		
 	}
 
@@ -82,7 +44,6 @@ namespace Engine
 
 	void Renderer2D::Shutdown()
 	{
-		opengl.Shutdown();
 		shader.Delete();
 	}
 }

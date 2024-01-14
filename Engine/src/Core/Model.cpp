@@ -7,14 +7,14 @@ namespace Engine
 	{
 	}
 
-	void Model::LoadMesh(const Primitive& primitive, glm::vec3 position, const char* texturePath)
+	void Model::LoadMesh(const Primitive& primitive, glm::vec3 translation, const char* texturePath)
 	{
 		I_primitive = primitive;
 
 		std::vector<Vertex> vertexArray;
 		std::vector <GLuint> indexArray;
 		std::vector <Texture> textureArray;
-		std::vector <glm::vec3> positionArray;
+		std::vector <glm::vec3> translationArray;
 
 		unsigned nrOfVertices;
 		unsigned nrOfIndices;
@@ -42,9 +42,9 @@ namespace Engine
 
 		textureArray.push_back(texture);
 
-		positionArray.push_back(position);
+		translationArray.push_back(translation);
 
-		meshes.push_back(Mesh(positionArray, vertexArray, indexArray, textureArray));
+		meshes.push_back(Mesh(translationArray, vertexArray, indexArray, textureArray));
 	}
 
 	void Model::Draw(Shader& shader, Camera& camera)

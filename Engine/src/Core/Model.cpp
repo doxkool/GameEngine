@@ -14,7 +14,6 @@ namespace Engine
 		std::vector<Vertex> vertexArray;
 		std::vector <GLuint> indexArray;
 		std::vector <Texture> textureArray;
-		std::vector <glm::vec3> translationArray;
 
 		unsigned nrOfVertices;
 		unsigned nrOfIndices;
@@ -42,9 +41,11 @@ namespace Engine
 
 		textureArray.push_back(texture);
 
-		translationArray.push_back(translation);
+		translationsMeshes.push_back(translation);
 
-		meshes.push_back(Mesh(translationArray, vertexArray, indexArray, textureArray));
+		meshes.push_back(Mesh(vertexArray, indexArray, textureArray));
+
+
 	}
 
 	void Model::Draw(Shader& shader, Camera& camera)

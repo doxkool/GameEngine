@@ -27,8 +27,11 @@ namespace Engine
 
 		void Init();
 
-		void CreateTriangle(glm::vec3 position, const char* texturePath);
-		void CreateQuad(glm::vec3 position, const char* texturePath);
+		void CreateTriangle(glm::vec3 translation = glm::vec3(0.f), glm::vec3 rotation = glm::vec3(0.f), glm::vec3 scale = glm::vec3(1.f), const char* texturePath = "Engine/Default_Tex.jpg");
+		void CreateQuad(glm::vec3 translation = glm::vec3(0.f), glm::vec3 rotation = glm::vec3(0.f), glm::vec3 scale = glm::vec3(1.f), const char* texturePath = "Engine/Default_Tex.jpg");
+
+		void UpdateTransform(glm::vec3 translation, glm::vec3 rotation, glm::vec3 scale);
+		void UpdateTexture(const char* texturePath);
 
 		void Render();
 

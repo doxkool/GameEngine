@@ -7,7 +7,7 @@ namespace Engine
 	{
 	}
 
-	void Model::LoadMesh(const Primitive& primitive, glm::vec3 translation, const char* texturePath)
+	void Model::LoadMesh(const Primitive& primitive, glm::vec3 translation, glm::vec3 rotation, glm::vec3 scale, const char* texturePath)
 	{
 		I_primitive = primitive;
 
@@ -20,18 +20,14 @@ namespace Engine
 
 		LOG_E_TRACE("Loading model from primitive...");
 
-		this->vertices = vertices;
-
 		nrOfVertices = I_primitive.getNrOfVertices();
 		nrOfIndices = I_primitive.getNrOfIndices();
 
-		//vertexArray = new Vertex[nrOfVertices];
 		for (size_t i = 0; i < nrOfVertices; i++)
 		{
 			vertexArray.push_back(I_primitive.getVertices()[i]);
 		}
 
-		//indexArray = new GLuint[nrOfIndices];
 		for (size_t i = 0; i < nrOfIndices; i++)
 		{
 			indexArray.push_back(I_primitive.getIndices()[i]);
@@ -41,11 +37,38 @@ namespace Engine
 
 		textureArray.push_back(texture);
 
-		translationsMeshes.push_back(translation);
+		UpdateModelMatrices(translation, rotation, scale);
 
 		meshes.push_back(Mesh(vertexArray, indexArray, textureArray));
 
+	}
 
+	void Model::UpdateModelMatrices(glm::vec3 translation, glm::vec3 rotation, glm::vec3 scale)
+	{
+		// Convert VEC3 rotation to Quaternions
+		glm::quat QuatAroundX = glm::rotate(glm::radians(rotation.x), glm::vec3(1.0, 0.0, 0.0));
+		glm::quat QuatAroundY = glm::rotate(glm::radians(rotation.y), glm::vec3(0.0, 1.0, 0.0));
+		glm::quat QuatAroundZ = glm::rotate(glm::radians(rotation.z), glm::vec3(0.0, 0.0, 1.0));
+		glm::quat finalOrientation = QuatAroundX * QuatAroundY * QuatAroundZ;
+
+		// Initialize matrices
+		glm::mat4 trans = glm::mat4(1.0f);
+		glm::mat4 rot = glm::mat4(1.0f);
+		glm::mat4 sca = glm::mat4(1.0f);
+
+		// Use translation, rotation, and scale to change the initialized matrices
+		trans = glm::translate(trans, translation);
+		rot = glm::mat4_cast(finalOrientation);
+		sca = glm::scale(sca, scale);
+
+		// Multiply all matrices together
+		glm::mat4 Matrices = trans * rot * sca;
+
+		translationsMeshes.push_back(translation);
+		rotationsMeshes.push_back(rotation);
+		scalesMeshes.push_back(scale);
+
+		matricesMeshes.push_back(Matrices);
 	}
 
 	void Model::Draw(Shader& shader, Camera& camera)
@@ -53,8 +76,7 @@ namespace Engine
 		// Go over all meshes and draw each one
 		for (unsigned int i = 0; i < meshes.size(); i++)
 		{
-			//meshes[i].Mesh::Draw(shader, camera, matricesMeshes[i]);
-			meshes[i].Mesh::Draw(shader, camera);
+			meshes[i].Mesh::Draw(shader, camera, matricesMeshes[i]);
 		}
 	}
 }

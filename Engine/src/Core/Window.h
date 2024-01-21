@@ -4,6 +4,9 @@
 
 #include <sstream>
 
+// TODO :
+// - Be able the get the correct window dimmention from Application.h
+
 namespace Engine {
 
 	struct WindowProps
@@ -25,13 +28,6 @@ namespace Engine {
 	public:
 
 		virtual ~Window() = default;
-
-		//virtual void OnUpdate() = 0;
-
-		//virtual uint32_t GetWidth() const = 0;
-		//virtual uint32_t GetHeight() const = 0;
-
-		// Window attributes
 
 		virtual void* GetNativeWindow() const = 0;
 

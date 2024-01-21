@@ -2,6 +2,7 @@
 
 // TODO :
 // - Expose inputs via abstraction layer to the application.
+// - Be able to move model at runtime.
 
 
 Sandbox::Sandbox()

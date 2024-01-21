@@ -1,5 +1,9 @@
 #include "Renderer/Camera.h"
 
+
+// TODO :
+// - Be able the get the correct window dimmention from OpenGL.cpp
+
 namespace Engine
 {
 	Camera::Camera()

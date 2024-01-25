@@ -88,6 +88,9 @@
     <ClInclude Include="Engine\src\Core\Texture.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\src\Core\Events.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Application.cpp">
@@ -139,6 +142,9 @@
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Engine\src\Core\Texture.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\Core\Events.cpp">
       <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>

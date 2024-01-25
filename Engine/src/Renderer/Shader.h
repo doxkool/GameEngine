@@ -4,6 +4,9 @@
 
 #include <GL/glew.h>
 
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 namespace Engine
 {
 	class Shader
@@ -12,17 +15,24 @@ namespace Engine
 		Shader();
 		~Shader();
 
-		void Init(const char* vertexShaderFile, const char* fragmentShaderFile);
+		static void Init(const char* vertexShaderFile, const char* fragmentShaderFile);
 
-		std::string ReadShaderFile(const char* ShaderFile);
+		static std::string ReadShaderFile(const char* ShaderFile);
 
-		void Activate();
-		void Delete();
+		static void Activate();
+		static void Delete();
 
-		GLuint ID;
+		static void set1i(GLint value, const GLchar* name);
+		static void set1f(GLfloat value, const GLchar* name);
+		static void setVec2f(glm::fvec2 value, const GLchar* name);
+		static void setVec3f(glm::fvec3 value, const GLchar* name);
+		static void setVec4f(glm::fvec4 value, const GLchar* name);
+		static void setMat3fv(glm::mat3 value, const GLchar* name, GLboolean transpose = GL_FALSE);
+		static void setMat4fv(glm::mat4 value, const GLchar* name, GLboolean transpose = GL_FALSE);
+
+		static int GetID();
 
 	private:
-		const char* m_vertexShaderFile;
-		const char* m_fragmentShaderFile;
+		//static GLuint ID;
 	};
 }

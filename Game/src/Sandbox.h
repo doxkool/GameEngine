@@ -14,6 +14,6 @@ class Sandbox : public Engine::Layer
 		virtual void OnUpdate(Engine::TimeStep ts) override;
 
 	private:
-
+		Engine::Camera m_camera;
 		Engine::Renderer2D instance;
 };

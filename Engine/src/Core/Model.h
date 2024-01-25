@@ -17,21 +17,21 @@ namespace Engine
 
 		Model();
 
-		void LoadMesh(const Primitive& primitive, glm::vec3 translation = glm::vec3(0.f), glm::vec3 rotation = glm::vec3(0.f), glm::vec3 scale = glm::vec3(1.f), const char* texturePath = "Engine/Default_Tex.jpg");
+		static void LoadMesh(const Primitive& primitive, glm::vec3 translation = glm::vec3(0.f), glm::vec3 rotation = glm::vec3(0.f), glm::vec3 scale = glm::vec3(1.f), Texture& texture = Texture("Engine/Default_Tex.jpg"));
 
-		void UpdateModelMatrices(glm::vec3 translation, glm::vec3 rotation, glm::vec3 scale);
+		static void UpdateModelMatrices(glm::vec3 translation, glm::vec3 rotation, glm::vec3 scale);
 
-		void Draw(Shader& shader, Camera& camera);
+		static void Draw(Camera& camera);
 
 
 	private:
-		Primitive I_primitive;
+		//static Primitive I_primitive;
 
 		// All the meshes and transformations
-		std::vector<Mesh> meshes;
-		std::vector<glm::vec3> translationsMeshes;
-		std::vector<glm::quat> rotationsMeshes;
-		std::vector<glm::vec3> scalesMeshes;
-		std::vector<glm::mat4> matricesMeshes;
+		//std::vector<Mesh> meshes;
+		//std::vector<glm::vec3> translationsMeshes;
+		//std::vector<glm::quat> rotationsMeshes;
+		//std::vector<glm::vec3> scalesMeshes;
+		//std::vector<glm::mat4> matricesMeshes;
 	};
 }

@@ -6,8 +6,9 @@
 
 namespace Engine
 {
-	Camera::Camera()
+	Camera::Camera(CameraType type)
 	{
+		this->EntityID;
 	}
 	
 	void Camera::updateMatrix(float FOVdeg, float nearPlane, float farPlane)
@@ -17,7 +18,7 @@ namespace Engine
 		glm::mat4 projection = glm::mat4(1.0f);
 	
 		// Makes camera look in the right direction from the right position
-		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+		view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 		// Adds perspective to the scene
 		projection = glm::perspective(glm::radians(FOVdeg), (float)1000 / 1000, nearPlane, farPlane);
 	
@@ -25,9 +26,34 @@ namespace Engine
 		cameraMatrix = projection * view;
 	}
 
-	void Camera::Matrix(Shader* shader, const char* uniform)
+	void Camera::Matrix(const char* uniform)
 	{		 
 		// Exports camera matrix
-		glUniformMatrix4fv(glGetUniformLocation(shader->ID, uniform), 1, GL_FALSE, glm::value_ptr(cameraMatrix));
+		Shader::setMat4fv(cameraMatrix, uniform, GL_FALSE);
+	}
+
+	void Camera::Move(Direction direction, float speed)
+	{
+		switch (direction)
+		{
+		case Engine::FORWARD:
+			cameraPos += speed * cameraFront;
+			break;
+		case Engine::BACKWARD:
+			cameraPos -= speed * cameraFront;
+			break;
+		case Engine::LEFT:
+			cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * speed;
+			break;
+		case Engine::RIGHT:
+			cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * speed;
+			break;
+		case Engine::UP:
+			break;
+		case Engine::DOWN:
+			break;
+		default:
+			break;
+		}
 	}
 }

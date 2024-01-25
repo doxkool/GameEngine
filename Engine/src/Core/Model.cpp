@@ -3,11 +3,19 @@
 
 namespace Engine
 {
+	Primitive I_primitive;
+
+	std::vector<Mesh> meshes;
+	std::vector<glm::vec3> translationsMeshes;
+	std::vector<glm::quat> rotationsMeshes;
+	std::vector<glm::vec3> scalesMeshes;
+	std::vector<glm::mat4> matricesMeshes;
+
 	Model::Model()
 	{
 	}
 
-	void Model::LoadMesh(const Primitive& primitive, glm::vec3 translation, glm::vec3 rotation, glm::vec3 scale, const char* texturePath)
+	void Model::LoadMesh(const Primitive& primitive, glm::vec3 translation, glm::vec3 rotation, glm::vec3 scale, Texture& texture)
 	{
 		I_primitive = primitive;
 
@@ -32,8 +40,6 @@ namespace Engine
 		{
 			indexArray.push_back(I_primitive.getIndices()[i]);
 		}
-
-		Texture texture(texturePath);
 
 		textureArray.push_back(texture);
 
@@ -71,12 +77,12 @@ namespace Engine
 		matricesMeshes.push_back(Matrices);
 	}
 
-	void Model::Draw(Shader& shader, Camera& camera)
+	void Model::Draw(Camera& camera)
 	{
 		// Go over all meshes and draw each one
 		for (unsigned int i = 0; i < meshes.size(); i++)
 		{
-			meshes[i].Mesh::Draw(shader, camera, matricesMeshes[i]);
+			meshes[i].Mesh::Draw(camera, matricesMeshes[i]);
 		}
 	}
 }

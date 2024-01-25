@@ -20,7 +20,7 @@ namespace Engine
 
 		void LoadTexture();
 
-		void texUnit(Shader& shader, const char* uniform, GLuint unit);
+		void texUnit(const char* uniform, GLuint unit);
 
 		void BindTexture();
 

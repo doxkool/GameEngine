@@ -29,6 +29,11 @@ namespace Engine
 
 	OpenGL::OpenGL()
 	{
+		
+	}
+
+	void OpenGL::Init()
+	{
 		//Check GLEW is initialized correctly
 		if (glewInit() != GLEW_OK)
 		{
@@ -41,7 +46,7 @@ namespace Engine
 		#ifdef ENGINE_DEBUG
 			glEnable(GL_DEBUG_OUTPUT);
 			glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
-		
+
 			glDebugMessageCallback(OpenGL_DebugMsgCallback, nullptr);
 		#endif
 

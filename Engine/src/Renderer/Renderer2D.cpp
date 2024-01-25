@@ -1,5 +1,8 @@
 #include "Renderer/Renderer2D.h"
 
+// TODO :
+// - Convert everything to static.
+
 namespace Engine
 {
 	Renderer2D::Renderer2D()
@@ -11,24 +14,32 @@ namespace Engine
 	{
 	}
 
-	void Renderer2D::Init()
+	void Renderer2D::LoadShader(const char* vertexFile, const char* fragmentFile)
 	{
-		shader.Init("Game/Shaders/vertex_basic.glsl", "Game/Shaders/fragment_basic.glsl");
+		OpenGL::Init();
+		Shader::Init(vertexFile, fragmentFile);
 	}
 
-	void Renderer2D::CreateTriangle(glm::vec3 translation, glm::vec3 rotation, glm::vec3 scale, const char* texturePath)
+	Texture Renderer2D::LoadTexture(const char* texturePath)
+	{
+		Texture texture(texturePath);
+
+		return texture;
+	}
+
+	void Renderer2D::DrawTriangle(glm::vec3 translation, glm::vec3 rotation, glm::vec3 scale, Texture texture)
 	{
 		Triangle triangle;
 		
-		model.LoadMesh(triangle, translation, rotation, scale, texturePath);
+		Model::LoadMesh(triangle, translation, rotation, scale, texture);
 
 	}
 
-	void Renderer2D::CreateQuad(glm::vec3 translation, glm::vec3 rotation, glm::vec3 scale,  const char* texturePath)
+	void Renderer2D::DrawQuad(glm::vec3 translation, glm::vec3 rotation, glm::vec3 scale, Texture texture)
 	{
 		Quad quad;
 
-		model.LoadMesh(quad, translation, rotation, scale, texturePath);
+		Model::LoadMesh(quad, translation, rotation, scale, texture);
 		
 	}
 
@@ -42,18 +53,23 @@ namespace Engine
 
 	}
 
-	void Renderer2D::Render()
+	void Renderer2D::Set_ClearColor(glm::vec4 color)
 	{
-		opengl.Set_ClearColor(glm::vec4(0.2f, 0.2f, 0.2f, 1.f));
-		opengl.Clear();
+		OpenGL::Set_ClearColor(color);
+	}
 
-		model.Draw(shader, camera);
+	void Renderer2D::Clear()
+	{
+		OpenGL::Clear();
+	}
 
-		
+	void Renderer2D::Render(Camera camera)
+	{
+		Model::Draw(camera);
 	}
 
 	void Renderer2D::Shutdown()
 	{
-		shader.Delete();
+		Shader::Delete();
 	}
 }

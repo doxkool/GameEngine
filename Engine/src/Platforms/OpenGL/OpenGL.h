@@ -15,9 +15,11 @@ namespace Engine
 	public:
 		OpenGL();
 
-		void Set_ClearColor(const glm::vec4& color);
+		static void Init();
 
-		void Clear();
+		static void Set_ClearColor(const glm::vec4& color);
+
+		static void Clear();
 
 	private:
 

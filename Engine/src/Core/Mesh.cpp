@@ -51,7 +51,6 @@ namespace Engine
 	// TODO : Finish this function
 	void Mesh::Draw
 	(
-		Shader& shader,
 		Camera& camera,
 		glm::mat4 matrix,
 		glm::vec3 translation,
@@ -60,7 +59,7 @@ namespace Engine
 		)
 	{
 		// Bind shader to be able to access uniforms
-		shader.Activate();
+		Shader::Activate();
 		VAO.Bind();
 
 		for (unsigned int i = 0; i < textures.size(); i++)
@@ -70,7 +69,7 @@ namespace Engine
 
 		// Take care of the camera Matrix
 		camera.updateMatrix(45.f, 0.1, 100.f);
-		camera.Matrix(&shader, "camera");
+		camera.Matrix("camera");
 		
 
 		// Initialize matrices
@@ -84,10 +83,10 @@ namespace Engine
 		sca = glm::scale(sca, scale);
 
 		// Push the matrices to the vertex shader
-		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "translation"), 1, GL_FALSE, glm::value_ptr(trans));
-		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "rotation"), 1, GL_FALSE, glm::value_ptr(rot));
-		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "scale"), 1, GL_FALSE, glm::value_ptr(sca));
-		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, glm::value_ptr(matrix));
+		Shader::setMat4fv(trans, "translation");
+		Shader::setMat4fv(rot, "rotation");
+		Shader::setMat4fv(sca, "scale");
+		Shader::setMat4fv(matrix, "model");
 
 		// Draw the actual mesh
 		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);

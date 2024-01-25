@@ -2,9 +2,11 @@
 
 #include "Core/Base.h"
 
+#include "Core/Application.h"
 #include "Core/Model.h"
 #include "Core/Mesh.h"
 #include "Core/Texture.h"
+#include "Core/Input.h"
 
 #include "Platforms/OpenGL/OpenGL.h"
 
@@ -25,24 +27,25 @@ namespace Engine
 		Renderer2D();
 		~Renderer2D();
 
-		void Init();
+		static void LoadShader(const char* vertexFile, const char* fragmentFile);
 
-		void CreateTriangle(glm::vec3 translation = glm::vec3(0.f), glm::vec3 rotation = glm::vec3(0.f), glm::vec3 scale = glm::vec3(1.f), const char* texturePath = "Engine/Default_Tex.jpg");
-		void CreateQuad(glm::vec3 translation = glm::vec3(0.f), glm::vec3 rotation = glm::vec3(0.f), glm::vec3 scale = glm::vec3(1.f), const char* texturePath = "Engine/Default_Tex.jpg");
+		Texture LoadTexture(const char* texturePath = "Engine/Default_Tex.jpg");
 
-		void UpdateTransform(glm::vec3 translation, glm::vec3 rotation, glm::vec3 scale);
-		void UpdateTexture(const char* texturePath);
+		static void DrawTriangle(glm::vec3 translation = glm::vec3(0.f), glm::vec3 rotation = glm::vec3(0.f), glm::vec3 scale = glm::vec3(1.f), Texture texture = Texture("Engine/Default_Tex.jpg"));
+		static void DrawQuad(glm::vec3 translation = glm::vec3(0.f), glm::vec3 rotation = glm::vec3(0.f), glm::vec3 scale = glm::vec3(1.f), Texture texture = Texture("Engine/Default_Tex.jpg"));
 
-		void Render();
+		static void UpdateTransform(glm::vec3 translation, glm::vec3 rotation, glm::vec3 scale);
+		static void UpdateTexture(const char* texturePath);
 
-		void Shutdown();
+		static void Set_ClearColor(glm::vec4 color = glm::vec4(0.f, 0.f, 0.f, 0.f));
+		static void Clear();
+
+		static void Render(Camera camera);
+
+		static void Shutdown();
 
 	private:
-		OpenGL opengl;
-		Shader shader;
-		Model model;
-		Camera camera;
-		unsigned int ShaderProgram;
+		static unsigned int ShaderProgram;
 
 	};
 }

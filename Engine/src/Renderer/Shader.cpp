@@ -3,6 +3,8 @@
 
 namespace Engine
 {
+	GLuint ID;
+
 	std::string Shader::ReadShaderFile(const char* ShaderFile)
 	{
 		std::string temp = "";
@@ -38,8 +40,6 @@ namespace Engine
 
 	void Shader::Init(const char* vertexShaderFile, const char* fragmentShaderFile)
 	{
-		m_vertexShaderFile = vertexShaderFile;
-		m_fragmentShaderFile = fragmentShaderFile;
 
 		std::string str_src;
 		const GLchar* src;
@@ -48,7 +48,7 @@ namespace Engine
 		// ------------------------------------
 		// vertex shader
 		unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-		str_src = this->ReadShaderFile(m_vertexShaderFile);
+		str_src = ReadShaderFile(vertexShaderFile);
 		src = str_src.c_str();
 		glShaderSource(vertexShader, 1, &src, NULL);
 		glCompileShader(vertexShader);
@@ -64,7 +64,7 @@ namespace Engine
 		}
 		// fragment shader
 		unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-		str_src = this->ReadShaderFile(m_fragmentShaderFile);
+		str_src = ReadShaderFile(fragmentShaderFile);
 		src = str_src.c_str();
 		glShaderSource(fragmentShader, 1, &src, NULL);
 		glCompileShader(fragmentShader);
@@ -103,5 +103,45 @@ namespace Engine
 	{
 		LOG_E_TRACE("Deleting shader program...");
 		glDeleteProgram(ID);
+	}
+
+	void Shader::set1i(GLint value, const GLchar* name)
+	{
+		glUniform1i(glGetUniformLocation(ID, name), value);
+	}
+
+	void Shader::set1f(GLfloat value, const GLchar* name)
+	{
+		glUniform1f(glGetUniformLocation(ID, name), value);
+	}
+
+	void Shader::setVec2f(glm::fvec2 value, const GLchar* name)
+	{
+		glUniform2fv(glGetUniformLocation(ID, name), 1, glm::value_ptr(value));
+	}
+
+	void Shader::setVec3f(glm::fvec3 value, const GLchar* name)
+	{
+		glUniform3fv(glGetUniformLocation(ID, name), 1, glm::value_ptr(value));
+	}
+
+	void Shader::setVec4f(glm::fvec4 value, const GLchar* name)
+	{
+		glUniform4fv(glGetUniformLocation(ID, name), 1, glm::value_ptr(value));
+	}
+
+	void Shader::setMat3fv(glm::mat3 value, const GLchar* name, GLboolean transpose)
+	{
+		glUniformMatrix3fv(glGetUniformLocation(ID, name), 1, transpose, glm::value_ptr(value));
+	}
+
+	void Shader::setMat4fv(glm::mat4 value, const GLchar* name, GLboolean transpose)
+	{
+		glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, transpose, glm::value_ptr(value));
+	}
+
+	int Shader::GetID()
+	{
+		return ID;
 	}
 }

@@ -21,15 +21,19 @@
 
 namespace Engine
 {
-	class Renderer2D
+	class RendererCMD
 	{
 	public:
-		Renderer2D();
+		RendererCMD();
 
-		static void DrawTriangle(glm::vec3 translation = glm::vec3(0.f), glm::vec3 rotation = glm::vec3(0.f), glm::vec3 scale = glm::vec3(1.f), Texture texture = Texture("Engine/Default_Tex.jpg"));
-		static void DrawQuad(glm::vec3 translation = glm::vec3(0.f), glm::vec3 rotation = glm::vec3(0.f), glm::vec3 scale = glm::vec3(1.f), Texture texture = Texture("Engine/Default_Tex.jpg"));
+		static void LoadShader(const char* vertexFile, const char* fragmentFile);
 
-		static void Shutdown();
+		static Texture LoadTexture(const char* texturePath = "Engine/Default_Tex.jpg");
+
+		static void Set_ClearColor(glm::vec4 color = glm::vec4(0.f, 0.f, 0.f, 0.f));
+		static void Clear();
+
+		static void Render(Camera camera);
 
 	private:
 		static unsigned int ShaderProgram;

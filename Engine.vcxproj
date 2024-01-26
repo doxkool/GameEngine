@@ -118,6 +118,7 @@
     <ClInclude Include="Engine\src\Platforms\Windows\WinWindow.h" />
     <ClInclude Include="Engine\src\Renderer\Primitives.h" />
     <ClInclude Include="Engine\src\Renderer\Renderer2D.h" />
+    <ClInclude Include="Engine\src\Renderer\RendererCMD.h" />
     <ClInclude Include="Engine\src\Renderer\Shader.h" />
     <ClInclude Include="Engine\src\Core\Model.h" />
     <ClInclude Include="Engine\src\Renderer\VertexArray.h" />
@@ -138,6 +139,7 @@
     <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL.cpp" />
     <ClCompile Include="Engine\src\Platforms\Windows\WinWindow.cpp" />
     <ClCompile Include="Engine\src\Renderer\Renderer2D.cpp" />
+    <ClCompile Include="Engine\src\Renderer\RendererCMD.cpp" />
     <ClCompile Include="Engine\src\Renderer\Shader.cpp" />
     <ClCompile Include="Engine\src\Core\Model.cpp" />
     <ClCompile Include="Engine\src\Renderer\VertexArray.cpp" />

@@ -12,7 +12,7 @@ namespace Engine
 	public:
 
 		static void UpdateInput(GLFWwindow* window, int key, int scancode, int action, int mods);
-		static void UpdateKeyboardInput(GLFWwindow* window);
+		static bool CheckKeyboardInput(int key);
 		static void UpdateMouseInput(GLFWwindow* window);
 	};
 }

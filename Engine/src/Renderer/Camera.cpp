@@ -56,4 +56,26 @@ namespace Engine
 			break;
 		}
 	}
+
+	void Camera::OnUpdate(TimeStep ts)
+	{
+		// Check for movement
+		if (Input::CheckKeyboardInput(GLFW_KEY_W))
+		{
+			Move(FORWARD, 0.5f);
+		}
+		if (Input::CheckKeyboardInput(GLFW_KEY_S))
+		{
+			Move(BACKWARD, 0.5f);
+		}
+		if (Input::CheckKeyboardInput(GLFW_KEY_A))
+		{
+			Move(LEFT, 0.5f);
+		}
+		if (Input::CheckKeyboardInput(GLFW_KEY_D))
+		{
+			Move(RIGHT, 0.5f);
+		}
+
+	}
 }

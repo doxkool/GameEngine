@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Core/Logger.h"
+#include "Core/Time.h"
+#include "Core/Input.h"
 
 #include "Renderer/shader.h"
 
@@ -29,6 +31,8 @@ namespace Engine
 			void Matrix(const char* uniform);
 
 			void Move(Direction direction, float speed);
+
+			void OnUpdate(TimeStep ts);
 
 		public:
 			

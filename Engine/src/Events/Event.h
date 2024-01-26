@@ -21,10 +21,10 @@ namespace Engine
 	};
 
 
-	class Events
+	class Event
 	{
 		public:
-			Events();
+			virtual ~Event() = default;
 
 			void PushEvent(EventSource source);
 

@@ -2,40 +2,55 @@
 
 
 // TODO :
-// - Be able the get the correct window dimmention from OpenGL.cpp
+
 
 namespace Engine
 {
-	Camera::Camera(CameraType type)
+	Camera::Camera(CameraType type, float FOVdeg, float nearPlane, float farPlane)
+		: CameraProjectionType(type), FOVdeg(FOVdeg), nearPlane(nearPlane), farPlane(farPlane)
 	{
-		this->EntityID;
+		updateMatrix();
 	}
-	
-	void Camera::updateMatrix(float FOVdeg, float nearPlane, float farPlane)
-	{
-		// Initializes matrices since otherwise they will be the null matrix
-		glm::mat4 view = glm::mat4(1.0f);
-		glm::mat4 projection = glm::mat4(1.0f);
 
+	//Camera::Camera(CameraType type, float left, float right, float bottom, float top)
+	//	: CameraProjectionType(type), left(left), right(right), bottom(bottom), top(top)
+	//{
+	//	updateMatrix();
+	//}
+	
+	void Camera::updateMatrix()
+	{
 		FrameBufferWidth = OpenGL::Viewport_Width;
 		FrameBufferHeight = OpenGL::Viewport_Height;
 	
 		// Makes camera look in the right direction from the right position
 		view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-		// Adds perspective to the scene
-		projection = glm::perspective(glm::radians(FOVdeg), (float)FrameBufferWidth / FrameBufferHeight, nearPlane, farPlane);
-	
-		// Sets new camera matrix
-		cameraMatrix = projection * view;
+
+		//if (CameraProjectionType = Perspective)
+		//{
+			// Adds perspective to the scene
+			projection = glm::perspective(glm::radians(FOVdeg), (float)FrameBufferWidth / FrameBufferHeight, nearPlane, farPlane);
+
+			// Sets new camera matrix
+			cameraMatrix = projection * view;
+
+		//}
+		//if (CameraProjectionType = Orthographic)
+		//{
+		//	projection = glm::ortho(left, right, bottom, top, 0.1f, 100.0f);
+		//
+		//	// Sets new camera matrix
+		//	cameraMatrix = projection * view;
+		//}
 	}
 
-	void Camera::Matrix(const char* uniform)
+	void Camera::PushMatrixToShader(const char* uniform)
 	{		 
 		// Exports camera matrix
 		Shader::setMat4fv(cameraMatrix, uniform, GL_FALSE);
 	}
 
-	void Camera::Move(Direction direction)
+	void Camera::MoveCamera(Direction direction)
 	{
 		switch (direction)
 		{
@@ -52,8 +67,10 @@ namespace Engine
 			cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * MovementSpeed;
 			break;
 		case Engine::UP:
+			cameraPos += cameraUp * MovementSpeed;
 			break;
 		case Engine::DOWN:
+			cameraPos -= cameraUp * MovementSpeed;
 			break;
 		default:
 			break;
@@ -62,29 +79,6 @@ namespace Engine
 
 	void Camera::OnUpdate(TimeStep ts)
 	{
-		// Check for Keyboard input
-		if (Input::CheckKeyboardInput(Key::W))
-		{
-			Move(FORWARD);
-		}
-		if (Input::CheckKeyboardInput(Key::S))
-		{
-			Move(BACKWARD);
-		}
-		if (Input::CheckKeyboardInput(Key::A))
-		{
-			Move(LEFT);
-		}
-		if (Input::CheckKeyboardInput(Key::D))
-		{
-			Move(RIGHT);
-		}
-
-		// Check for Mouse input
-		if (Input::CheckMouseButtonInput(Mouse::Button0))
-		{
-			LOG_E_TRACE("INPUT :: Mouse button 0 clicked.");
-		}
 
 	}
 }

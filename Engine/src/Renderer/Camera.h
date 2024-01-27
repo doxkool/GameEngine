@@ -24,13 +24,15 @@ namespace Engine
 	class Camera
 	{
 		public:
-			// Camera constructor to set up initial values
-			Camera(CameraType type);
-	
+			// For creating a perspective camera
+			Camera(CameraType type, float FOVdeg, float nearPlane, float farPlane);
+			// For creating a orthographic camera
+			//Camera(CameraType type, float left, float right, float bottom, float top);
+
 			// Updates the camera matrix to the Vertex Shader
-			void updateMatrix(float FOVdeg, float nearPlane, float farPlane);
+			void updateMatrix();
 			// Exports the camera matrix to a shader
-			void Matrix(const char* uniform);
+			void PushMatrixToShader(const char* uniform);
 
 			void SetMovementSpeed(float Speed) { MovementSpeed = Speed; }
 			void SetMouseRotationSpeed(float Speed) { MouseRotationSpeed = Speed; }
@@ -42,16 +44,30 @@ namespace Engine
 			float GetMousePanningSpeed() { return MousePanningSpeed; }
 			float GetMouseScrollSpeed() { return MouseScrollSpeed; }
 
-			void Move(Direction direction);
+			void MoveCamera(Direction direction);
 
 			void OnUpdate(TimeStep ts);
 
 		public:
 			
-			int EntityID;
+			CameraType CameraProjectionType;
+
+			// Variables for perspective camera
+			float FOVdeg;
+			float nearPlane;
+			float farPlane;
+
+			// Variables for orthographic camera
+			float left;
+			float right;
+			float bottom;
+			float top;
 
 			// Stores the main vectors of the camera
 			glm::mat4 cameraMatrix = glm::mat4(1.0f);
+
+			glm::mat4 view = glm::mat4(1.0f);
+			glm::mat4 projection = glm::mat4(1.0f);
 
 			glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
 			glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);

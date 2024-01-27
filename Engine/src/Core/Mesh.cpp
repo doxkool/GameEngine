@@ -68,8 +68,8 @@ namespace Engine
 		}
 
 		// Take care of the camera Matrix
-		camera.updateMatrix(45.f, 0.1, 100.f);
-		camera.Matrix("camera");
+		camera.updateMatrix();
+		camera.PushMatrixToShader("camera");
 		
 
 		// Initialize matrices

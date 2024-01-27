@@ -6,7 +6,7 @@
 #include "Core/Model.h"
 #include "Core/Mesh.h"
 #include "Core/Texture.h"
-#include "Core/Input.h"
+#include "Core/Input/Input.h"
 
 #include "Platforms/OpenGL/OpenGL.h"
 

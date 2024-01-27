@@ -64,8 +64,10 @@ namespace Engine
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 
-		glfwSetKeyCallback(m_Window, key_callback);
-
+		// Setting up GLFW callback for keyboard and mouse events
+		glfwSetKeyCallback(m_Window, Key_Callback);
+		glfwSetScrollCallback(m_Window, Mouse_Scroll_Callback);
+		glfwSetMouseButtonCallback(m_Window, Mouse_Button_Callback);
 	}
 
 	void WinWindow::Shutdown()
@@ -100,8 +102,18 @@ namespace Engine
 		LOG_E_DEBUG("vSync set to : {}", enabled);
 	}
 
-	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+	void Key_Callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
-		Input::UpdateInput(window, key, scancode, action, mods);
+		Input::UpdateKeyboardInput(window, key, scancode, action, mods);
+	}
+
+	void Mouse_Scroll_Callback(GLFWwindow* window, double xoffset, double yoffset)
+	{
+		
+	}
+
+	void Mouse_Button_Callback(GLFWwindow* window, int button, int action, int mods)
+	{
+
 	}
 }

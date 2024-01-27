@@ -3,7 +3,7 @@
 // Engine Core
 #include "Core/Application.h"
 #include "Core/Logger.h"
-#include "Core/Input.h"
+#include "Core/Input/Input.h"
 #include "Core/LayerStack.h"
 #include "Core/Texture.h"
 #include "Core/Mesh.h"

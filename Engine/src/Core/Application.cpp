@@ -48,11 +48,11 @@ namespace Engine
 
 		if (options.Show_FPS)
 		{
-			str_FPS = std::to_string(perf.Get_FPS());
+			str_FPS = std::to_string(Perf::Get_FPS());
 		}
 		if (options.Show_Frame_Time)
 		{
-			str_FrameTime = std::to_string(perf.Get_FrameTime());
+			str_FrameTime = std::to_string(Perf::Get_FrameTime());
 		}
 
 		std::string newTitle = m_spec.title + " " + str_FPS + "fps / " + str_FrameTime + "ms";
@@ -75,7 +75,7 @@ namespace Engine
 			
 			TimeStep timestep;
 
-			perf.StartPerfCounter(timestep);
+			Perf::StartPerfCounter(timestep);
 
 			ShowEngineStats(m_EngineStats);
 
@@ -86,7 +86,7 @@ namespace Engine
 
 			WinWindow::SwapBuffer();
 
-			perf.EndPerfCounter();
+			Perf::EndPerfCounter();
 		}
 	}
 

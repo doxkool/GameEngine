@@ -99,7 +99,7 @@
     <ClInclude Include="Game\src\Sandbox.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Game\src\Application.cpp" />
+    <ClCompile Include="Game\src\SandboxApp.cpp" />
     <ClCompile Include="Game\src\Sandbox.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

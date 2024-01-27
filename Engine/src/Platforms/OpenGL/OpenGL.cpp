@@ -16,7 +16,7 @@ namespace Engine
 		case GL_DEBUG_SEVERITY_HIGH:         LOG_E_CRITICAL(message); return;
 		case GL_DEBUG_SEVERITY_MEDIUM:       LOG_E_ERROR(message); return;
 		case GL_DEBUG_SEVERITY_LOW:          LOG_E_WARN(message); return;
-		case GL_DEBUG_SEVERITY_NOTIFICATION: LOG_E_TRACE(message); return;
+		//case GL_DEBUG_SEVERITY_NOTIFICATION: LOG_E_TRACE(message); return;
 		}
 	}
 

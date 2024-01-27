@@ -9,8 +9,8 @@
 #include "Core/LayerStack.h"
 #include "Core/Logger.h"
 #include "Core/Time.h"
-#include "Core/Utilities.h"
-#include "Core/Input.h"
+#include "Core/Utilities/Utilities.h"
+#include "Core/Input/Input.h"
 
 int main();
 
@@ -21,6 +21,7 @@ namespace Engine
 	{
 		std::string title = "Game";
 		std::string WorkingDirectory;
+		bool Windowed = true;
 		int Window_Width = 1920;
 		int Window_Height = 1080;
 	};
@@ -60,8 +61,6 @@ namespace Engine
 			AppSpec m_spec;
 			Pointer<Window> m_Window;
 			LayerStack m_LayerStack;
-
-			Perf perf;
 
 			float AppRunTime = 0.0f;
 	};

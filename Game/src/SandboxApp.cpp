@@ -25,6 +25,7 @@ Engine::Application* Engine::CreateApplication(Engine::AppSpec)
 	AppSpec Spec;
 	Spec.title = "Engine Debug";
 	Spec.WorkingDirectory = "../Game";
+	Spec.Windowed = true;
 	Spec.Window_Height = 1000;
 	Spec.Window_Width = 1000;
 

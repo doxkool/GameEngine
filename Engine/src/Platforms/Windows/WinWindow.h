@@ -48,5 +48,7 @@ namespace Engine
 			int max_hieght = GetSystemMetrics(SM_CYSCREEN);
 	};
 
-	static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+	static void Key_Callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+	static void Mouse_Scroll_Callback(GLFWwindow* window, double xoffset, double yoffset);
+	static void Mouse_Button_Callback(GLFWwindow* window, int button, int action, int mods);
 }

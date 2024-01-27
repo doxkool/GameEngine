@@ -2,7 +2,7 @@
 
 #include "Core/Logger.h"
 #include "Core/Time.h"
-#include "Core/Input.h"
+#include "Core/Input/Input.h"
 
 #include "Renderer/shader.h"
 
@@ -30,7 +30,17 @@ namespace Engine
 			// Exports the camera matrix to a shader
 			void Matrix(const char* uniform);
 
-			void Move(Direction direction, float speed);
+			void SetMovementSpeed(float Speed) { MovementSpeed = Speed; }
+			void SetMouseRotationSpeed(float Speed) { MouseRotationSpeed = Speed; }
+			void SetMousePanningSpeed(float Speed) { MousePanningSpeed = Speed; }
+			void SetMouseScrollSpeed(float Speed) { MouseScrollSpeed = Speed; }
+
+			float GetMovementSpeed() { return MovementSpeed; }
+			float GetMouseRotationSpeed() { return MouseRotationSpeed; }
+			float GetMousePanningSpeed() { return MousePanningSpeed; }
+			float GetMouseScrollSpeed() { return MouseScrollSpeed; }
+
+			void Move(Direction direction);
 
 			void OnUpdate(TimeStep ts);
 
@@ -45,7 +55,10 @@ namespace Engine
 			glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
 			glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 
-			float cameraSpeed = 0.05f;
+			float MovementSpeed = 0.1f;
+			float MouseRotationSpeed = 0.1f;
+			float MousePanningSpeed = 0.1f;
+			float MouseScrollSpeed = 0.1f;
 
 	};
 }

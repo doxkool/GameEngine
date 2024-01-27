@@ -27,7 +27,7 @@
     <ClInclude Include="Engine\src\Core\EntryPoint.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\src\Core\Input.h">
+    <ClInclude Include="Engine\src\Core\Input\Input.h">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Engine\src\Core\Layer.h">
@@ -45,7 +45,7 @@
     <ClInclude Include="Engine\src\Core\Time.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\src\Core\Utilities.h">
+    <ClInclude Include="Engine\src\Core\Utilities\Utilities.h">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Engine\src\Core\Window.h">
@@ -88,16 +88,19 @@
     <ClInclude Include="Engine\src\Core\Texture.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\src\Core\Events.h">
+    <ClInclude Include="Engine\src\Events\Event.h">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Engine\src\Renderer\RendererCMD.h" />
+    <ClInclude Include="Engine\src\Core\Input\KeyCodes.h" />
+    <ClInclude Include="Engine\src\Core\Input\MouseCodes.h" />
+    <ClInclude Include="Engine\src\Defines.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Application.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\src\Core\Input.cpp">
+    <ClCompile Include="Engine\src\Core\Input\Input.cpp">
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Engine\src\Core\Layer.cpp">
@@ -145,9 +148,10 @@
     <ClCompile Include="Engine\src\Core\Texture.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\src\Core\Events.cpp">
+    <ClCompile Include="Engine\src\Events\Event.cpp">
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Engine\src\Renderer\RendererCMD.cpp" />
+    <ClCompile Include="Engine\src\Core\Utilities\Utilities.cpp" />
   </ItemGroup>
 </Project>

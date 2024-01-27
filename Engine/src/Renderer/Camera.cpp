@@ -32,21 +32,21 @@ namespace Engine
 		Shader::setMat4fv(cameraMatrix, uniform, GL_FALSE);
 	}
 
-	void Camera::Move(Direction direction, float speed)
+	void Camera::Move(Direction direction)
 	{
 		switch (direction)
 		{
 		case Engine::FORWARD:
-			cameraPos += speed * cameraFront;
+			cameraPos += cameraFront * MovementSpeed;
 			break;
 		case Engine::BACKWARD:
-			cameraPos -= speed * cameraFront;
+			cameraPos -= cameraFront * MovementSpeed;
 			break;
 		case Engine::LEFT:
-			cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * speed;
+			cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * MovementSpeed;
 			break;
 		case Engine::RIGHT:
-			cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * speed;
+			cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * MovementSpeed;
 			break;
 		case Engine::UP:
 			break;
@@ -59,22 +59,28 @@ namespace Engine
 
 	void Camera::OnUpdate(TimeStep ts)
 	{
-		// Check for movement
-		if (Input::CheckKeyboardInput(GLFW_KEY_W))
+		// Check for Keyboard input
+		if (Input::CheckKeyboardInput(Key::W))
 		{
-			Move(FORWARD, 0.5f);
+			Move(FORWARD);
 		}
-		if (Input::CheckKeyboardInput(GLFW_KEY_S))
+		if (Input::CheckKeyboardInput(Key::S))
 		{
-			Move(BACKWARD, 0.5f);
+			Move(BACKWARD);
 		}
-		if (Input::CheckKeyboardInput(GLFW_KEY_A))
+		if (Input::CheckKeyboardInput(Key::A))
 		{
-			Move(LEFT, 0.5f);
+			Move(LEFT);
 		}
-		if (Input::CheckKeyboardInput(GLFW_KEY_D))
+		if (Input::CheckKeyboardInput(Key::D))
 		{
-			Move(RIGHT, 0.5f);
+			Move(RIGHT);
+		}
+
+		// Check for Mouse input
+		if (Input::CheckMouseButtonInput(Mouse::Button0))
+		{
+			LOG_E_TRACE("INPUT :: Mouse button 0 clicked.");
 		}
 
 	}

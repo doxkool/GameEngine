@@ -1,7 +1,5 @@
 #pragma once
 
-//#include "Platforms/OpenGL/OpenGL_API.h"
-
 #include "Core/Logger.h"
 
 #include "Core/Window.h"
@@ -11,6 +9,12 @@
 
 namespace Engine
 {
+	struct Window_Data
+	{
+		std::string Title;
+		unsigned int Width, Height;
+	};
+
 	class WinWindow : public Window
 	{
 		public:
@@ -24,12 +28,6 @@ namespace Engine
 			static void SwapBuffer();
 
 			virtual void* GetNativeWindow() const { return m_Window; }
-
-			struct Window_Data
-			{
-				std::string Title;
-				unsigned int Width, Height;
-			};
 
 		private:
 			virtual void Init(const WindowProps& props);
@@ -47,6 +45,8 @@ namespace Engine
 			// Get monitor current resolution hieght
 			int max_hieght = GetSystemMetrics(SM_CYSCREEN);
 	};
+
+	void framebuffer_resize_callback(GLFWwindow* Window, int Window_Width, int Window_Height);
 
 	static void Key_Callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	static void Mouse_Scroll_Callback(GLFWwindow* window, double xoffset, double yoffset);

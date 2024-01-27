@@ -4,6 +4,8 @@
 #include "Core/Time.h"
 #include "Core/Input/Input.h"
 
+#include "Platforms/OpenGL/OpenGL.h"
+
 #include "Renderer/shader.h"
 
 #include <GL/glew.h>
@@ -59,6 +61,9 @@ namespace Engine
 			float MouseRotationSpeed = 0.1f;
 			float MousePanningSpeed = 0.1f;
 			float MouseScrollSpeed = 0.1f;
+
+			int FrameBufferWidth = 0;
+			int FrameBufferHeight = 0;
 
 	};
 }

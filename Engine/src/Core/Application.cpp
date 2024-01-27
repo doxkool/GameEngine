@@ -13,15 +13,15 @@ namespace Engine
 		if (m_spec.WorkingDirectory.empty())
 		{
 			LOG_E_WARN ("No custom working directory defined.");
-
-			m_spec.WorkingDirectory = "/";
 		}
 
 		LOG_E_INFO("Setting working directory to : '{}'", m_spec.WorkingDirectory);
 
 		s_instance = this;
 
-		m_Window = Window::Create(WindowProps(m_spec.title));
+		m_Window = Window::Create(WindowProps(m_spec.title, m_spec.Window_Width, m_spec.Window_Height));
+
+		OpenGL::SetViewport(m_spec.Window_Width, m_spec.Window_Height);
 	}
 
 	Application::~Application()

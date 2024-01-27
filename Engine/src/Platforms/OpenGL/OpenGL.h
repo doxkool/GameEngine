@@ -13,17 +13,18 @@ namespace Engine
 	class OpenGL
 	{
 	public:
-		OpenGL();
-
 		static void Init();
+
+		static void SetViewport(int Window_Width, int Window_Height);
+
+		static int GetViewport() { return Viewport_Width, Viewport_Height;}
 
 		static void Set_ClearColor(const glm::vec4& color);
 
 		static void Clear();
 
-	private:
+	public:
+		static int Viewport_Width, Viewport_Height;
 
 	};
-
-	void framebuffer_resize_callback(GLFWwindow* Window, int Window_Width, int Window_Height);
 }

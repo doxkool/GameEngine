@@ -27,7 +27,7 @@ Engine::Application* Engine::CreateApplication(Engine::AppSpec)
 	Spec.WorkingDirectory = "../Game";
 	Spec.Windowed = true;
 	Spec.Window_Height = 1000;
-	Spec.Window_Width = 1000;
+	Spec.Window_Width = 1500;
 
 	return new Game(Spec);
 }

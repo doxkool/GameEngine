@@ -20,17 +20,8 @@ namespace Engine
 		}
 	}
 
-	void framebuffer_resize_callback(GLFWwindow* Window, int Window_Width, int Window_Height)
-	{
-		glViewport(0, 0, Window_Width, Window_Height);
-
-		LOG_E_DEBUG("Window resolution changed to : {}x{}", Window_Width, Window_Height);
-	};
-
-	OpenGL::OpenGL()
-	{
-		
-	}
+	int OpenGL::Viewport_Width;
+	int OpenGL::Viewport_Height;
 
 	void OpenGL::Init()
 	{
@@ -52,6 +43,16 @@ namespace Engine
 
 		// Enables the Depth Buffer
 		glEnable(GL_DEPTH_TEST);
+	}
+
+	void OpenGL::SetViewport(int Window_Width, int Window_Height)
+	{
+		glViewport(0, 0, Window_Width, Window_Height);
+
+		Viewport_Width = Window_Width;
+		Viewport_Height = Window_Height;
+
+		//LOG_E_DEBUG("Window resolution changed to : {}x{}", Window_Width, Window_Height);
 	}
 
 	void OpenGL::Set_ClearColor(const glm::vec4& color)

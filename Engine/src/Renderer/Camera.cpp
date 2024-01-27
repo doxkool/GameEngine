@@ -16,11 +16,14 @@ namespace Engine
 		// Initializes matrices since otherwise they will be the null matrix
 		glm::mat4 view = glm::mat4(1.0f);
 		glm::mat4 projection = glm::mat4(1.0f);
+
+		FrameBufferWidth = OpenGL::Viewport_Width;
+		FrameBufferHeight = OpenGL::Viewport_Height;
 	
 		// Makes camera look in the right direction from the right position
 		view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 		// Adds perspective to the scene
-		projection = glm::perspective(glm::radians(FOVdeg), (float)1000 / 1000, nearPlane, farPlane);
+		projection = glm::perspective(glm::radians(FOVdeg), (float)FrameBufferWidth / FrameBufferHeight, nearPlane, farPlane);
 	
 		// Sets new camera matrix
 		cameraMatrix = projection * view;

@@ -8,6 +8,13 @@ namespace Engine
 		LOG_E_ERROR("GLFW Error ({}): {}", error, message);
 	}
 
+	void framebuffer_resize_callback(GLFWwindow* Window, int Window_Width, int Window_Height)
+	{
+		OpenGL::SetViewport(Window_Width, Window_Height);
+
+		LOG_E_DEBUG("Window resolution changed to : {}x{}", Window_Width, Window_Height);
+	};
+
 	WinWindow::WinWindow(const WindowProps& props)
 	{
 		Init(props);

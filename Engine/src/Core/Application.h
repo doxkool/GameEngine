@@ -20,7 +20,7 @@ namespace Engine
 	struct AppSpec
 	{
 		std::string title = "Game";
-		std::string WorkingDirectory;
+		std::string WorkingDirectory = "/";
 		bool Windowed = true;
 		int Window_Width = 1920;
 		int Window_Height = 1080;

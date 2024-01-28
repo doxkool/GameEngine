@@ -17,6 +17,8 @@
 #include "Renderer/Renderer2D.h"
 #include "Renderer/Primitives.h"
 #include "Renderer/VertexArray.h"
+#include "Renderer/Camera/OrthographicCamera.h"
+#include "Renderer/Camera/PerspectiveCamera.h"
 
 // Engine Buffers
 #include "Renderer/Buffers/VertexBuffer.h"

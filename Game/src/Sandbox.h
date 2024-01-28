@@ -16,6 +16,6 @@ class Sandbox : public Engine::Layer
 		void CheckForInput();
 
 	private:
-		Engine::Camera m_camera;
+		Engine::OrthographicCamera  m_camera;
 		Engine::Renderer2D instance;
 };

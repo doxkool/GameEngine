@@ -51,7 +51,6 @@ namespace Engine
 	// TODO : Finish this function
 	void Mesh::Draw
 	(
-		Camera& camera,
 		glm::mat4 matrix,
 		glm::vec3 translation,
 		glm::quat rotation,
@@ -67,9 +66,9 @@ namespace Engine
 			textures[i].BindTexture();
 		}
 
-		// Take care of the camera Matrix
-		camera.updateMatrix();
-		camera.PushMatrixToShader("camera");
+		//// Take care of the camera Matrix
+		//camera.UpdateMatrix();
+		//camera.PushMatrixToShader("camera");
 		
 
 		// Initialize matrices

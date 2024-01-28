@@ -21,7 +21,7 @@ namespace Engine
 
 		static void UpdateModelMatrices(glm::vec3 translation, glm::vec3 rotation, glm::vec3 scale);
 
-		static void Draw(Camera& camera);
+		static void Draw();
 
 
 	private:

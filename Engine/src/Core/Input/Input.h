@@ -3,7 +3,7 @@
 #include "Events/Event.h"
 #include "Platforms/Windows/WinWindow.h"
 
-#include "Renderer/Camera.h"
+#include "Renderer/Camera/Camera.h"
 
 #include "Core/Input/KeyCodes.h"
 #include "Core/Input/MouseCodes.h"

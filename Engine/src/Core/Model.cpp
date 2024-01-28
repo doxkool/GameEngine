@@ -77,12 +77,12 @@ namespace Engine
 		matricesMeshes.push_back(Matrices);
 	}
 
-	void Model::Draw(Camera& camera)
+	void Model::Draw()
 	{
 		// Go over all meshes and draw each one
 		for (unsigned int i = 0; i < meshes.size(); i++)
 		{
-			meshes[i].Mesh::Draw(camera, matricesMeshes[i]);
+			meshes[i].Mesh::Draw(matricesMeshes[i]);
 		}
 	}
 }

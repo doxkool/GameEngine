@@ -32,8 +32,8 @@ namespace Engine
 		OpenGL::Clear();
 	}
 
-	void RendererCMD::Render(Camera camera)
+	void RendererCMD::Render()
 	{
-		Model::Draw(camera);
+		Model::Draw();
 	}
 }

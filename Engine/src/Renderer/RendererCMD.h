@@ -33,7 +33,7 @@ namespace Engine
 		static void Set_ClearColor(glm::vec4 color = glm::vec4(0.f, 0.f, 0.f, 0.f));
 		static void Clear();
 
-		static void Render(Camera camera);
+		static void Render();
 
 	private:
 		static unsigned int ShaderProgram;

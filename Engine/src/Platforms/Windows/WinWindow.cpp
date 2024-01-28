@@ -116,11 +116,11 @@ namespace Engine
 
 	void Mouse_Scroll_Callback(GLFWwindow* window, double xoffset, double yoffset)
 	{
-		
+		Input::UpdateMouseScrollInput(window, xoffset, yoffset);
 	}
 
 	void Mouse_Button_Callback(GLFWwindow* window, int button, int action, int mods)
 	{
-
+		Input::UpdateMouseButtonInput(window, button, action, mods);
 	}
 }

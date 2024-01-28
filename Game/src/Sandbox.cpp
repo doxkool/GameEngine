@@ -2,12 +2,15 @@
 
 // TODO :
 // - Be able to move model at runtime.
+// - Move Buffers into OpenGL
+
+
 
 // m_camera(Engine::Perspective, 45.f, 0.1f, 100.f)
 // m_camera(Engine::Orthographic, -2.f, 2.f, -1.5f, 1.5f)
 
 Sandbox::Sandbox()
-	: Layer("Sandbox"), m_camera(Engine::Perspective, 45.f, 0.1f, 100.f)
+	: Layer("Sandbox"), m_camera(-2.f, 2.f, -1.5f, 1.5f)
 {
 	Engine::Logger::Set_Engine_LogLevel(0);
 
@@ -39,7 +42,7 @@ void Sandbox::OnAttach()
 
 void Sandbox::OnDetach()
 {
-	
+
 }
 
 void Sandbox::OnUpdate(Engine::TimeStep ts)
@@ -60,7 +63,12 @@ void Sandbox::OnUpdate(Engine::TimeStep ts)
 
 	Engine::RendererCMD::Set_ClearColor(glm::vec4 (0.3f, 0.5f, 0.5f, 1.f));
 	Engine::RendererCMD::Clear();
-	Engine::RendererCMD::Render(m_camera);
+
+	// Temporary, need to return in mesh.cpp!
+	m_camera.UpdateMatrix();
+	m_camera.PushMatrixToShader("camera");
+
+	Engine::RendererCMD::Render();
 }
 
 void Sandbox::CheckForInput()

@@ -102,7 +102,7 @@
     <ClInclude Include="Engine\src\Core\Input\MouseCodes.h" />
     <ClInclude Include="Engine\src\Defines.h" />
     <ClInclude Include="Engine\src\Renderer\Buffers\ElementBuffer.h" />
-    <ClInclude Include="Engine\src\Renderer\Camera.h" />
+    <ClInclude Include="Engine\src\Renderer\Camera\Camera.h" />
     <ClInclude Include="Engine\src\Core\Application.h" />
     <ClInclude Include="Engine\src\Core\Base.h" />
     <ClInclude Include="Engine\src\Core\EntryPoint.h" />
@@ -119,6 +119,7 @@
     <ClInclude Include="Engine\src\Engine.h" />
     <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL.h" />
     <ClInclude Include="Engine\src\Platforms\Windows\WinWindow.h" />
+    <ClInclude Include="Engine\src\Renderer\Camera\PerspectiveCamera.h" />
     <ClInclude Include="Engine\src\Renderer\Primitives.h" />
     <ClInclude Include="Engine\src\Renderer\Renderer2D.h" />
     <ClInclude Include="Engine\src\Renderer\RendererCMD.h" />
@@ -127,11 +128,11 @@
     <ClInclude Include="Engine\src\Renderer\VertexArray.h" />
     <ClInclude Include="Engine\src\Renderer\Buffers\VertexBuffer.h" />
     <ClInclude Include="Engine\src\Events\Event.h" />
+    <ClInclude Include="Engine\src\Renderer\Camera\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Utilities\Utilities.cpp" />
     <ClCompile Include="Engine\src\Renderer\Buffers\ElementBuffer.cpp" />
-    <ClCompile Include="Engine\src\Renderer\Camera.cpp" />
     <ClCompile Include="Engine\src\Core\Application.cpp" />
     <ClCompile Include="Engine\src\Core\Input\Input.cpp" />
     <ClCompile Include="Engine\src\Core\Layer.cpp" />
@@ -142,6 +143,7 @@
     <ClCompile Include="Engine\src\Core\Window.cpp" />
     <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL.cpp" />
     <ClCompile Include="Engine\src\Platforms\Windows\WinWindow.cpp" />
+    <ClCompile Include="Engine\src\Renderer\Camera\PerspectiveCamera.cpp" />
     <ClCompile Include="Engine\src\Renderer\Renderer2D.cpp" />
     <ClCompile Include="Engine\src\Renderer\RendererCMD.cpp" />
     <ClCompile Include="Engine\src\Renderer\Shader.cpp" />
@@ -149,6 +151,7 @@
     <ClCompile Include="Engine\src\Renderer\VertexArray.cpp" />
     <ClCompile Include="Engine\src\Renderer\Buffers\VertexBuffer.cpp" />
     <ClCompile Include="Engine\src\Events\Event.cpp" />
+    <ClCompile Include="Engine\src\Renderer\Camera\OrthographicCamera.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

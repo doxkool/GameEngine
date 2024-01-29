@@ -31,12 +31,6 @@ namespace Engine
 	{
 		switch (direction)
 		{
-		case Engine::FORWARD:
-			cameraPos += cameraFront * MovementSpeed;
-			break;
-		case Engine::BACKWARD:
-			cameraPos -= cameraFront * MovementSpeed;
-			break;
 		case Engine::LEFT:
 			cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * MovementSpeed;
 			break;

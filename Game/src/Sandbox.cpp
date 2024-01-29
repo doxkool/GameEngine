@@ -74,14 +74,6 @@ void Sandbox::OnUpdate(Engine::TimeStep ts)
 void Sandbox::CheckForInput()
 {
 	// Check for Keyboard input
-	if (Engine::Input::CheckKeyboardInput(Engine::Key::W))
-	{
-		m_camera.MoveCamera(Engine::FORWARD);
-	}
-	if (Engine::Input::CheckKeyboardInput(Engine::Key::S))
-	{
-		m_camera.MoveCamera(Engine::BACKWARD);
-	}
 	if (Engine::Input::CheckKeyboardInput(Engine::Key::A))
 	{
 		m_camera.MoveCamera(Engine::LEFT);
@@ -90,11 +82,11 @@ void Sandbox::CheckForInput()
 	{
 		m_camera.MoveCamera(Engine::RIGHT);
 	}
-	if (Engine::Input::CheckKeyboardInput(Engine::Key::LeftControl))
+	if (Engine::Input::CheckKeyboardInput(Engine::Key::S))
 	{
 		m_camera.MoveCamera(Engine::DOWN);
 	}
-	if (Engine::Input::CheckKeyboardInput(Engine::Key::Space))
+	if (Engine::Input::CheckKeyboardInput(Engine::Key::W))
 	{
 		m_camera.MoveCamera(Engine::UP);
 	}

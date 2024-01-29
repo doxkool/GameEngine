@@ -79,13 +79,13 @@
     <ClInclude Include="Engine\src\Renderer\Primitives.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\src\Core\Mesh.h">
+    <ClInclude Include="Engine\src\Renderer\Mesh.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\src\Core\Model.h">
+    <ClInclude Include="Engine\src\Renderer\Model.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\src\Core\Texture.h">
+    <ClInclude Include="Engine\src\Renderer\Texture.h">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Engine\src\Events\Event.h">
@@ -138,13 +138,13 @@
     <ClCompile Include="Engine\src\Renderer\Shader.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\src\Core\Mesh.cpp">
+    <ClCompile Include="Engine\src\Renderer\Mesh.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\src\Core\Model.cpp">
+    <ClCompile Include="Engine\src\Renderer\Model.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\src\Core\Texture.cpp">
+    <ClCompile Include="Engine\src\Renderer\Texture.cpp">
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Engine\src\Events\Event.cpp">

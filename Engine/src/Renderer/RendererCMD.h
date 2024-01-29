@@ -3,9 +3,9 @@
 #include "Core/Base.h"
 
 #include "Core/Application.h"
-#include "Core/Model.h"
-#include "Core/Mesh.h"
-#include "Core/Texture.h"
+#include "Renderer/Model.h"
+#include "Renderer/Mesh.h"
+#include "Renderer/Texture.h"
 #include "Core/Input/Input.h"
 
 #include "Platforms/OpenGL/OpenGL.h"

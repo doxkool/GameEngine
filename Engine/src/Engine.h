@@ -5,8 +5,8 @@
 #include "Core/Logger.h"
 #include "Core/Input/Input.h"
 #include "Core/LayerStack.h"
-#include "Core/Texture.h"
-#include "Core/Mesh.h"
+#include "Renderer/Texture.h"
+#include "Renderer/Mesh.h"
 
 // Engine Patforms
 #include "Platforms/Windows/WinWindow.h"

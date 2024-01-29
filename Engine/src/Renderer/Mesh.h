@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/Texture.h"
+#include "Renderer/Texture.h"
 
 #include "Renderer/Camera/Camera.h"
 #include "Renderer/Primitives.h"

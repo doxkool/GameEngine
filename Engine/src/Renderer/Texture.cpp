@@ -1,6 +1,6 @@
 #define STB_IMAGE_IMPLEMENTATION
 
-#include "Core/Texture.h"
+#include "Renderer/Texture.h"
 
 namespace Engine
 {

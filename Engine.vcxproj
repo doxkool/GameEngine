@@ -110,9 +110,9 @@
     <ClInclude Include="Engine\src\Core\Layer.h" />
     <ClInclude Include="Engine\src\Core\LayerStack.h" />
     <ClInclude Include="Engine\src\Core\Logger.h" />
-    <ClInclude Include="Engine\src\Core\Mesh.h" />
+    <ClInclude Include="Engine\src\Renderer\Mesh.h" />
     <ClInclude Include="Engine\src\Core\OSDetection.h" />
-    <ClInclude Include="Engine\src\Core\Texture.h" />
+    <ClInclude Include="Engine\src\Renderer\Texture.h" />
     <ClInclude Include="Engine\src\Core\Time.h" />
     <ClInclude Include="Engine\src\Core\Utilities\Utilities.h" />
     <ClInclude Include="Engine\src\Core\Window.h" />
@@ -124,7 +124,7 @@
     <ClInclude Include="Engine\src\Renderer\Renderer2D.h" />
     <ClInclude Include="Engine\src\Renderer\RendererCMD.h" />
     <ClInclude Include="Engine\src\Renderer\Shader.h" />
-    <ClInclude Include="Engine\src\Core\Model.h" />
+    <ClInclude Include="Engine\src\Renderer\Model.h" />
     <ClInclude Include="Engine\src\Renderer\VertexArray.h" />
     <ClInclude Include="Engine\src\Renderer\Buffers\VertexBuffer.h" />
     <ClInclude Include="Engine\src\Events\Event.h" />
@@ -138,8 +138,8 @@
     <ClCompile Include="Engine\src\Core\Layer.cpp" />
     <ClCompile Include="Engine\src\Core\LayerStack.cpp" />
     <ClCompile Include="Engine\src\Core\Logger.cpp" />
-    <ClCompile Include="Engine\src\Core\Mesh.cpp" />
-    <ClCompile Include="Engine\src\Core\Texture.cpp" />
+    <ClCompile Include="Engine\src\Renderer\Mesh.cpp" />
+    <ClCompile Include="Engine\src\Renderer\Texture.cpp" />
     <ClCompile Include="Engine\src\Core\Window.cpp" />
     <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL.cpp" />
     <ClCompile Include="Engine\src\Platforms\Windows\WinWindow.cpp" />
@@ -147,7 +147,7 @@
     <ClCompile Include="Engine\src\Renderer\Renderer2D.cpp" />
     <ClCompile Include="Engine\src\Renderer\RendererCMD.cpp" />
     <ClCompile Include="Engine\src\Renderer\Shader.cpp" />
-    <ClCompile Include="Engine\src\Core\Model.cpp" />
+    <ClCompile Include="Engine\src\Renderer\Model.cpp" />
     <ClCompile Include="Engine\src\Renderer\VertexArray.cpp" />
     <ClCompile Include="Engine\src\Renderer\Buffers\VertexBuffer.cpp" />
     <ClCompile Include="Engine\src\Events\Event.cpp" />

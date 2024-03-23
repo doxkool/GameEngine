@@ -14,7 +14,12 @@ namespace Engine
 	bool ImGuiLayer::b_ShowMenuBar = false;
 	//bool ImGuiLayer::b_ShowSceneInspector = false;
 
-	void ImGuiLayer::Init(GLFWwindow* window)
+	ImGuiLayer::ImGuiLayer(GLFWwindow* window)
+		: Layer("ImGuiLayer"), Window(window)
+	{
+	}
+
+	void ImGuiLayer::OnAttach()
 	{
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -26,9 +31,19 @@ namespace Engine
 
 		ImGui::StyleColorsDark();
 
-		ImGui_ImplGlfw_InitForOpenGL(window, true);
+		ImGui_ImplGlfw_InitForOpenGL(Window, true);
 		const char* glsl_version = "#version 450";
 		ImGui_ImplOpenGL3_Init(glsl_version);
+	}
+
+	void ImGuiLayer::OnDetach()
+	{
+
+	}
+
+	void ImGuiLayer::OnUpdate(Engine::TimeStep ts)
+	{
+
 	}
 
 	void ImGuiLayer::NewFrame()

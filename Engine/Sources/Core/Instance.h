@@ -61,6 +61,8 @@ namespace Engine
 		static Instance* s_Instance;
 		LayerStack m_LayerStack;
 
+		ImGuiLayer* m_ImGuiLayer;
+
 		Entities Entities;
 
 	};

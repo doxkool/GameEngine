@@ -31,7 +31,8 @@ namespace Engine
 		// Setup window Callback
 		WindowCallback WindowCallback(Window);
 
-		ImGuiLayer::Init(m_Window);
+		m_ImGuiLayer = new ImGuiLayer(Window.GetNativeWindow());
+		PushOverlay(m_ImGuiLayer);
 
 		Window.EnableVsync(1);
 	}

@@ -2,6 +2,8 @@
 
 #include "OpenGL/OpenGL.h"
 
+#include "Core/Layer.h"
+
 #include <glfw3.h>
 
 #include <vector>
@@ -14,12 +16,16 @@
 
 namespace Engine
 {
-	class ImGuiLayer
+	class ImGuiLayer : public Layer
 	{
 	public:
-		ImGuiLayer() {}
+		ImGuiLayer(GLFWwindow* window);
+		~ImGuiLayer() = default;
 
-		static void Init(GLFWwindow* window);
+		virtual void OnAttach() override;
+		virtual void OnDetach() override;
+		virtual void OnUpdate(Engine::TimeStep ts) override;
+
 		static void NewFrame();
 		static void Render();
 
@@ -38,6 +44,8 @@ namespace Engine
 	private:
 
 		//static std::vector<Base_Entity> m_Entity_Data;
+
+		GLFWwindow* Window;
 
 		static std::vector<float> FrameTime;
 		static std::vector<float> FPS;

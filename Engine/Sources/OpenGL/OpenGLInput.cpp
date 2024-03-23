@@ -38,20 +38,16 @@ namespace Engine
 				//if (!b_ToggleSceneInspector)ImGuiLayer::b_ShowSceneInspector = true, b_ToggleSceneInspector = true; else ImGuiLayer::b_ShowSceneInspector = false, b_ToggleSceneInspector = false;
 			}
 		}
-
-		ImGui_ImplGlfw_KeyCallback(window, key, scancode, action, mods);
 	}
 
 	void OpenGLInput::Mouse_Scroll_Callback(GLFWwindow* window, double xoffset, double yoffset)
 	{
-		// This broke ImGUI for some reason..
-			//ImGui_ImplGlfw_ScrollCallback(window, xoffset, yoffset);
+		
 	}
 
 	void OpenGLInput::Mouse_Button_Callback(GLFWwindow* window, int button, int action, int mods)
 	{
-		// This broke ImGUI for some reason..
-			//ImGui_ImplGlfw_MouseButtonCallback(window, button, action, mods);
+		
 	}
 
 	bool OpenGLInput::IsKeyPressed(GLFWwindow* window, int key)

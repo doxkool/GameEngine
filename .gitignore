@@ -6,9 +6,9 @@
 /bin/Debug_windows_x86_64/*
 /bin-int/*
 
-*.vcxproj
-*.filters
-*.user
+/*.vcxproj
+/*.filters
+/*.vcxproj.user
 
-imgui.ini
+/imgui.ini
 /log.txt

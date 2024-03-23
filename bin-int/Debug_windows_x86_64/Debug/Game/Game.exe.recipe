@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>Z:\Visual Studio 2022 Projects\Poutine Engine\bin\Debug_windows_x86_64\Game.exe</FullPath>
+      <FullPath>Z:\Visual Studio 2022 Projects\GameEngine\bin\Debug_windows_x86_64\Game.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

@@ -1,4 +1,4 @@
-workspace "PoutineEngine"
+workspace "GameEngine"
    architecture "x64"
    configurations { "Debug", "Release" }
 

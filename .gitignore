@@ -11,3 +11,4 @@
 *.user
 
 imgui.ini
+/log.txt

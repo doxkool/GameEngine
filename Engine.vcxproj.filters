@@ -97,6 +97,8 @@
     <ClInclude Include="Engine\src\Defines.h" />
     <ClInclude Include="Engine\src\Renderer\Camera\OrthographicCamera.h" />
     <ClInclude Include="Engine\src\Renderer\Camera\PerspectiveCamera.h" />
+    <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGLVertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Application.cpp">
@@ -154,5 +156,7 @@
     <ClCompile Include="Engine\src\Core\Utilities\Utilities.cpp" />
     <ClCompile Include="Engine\src\Renderer\Camera\OrthographicCamera.cpp" />
     <ClCompile Include="Engine\src\Renderer\Camera\PerspectiveCamera.cpp" />
+    <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGLVertexBuffer.cpp" />
   </ItemGroup>
 </Project>

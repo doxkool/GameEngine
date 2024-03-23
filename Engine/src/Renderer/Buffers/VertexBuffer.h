@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Core/Base.h"
+
 #include "Renderer/Buffers/ElementBuffer.h"
 
 #include <GL/glew.h>
@@ -19,19 +21,11 @@ namespace Engine
 	class VertexBuffer
 	{
 	public:
-		VertexBuffer(std::vector<Vertex>& vertices);
+		virtual ~VertexBuffer() = default;
 
-		// Binds the VBO
-		void Bind();
-		// Unbinds the VBO
-		void Unbind();
-		// Deletes the VBO
-		void Delete();
+		virtual void Bind() const = 0;
+		virtual void Unbind() const = 0;
 
-		// ID reference for the Vertex Array Object
-		GLuint ID;
-
-	private:
-
+		static Ref<VertexBuffer> Create(uint32_t size);
 	};
 }

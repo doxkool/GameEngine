@@ -8,25 +8,25 @@ namespace Engine
 		Mesh::indices = indices;
 		Mesh::textures = textures;
 
-		VAO.Bind();
+		//VAO.Bind();
 		// Generates Vertex Buffer Object and links it to vertices
-		VertexBuffer VBO(vertices);
+		//VertexBuffer VBO(vertices);
 		// Generates Element Buffer Object and links it to indices
-		ElementBuffer EBO(indices);
+		//ElementBuffer EBO(indices);
 
 		// Links VBO Position attributes to VAO
-		VAO.LinkAttrib(VBO, 0, 3, GL_FLOAT, sizeof(Vertex), (void*)0);
+		//VAO.LinkAttrib(VBO, 0, 3, GL_FLOAT, sizeof(Vertex), (void*)0);
 		// Links VBO Color attributes to VAO
-		VAO.LinkAttrib(VBO, 1, 3, GL_FLOAT, sizeof(Vertex), (void*)(3 * sizeof(float)));
+		//VAO.LinkAttrib(VBO, 1, 3, GL_FLOAT, sizeof(Vertex), (void*)(3 * sizeof(float)));
 		// Links VBO Texcoord attributes to VAO
-		VAO.LinkAttrib(VBO, 2, 2, GL_FLOAT, sizeof(Vertex), (void*)(6 * sizeof(float)));
+		//VAO.LinkAttrib(VBO, 2, 2, GL_FLOAT, sizeof(Vertex), (void*)(6 * sizeof(float)));
 		// Links VBO Normal attributes to VAO
-		VAO.LinkAttrib(VBO, 3, 3, GL_FLOAT, sizeof(Vertex), (void*)(9 * sizeof(float)));
+		//VAO.LinkAttrib(VBO, 3, 3, GL_FLOAT, sizeof(Vertex), (void*)(9 * sizeof(float)));
 
 		// Unbind all to prevent accidentally modifying them
-		VAO.Unbind();
-		VBO.Unbind();
-		EBO.Unbind();
+		//VAO.Unbind();
+		//VBO.Unbind();
+		//EBO.Unbind();
 	}
 
 	// TODO : Be able to load mesh from file.
@@ -59,7 +59,7 @@ namespace Engine
 	{
 		// Bind shader to be able to access uniforms
 		Shader::Activate();
-		VAO.Bind();
+		//VAO.Bind();
 
 		for (unsigned int i = 0; i < textures.size(); i++)
 		{

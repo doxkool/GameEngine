@@ -101,6 +101,8 @@
     <ClInclude Include="Engine\src\Core\Input\KeyCodes.h" />
     <ClInclude Include="Engine\src\Core\Input\MouseCodes.h" />
     <ClInclude Include="Engine\src\Defines.h" />
+    <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGLVertexBuffer.h" />
     <ClInclude Include="Engine\src\Renderer\Buffers\ElementBuffer.h" />
     <ClInclude Include="Engine\src\Renderer\Camera\Camera.h" />
     <ClInclude Include="Engine\src\Core\Application.h" />
@@ -132,6 +134,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\src\Core\Utilities\Utilities.cpp" />
+    <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGLVertexBuffer.cpp" />
     <ClCompile Include="Engine\src\Renderer\Buffers\ElementBuffer.cpp" />
     <ClCompile Include="Engine\src\Core\Application.cpp" />
     <ClCompile Include="Engine\src\Core\Input\Input.cpp" />

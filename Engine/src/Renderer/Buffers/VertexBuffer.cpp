@@ -1,30 +1,11 @@
 #include "Renderer/Buffers/VertexBuffer.h"
 
+#include "Platforms/OpenGL/OpenGLVertexBuffer.h"
+
 namespace Engine
 {
-	// Constructor that generates a Vertex Buffer Object and links it to vertices
-	VertexBuffer::VertexBuffer(std::vector<Vertex>& vertices)
+	Ref<VertexBuffer> VertexBuffer::Create(uint32_t size)
 	{
-		glGenBuffers(1, &ID);
-		glBindBuffer(GL_ARRAY_BUFFER, ID);
-		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), vertices.data(), GL_STATIC_DRAW);
-	}
-
-	// Binds the VBO
-	void VertexBuffer::Bind()
-	{
-		glBindBuffer(GL_ARRAY_BUFFER, ID);
-	}
-
-	// Unbinds the VBO
-	void VertexBuffer::Unbind()
-	{
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-	}
-
-	// Deletes the VBO
-	void VertexBuffer::Delete()
-	{
-		glDeleteBuffers(1, &ID);
+		return CreateRef<OpenGLVertexBuffer>(size);
 	}
 }

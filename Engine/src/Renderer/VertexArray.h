@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Core/Base.h"
+
 #include "Renderer/Buffers/VertexBuffer.h"
 
 #include <GL/glew.h>
@@ -10,21 +12,11 @@ namespace Engine
 	class VertexArray
 	{
 	public:
-		VertexArray();
+		virtual ~VertexArray() = default;
 
-		// Links a VBO Attribute such as a position or color to the VAO
-		void LinkAttrib(VertexBuffer& VBO, GLuint layout, GLuint numComponents, GLenum type, GLsizeiptr stride, void* offset);
-		// Binds the VAO
-		void Bind();
-		// Unbinds the VAO
-		void Unbind();
-		// Deletes the VAO
-		void Delete();
+		virtual void Bind() const = 0;
+		virtual void Unbind() const = 0;
 
-		// ID reference for the Vertex Array Object
-		GLuint ID;
-
-	private:
-
+		static Ref<VertexArray> Create();
 	};
 }

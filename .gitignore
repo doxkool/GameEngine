@@ -6,9 +6,11 @@
 /bin/Debug_windows_x86_64/
 /bin-int/
 
+/*.sln
 /*.vcxproj
 /*.filters
 /*.vcxproj.user
 
 /imgui.ini
 /log.txt
+/GameEngine.sln

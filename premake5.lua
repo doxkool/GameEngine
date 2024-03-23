@@ -1,4 +1,4 @@
-workspace "Poutine Engine"
+workspace "PoutineEngine"
    architecture "x64"
    configurations { "Debug", "Release" }
 
@@ -6,107 +6,123 @@ outputdir = "%{cfg.buildcfg}_%{cfg.system}_%{cfg.architecture}"
 
 -- Include directories relative to root folder.
 IncludeDir = {}
-IncludeDir["spdlog"] = "Engine/vendors/spdlog"
-IncludeDir["GLFW"] = "Engine/vendors/GLFW/include"
-IncludeDir["GLEW"] = "Engine/vendors/GLEW/include"
-IncludeDir["GLM"] = "Engine/vendors/glm"
-IncludeDir["IMGUI"] = "Engine/vendors/imgui"
+IncludeDir["GLFW"] = "Vendors/GLFW/include"
+IncludeDir["GLEW"] = "Vendors/GLEW/include"
+IncludeDir["glm"] = "Vendors/glm"
+IncludeDir["spdlog"] = "Vendors/spdlog"
+IncludeDir["stb_image"] = "Vendors/stb_image"
+IncludeDir["imgui"] = "Vendors/imgui"
+IncludeDir["Entt"] = "Vendors/Entt"
 
 project "Engine"
-	kind "StaticLib"
-	language "C++"
-	cppdialect "C++17"
-	staticruntime "off"
-	
-	targetdir ("bin/" .. outputdir)
-	objdir ("bin-int/" .. outputdir)
-	
-	files 
+   kind "StaticLib"
+   language "C++"
+   cppdialect "C++17"
+   staticruntime "off"
+
+   targetdir ("bin/" .. outputdir)
+   objdir ("bin-int/" .. outputdir)
+
+   files 
+   {
+		"Engine/Sources/**",
+		"Vendors/imgui/*"
+   }
+
+   defines
 	{
-	 "%{prj.name}/src/**",
-	 "spdlog/**.h"
+		"ENGINE_EXPORT",	
+		"GLFW_INCLUDE_NONE",
+		"_CRT_SECURE_NO_WARNINGS",
+		"_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS"
 	}
-	
-	defines
-	{
-		"_CRT_SECURE_NO_WARNINGS"
-	}
-	
-	includedirs
-	{
-	   "Engine/src",
-	   "%{IncludeDir.spdlog}",
-	   "%{IncludeDir.GLFW}",
-	   "%{IncludeDir.GLEW}",
-	   "%{IncludeDir.GLM}",
-	   "%{IncludeDir.IMGUI}"
-	}
-	
-	libdirs
-	{
-	     "Engine/vendors/GLFW/lib",
-	     "Engine/vendors/GLEW/lib"
-	}
-	
-	links
-	{
-	   "glfw3.lib",
-	   "glew32s.lib",
-	   "opengl32.lib"
-	}
-	
-	filter "system.windows"
-	   systemversion "latest"
-	
-	filter "configurations:Debug"
-	   defines { "ENGINE_DEBUG" }
-	   symbols "On"
-	
-	filter "configurations:Release"
-	   defines { "N_ENGINE_DEBUG" }
-	   optimize "on"
+
+   includedirs
+   {
+		"Engine/Sources",
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.GLEW}",
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.spdlog}",
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.imgui}",
+		"%{IncludeDir.Entt}"
+   }
+
+   libdirs
+   {
+		"Vendors/GLFW/lib",
+		"Vendors/GLEW/lib"
+   }
+
+   links
+   {
+		"glfw3_mt.lib",
+		"glew32.lib",
+		"opengl32.lib"
+   }
+
+   filter "system.windows"
+      systemversion "latest"
+
+   filter "configurations:Debug"
+      defines { "ENGINE_DEBUG" }
+      symbols "On"
+
+   filter "configurations:Release"
+      defines { "ENGINE_NDEBUG" }
+      optimize "on"
+
 
 project "Game"
-	kind "ConsoleApp"
-	language "C++"
-	cppdialect "C++17"
-	staticruntime "off"
-	
-	targetdir ("bin/" .. outputdir)
-	objdir ("bin-int/" .. outputdir)
-	
-	
-	files 
+   kind "ConsoleApp"
+   language "C++"
+   cppdialect "C++17"
+   staticruntime "off"
+
+   targetdir ("bin/" .. outputdir)
+   objdir ("bin-int/" .. outputdir)
+
+   files 
+   {
+		"Game/Sources/**"
+   }
+
+   defines
 	{
-	   "%{prj.name}/src/**"
+		--"_CRT_SECURE_NO_WARNINGS",
+		--"_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS"
 	}
-	
-	includedirs
-	{
-	   "Engine/src",
-	   "%{IncludeDir.spdlog}",
-	   "%{IncludeDir.GLFW}",
-	   "%{IncludeDir.GLEW}",
-	   "%{IncludeDir.GLM}"
-	}
-	
-	libdirs
-	{
-	   "bin/Debug_windows_x86_64"
-	}
-	
-	links
-	{
-	   "Engine.lib"
-	}
-	
-	filter "system.windows"
-	   systemversion "latest"
-	
-	filter "configurations:Debug"
-	   defines { "GAME_DEBUG" }
-	   symbols "On"
-	
-	filter "configurations:Release"
-	   defines { "N_GAME_DEBUG" }
-	   optimize "on"
+
+   includedirs
+   {
+		"Engine/Sources",
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.GLEW}",
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.spdlog}",
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.imgui}",
+		"%{IncludeDir.Entt}"
+   }
+
+   libdirs
+   {
+		"bin/Debug_windows_x86_64"
+   }
+
+   links
+   {
+		"Engine.lib"
+   }
+
+   filter "system.windows"
+      systemversion "latest"
+
+   filter "configurations:Debug"
+      defines { "GAME_DEBUG" }
+      symbols "On"
+
+   filter "configurations:Release"
+      defines { "GAME_NDEBUG" }
+      optimize "on"

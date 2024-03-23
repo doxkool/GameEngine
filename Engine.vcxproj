@@ -55,8 +55,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;ENGINE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Engine\src;Engine\vendors\spdlog;Engine\vendors\GLFW\include;Engine\vendors\GLEW\include;Engine\vendors\stb_image;Engine\vendors\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>ENGINE_EXPORT;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS;ENGINE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>Engine\Sources;Vendors\GLFW\include;Vendors\GLEW\include;Vendors\glm;Vendors\spdlog;Vendors\stb_image;Vendors\imgui;Vendors\Entt;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -68,16 +68,16 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>Engine\vendors\GLFW\lib;Engine\vendors\GLEW\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3_mt.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>Vendors\GLFW\lib;Vendors\GLEW\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;N_ENGINE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Engine\src;Engine\vendors\spdlog;Engine\vendors\GLFW\include;Engine\vendors\GLEW\include;Engine\vendors\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>ENGINE_EXPORT;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS;ENGINE_NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>Engine\Sources;Vendors\GLFW\include;Vendors\GLEW\include;Vendors\glm;Vendors\spdlog;Vendors\stb_image;Vendors\imgui;Vendors\Entt;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -93,69 +93,67 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>Engine\vendors\GLFW\lib;Engine\vendors\GLEW\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3_mt.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>Vendors\GLFW\lib;Vendors\GLEW\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\src\Core\Input\KeyCodes.h" />
-    <ClInclude Include="Engine\src\Core\Input\MouseCodes.h" />
-    <ClInclude Include="Engine\src\Defines.h" />
-    <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGLVertexBuffer.h" />
-    <ClInclude Include="Engine\src\Renderer\Buffers\ElementBuffer.h" />
-    <ClInclude Include="Engine\src\Renderer\Camera\Camera.h" />
-    <ClInclude Include="Engine\src\Core\Application.h" />
-    <ClInclude Include="Engine\src\Core\Base.h" />
-    <ClInclude Include="Engine\src\Core\EntryPoint.h" />
-    <ClInclude Include="Engine\src\Core\Input\Input.h" />
-    <ClInclude Include="Engine\src\Core\Layer.h" />
-    <ClInclude Include="Engine\src\Core\LayerStack.h" />
-    <ClInclude Include="Engine\src\Core\Logger.h" />
-    <ClInclude Include="Engine\src\Renderer\Mesh.h" />
-    <ClInclude Include="Engine\src\Core\OSDetection.h" />
-    <ClInclude Include="Engine\src\Renderer\Texture.h" />
-    <ClInclude Include="Engine\src\Core\Time.h" />
-    <ClInclude Include="Engine\src\Core\Utilities\Utilities.h" />
-    <ClInclude Include="Engine\src\Core\Window.h" />
-    <ClInclude Include="Engine\src\Engine.h" />
-    <ClInclude Include="Engine\src\Platforms\OpenGL\OpenGL.h" />
-    <ClInclude Include="Engine\src\Platforms\Windows\WinWindow.h" />
-    <ClInclude Include="Engine\src\Renderer\Camera\PerspectiveCamera.h" />
-    <ClInclude Include="Engine\src\Renderer\Primitives.h" />
-    <ClInclude Include="Engine\src\Renderer\Renderer2D.h" />
-    <ClInclude Include="Engine\src\Renderer\RendererCMD.h" />
-    <ClInclude Include="Engine\src\Renderer\Shader.h" />
-    <ClInclude Include="Engine\src\Renderer\Model.h" />
-    <ClInclude Include="Engine\src\Renderer\VertexArray.h" />
-    <ClInclude Include="Engine\src\Renderer\Buffers\VertexBuffer.h" />
-    <ClInclude Include="Engine\src\Events\Event.h" />
-    <ClInclude Include="Engine\src\Renderer\Camera\OrthographicCamera.h" />
+    <ClInclude Include="Engine\Sources\Core\Base.h" />
+    <ClInclude Include="Engine\Sources\Core\EntryPoint.h" />
+    <ClInclude Include="Engine\Sources\Core\Instance.h" />
+    <ClInclude Include="Engine\Sources\Core\Logger.h" />
+    <ClInclude Include="Engine\Sources\Core\Primitive.h" />
+    <ClInclude Include="Engine\Sources\Core\TimeStep.h" />
+    <ClInclude Include="Engine\Sources\Core\Utilities.h" />
+    <ClInclude Include="Engine\Sources\Defines.h" />
+    <ClInclude Include="Engine\Sources\Engine.h" />
+    <ClInclude Include="Engine\Sources\Entities\Components.h" />
+    <ClInclude Include="Engine\Sources\Entities\Entities.h" />
+    <ClInclude Include="Engine\Sources\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="Engine\Sources\OpenGL\OpenGL.h" />
+    <ClInclude Include="Engine\Sources\OpenGL\OpenGLElementBuffer.h" />
+    <ClInclude Include="Engine\Sources\OpenGL\OpenGLIndexBuffer.h" />
+    <ClInclude Include="Engine\Sources\OpenGL\OpenGLInput.h" />
+    <ClInclude Include="Engine\Sources\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="Engine\Sources\OpenGL\OpenGLTexture.h" />
+    <ClInclude Include="Engine\Sources\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="Engine\Sources\OpenGL\OpenGLVertexBuffer.h" />
+    <ClInclude Include="Engine\Sources\OpenGL\OpenGLWindow.h" />
+    <ClInclude Include="Vendors\imgui\imconfig.h" />
+    <ClInclude Include="Vendors\imgui\imgui.h" />
+    <ClInclude Include="Vendors\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="Vendors\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="Vendors\imgui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="Vendors\imgui\imgui_internal.h" />
+    <ClInclude Include="Vendors\imgui\imstb_rectpack.h" />
+    <ClInclude Include="Vendors\imgui\imstb_textedit.h" />
+    <ClInclude Include="Vendors\imgui\imstb_truetype.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\src\Core\Utilities\Utilities.cpp" />
-    <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGLVertexArray.cpp" />
-    <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGLVertexBuffer.cpp" />
-    <ClCompile Include="Engine\src\Renderer\Buffers\ElementBuffer.cpp" />
-    <ClCompile Include="Engine\src\Core\Application.cpp" />
-    <ClCompile Include="Engine\src\Core\Input\Input.cpp" />
-    <ClCompile Include="Engine\src\Core\Layer.cpp" />
-    <ClCompile Include="Engine\src\Core\LayerStack.cpp" />
-    <ClCompile Include="Engine\src\Core\Logger.cpp" />
-    <ClCompile Include="Engine\src\Renderer\Mesh.cpp" />
-    <ClCompile Include="Engine\src\Renderer\Texture.cpp" />
-    <ClCompile Include="Engine\src\Core\Window.cpp" />
-    <ClCompile Include="Engine\src\Platforms\OpenGL\OpenGL.cpp" />
-    <ClCompile Include="Engine\src\Platforms\Windows\WinWindow.cpp" />
-    <ClCompile Include="Engine\src\Renderer\Camera\PerspectiveCamera.cpp" />
-    <ClCompile Include="Engine\src\Renderer\Renderer2D.cpp" />
-    <ClCompile Include="Engine\src\Renderer\RendererCMD.cpp" />
-    <ClCompile Include="Engine\src\Renderer\Shader.cpp" />
-    <ClCompile Include="Engine\src\Renderer\Model.cpp" />
-    <ClCompile Include="Engine\src\Renderer\VertexArray.cpp" />
-    <ClCompile Include="Engine\src\Renderer\Buffers\VertexBuffer.cpp" />
-    <ClCompile Include="Engine\src\Events\Event.cpp" />
-    <ClCompile Include="Engine\src\Renderer\Camera\OrthographicCamera.cpp" />
+    <ClCompile Include="Engine\Sources\Core\Instance.cpp" />
+    <ClCompile Include="Engine\Sources\Core\Logger.cpp" />
+    <ClCompile Include="Engine\Sources\Core\Utilities.cpp" />
+    <ClCompile Include="Engine\Sources\Entities\Entities.cpp" />
+    <ClCompile Include="Engine\Sources\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="Engine\Sources\OpenGL\OpenGL.cpp" />
+    <ClCompile Include="Engine\Sources\OpenGL\OpenGLElementBuffer.cpp" />
+    <ClCompile Include="Engine\Sources\OpenGL\OpenGLIndexBuffer.cpp" />
+    <ClCompile Include="Engine\Sources\OpenGL\OpenGLInput.cpp" />
+    <ClCompile Include="Engine\Sources\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="Engine\Sources\OpenGL\OpenGLTexture.cpp" />
+    <ClCompile Include="Engine\Sources\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="Engine\Sources\OpenGL\OpenGLVertexBuffer.cpp" />
+    <ClCompile Include="Engine\Sources\OpenGL\OpenGLWindow.cpp" />
+    <ClCompile Include="Vendors\imgui\imgui.cpp" />
+    <ClCompile Include="Vendors\imgui\imgui_demo.cpp" />
+    <ClCompile Include="Vendors\imgui\imgui_draw.cpp" />
+    <ClCompile Include="Vendors\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="Vendors\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="Vendors\imgui\imgui_tables.cpp" />
+    <ClCompile Include="Vendors\imgui\imgui_widgets.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Vendors\imgui\LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

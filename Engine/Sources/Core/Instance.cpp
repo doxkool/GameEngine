@@ -36,6 +36,18 @@ namespace Engine
 		Window.EnableVsync(1);
 	}
 
+	void Instance::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
+	}
+
+	void Instance::PushOverlay(Layer* layer)
+	{
+		m_LayerStack.PushOverlay(layer);
+		layer->OnAttach();
+	}
+
 	void Instance::Run()
 	{
 		TimeStep ts;

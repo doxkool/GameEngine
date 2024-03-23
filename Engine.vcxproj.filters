@@ -117,6 +117,10 @@
     <ClInclude Include="Vendors\imgui\imstb_truetype.h">
       <Filter>Vendors\imgui</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Sources\Core\Layer.h">
+      <Filter>Engine\Sources\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Sources\Core\LayerStack.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Sources\Core\Instance.cpp">
@@ -182,6 +186,10 @@
     <ClCompile Include="Vendors\imgui\imgui_widgets.cpp">
       <Filter>Vendors\imgui</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Sources\Core\Layer.cpp">
+      <Filter>Engine\Sources\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Sources\Core\LayerStack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Vendors\imgui\LICENSE.txt">

@@ -1,5 +1,7 @@
 #include "Engine.h"
 
+#include "Game.h"
+
 #include <Core/EntryPoint.h>
 
 class Game : public Engine::Instance
@@ -8,7 +10,7 @@ public:
 	Game(const Engine::InstanceSpec& spec)
 		: Engine::Instance(spec)
 	{
-		//PushLayer(new EditorLayer());
+		PushLayer(new Sandbox());
 	}
 
 	~Game()

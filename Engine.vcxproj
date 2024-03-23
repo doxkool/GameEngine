@@ -101,6 +101,7 @@
     <ClInclude Include="Engine\Sources\Core\Base.h" />
     <ClInclude Include="Engine\Sources\Core\EntryPoint.h" />
     <ClInclude Include="Engine\Sources\Core\Instance.h" />
+    <ClInclude Include="Engine\Sources\Core\LayerStack.h" />
     <ClInclude Include="Engine\Sources\Core\Logger.h" />
     <ClInclude Include="Engine\Sources\Core\Primitive.h" />
     <ClInclude Include="Engine\Sources\Core\TimeStep.h" />
@@ -119,6 +120,7 @@
     <ClInclude Include="Engine\Sources\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="Engine\Sources\OpenGL\OpenGLVertexBuffer.h" />
     <ClInclude Include="Engine\Sources\OpenGL\OpenGLWindow.h" />
+    <ClInclude Include="Engine\Sources\Core\Layer.h" />
     <ClInclude Include="Vendors\imgui\imconfig.h" />
     <ClInclude Include="Vendors\imgui\imgui.h" />
     <ClInclude Include="Vendors\imgui\imgui_impl_glfw.h" />
@@ -131,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Sources\Core\Instance.cpp" />
+    <ClCompile Include="Engine\Sources\Core\LayerStack.cpp" />
     <ClCompile Include="Engine\Sources\Core\Logger.cpp" />
     <ClCompile Include="Engine\Sources\Core\Utilities.cpp" />
     <ClCompile Include="Engine\Sources\Entities\Entities.cpp" />
@@ -144,6 +147,7 @@
     <ClCompile Include="Engine\Sources\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="Engine\Sources\OpenGL\OpenGLVertexBuffer.cpp" />
     <ClCompile Include="Engine\Sources\OpenGL\OpenGLWindow.cpp" />
+    <ClCompile Include="Engine\Sources\Core\Layer.cpp" />
     <ClCompile Include="Vendors\imgui\imgui.cpp" />
     <ClCompile Include="Vendors\imgui\imgui_demo.cpp" />
     <ClCompile Include="Vendors\imgui\imgui_draw.cpp" />

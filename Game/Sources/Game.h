@@ -2,7 +2,17 @@
 
 #include "Engine.h"
 
-namespace Game
+class Sandbox : public Engine::Layer
 {
+public:
+	Sandbox();
+	virtual ~Sandbox();
 
-}
+	virtual void OnAttach() override;
+	virtual void OnDetach() override;
+
+	virtual void OnUpdate(Engine::TimeStep ts) override;
+
+private:
+	
+};

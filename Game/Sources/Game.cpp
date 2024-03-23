@@ -1,14 +1,31 @@
 #include "Game.h"
 
 
-namespace Game
+Sandbox::Sandbox()
+	: Layer("Sandbox")
+{
+	Engine::LOG_INFO("Starting Sandbox...");
+}
+
+Sandbox::~Sandbox()
+{
+	//Engine::Renderer2D::Shutdown();
+}
+
+void Sandbox::OnAttach()
 {
 
 }
 
+void Sandbox::OnDetach()
+{
 
+}
 
+void Sandbox::OnUpdate(Engine::TimeStep ts)
+{
 
+}
 
 
 

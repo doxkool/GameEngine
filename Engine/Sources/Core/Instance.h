@@ -17,6 +17,8 @@
 
 #include "Core/Logger.h"
 #include "Core/Utilities.h"
+#include "Core/Layer.h"
+#include "Core/LayerStack.h"
 
 #include "Entities/Entities.h"
 
@@ -38,6 +40,9 @@ namespace Engine
 	public:
 		Instance(const InstanceSpec& specification);
 
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* layer);
+
 		void Run();
 
 		OpenGLWindow GetWindow();
@@ -54,10 +59,11 @@ namespace Engine
 	private:
 		InstanceSpec m_Specification;
 		static Instance* s_Instance;
+		LayerStack m_LayerStack;
+
 		Entities Entities;
 
 	};
 
-	// To be defined in CLIENT
 	Instance* CreateInstance(InstanceSpec);
 }

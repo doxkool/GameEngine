@@ -4,9 +4,10 @@
 #include "Core/Instance.h"
 #include "Core/Logger.h"
 #include "Core/Utilities.h"
+#include "Core/Layer.h"
+#include "Core/LayerStack.h"
 
 #include "OpenGL/OpenGL.h"
-
 #include "OpenGL/OpenGLVertexArray.h"
 #include "OpenGL/OpenGLVertexBuffer.h"
 #include "OpenGL/OpenGLIndexBuffer.h"

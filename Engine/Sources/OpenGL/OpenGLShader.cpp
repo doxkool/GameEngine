@@ -35,7 +35,7 @@ namespace Engine
 
 	OpenGLShader::OpenGLShader(const char* vertexShaderFile, const char* fragmentShaderFile)
 	{
-		if (vertexShaderFile == NULL && fragmentShaderFile == NULL)
+		if (vertexShaderFile != NULL && fragmentShaderFile != NULL)
 		{
 			std::string str_src;
 			const GLchar* src;
@@ -102,10 +102,10 @@ namespace Engine
 		Delete();
 	}
 
-	void OpenGLShader::LoadShader(const char* vertexShaderFile, const char* fragmentShaderFile)
-	{
-
-	}
+	//void OpenGLShader::LoadShader(const char* vertexShaderFile, const char* fragmentShaderFile)
+	//{
+	//
+	//}
 
 	// Activates the Shader Program
 	void OpenGLShader::Activate()
@@ -155,7 +155,7 @@ namespace Engine
 		glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, transpose, glm::value_ptr(value));
 	}
 
-	int OpenGLShader::GetID()
+	int OpenGLShader::GetID() const
 	{
 		return ID;
 	}

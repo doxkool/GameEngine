@@ -7,10 +7,10 @@ namespace Engine
 	class OpenGLShader
 	{
 	public:
-		OpenGLShader(const char* vertexShaderFile = NULL, const char* fragmentShaderFile = NULL);
+		OpenGLShader(const char* vertexShaderFile, const char* fragmentShaderFile);
 		~OpenGLShader();
 
-		void LoadShader(const char* vertexShaderFile, const char* fragmentShaderFile);
+		//void LoadShader(const char* vertexShaderFile, const char* fragmentShaderFile);
 		void Activate();
 		void Delete();
 
@@ -22,13 +22,13 @@ namespace Engine
 		void setMat3fv(glm::mat3 value, const GLchar* name, GLboolean transpose = GL_FALSE);
 		void setMat4fv(glm::mat4 value, const GLchar* name, GLboolean transpose = GL_FALSE);
 
-		int GetID();
+		int GetID() const;
 
 		static Ref<OpenGLShader> Create(const char* vertexShaderFile, const char* fragmentShaderFile);
 
+		uint32_t ID;
+
 	private:
 		std::string ReadShaderFile(const char* ShaderFile);
-
-		uint32_t ID;
 	};
 }

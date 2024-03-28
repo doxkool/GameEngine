@@ -1,6 +1,5 @@
 #include "Game.h"
 
-
 Sandbox::Sandbox()
 	: Layer("Sandbox")
 {
@@ -9,11 +8,13 @@ Sandbox::Sandbox()
 
 Sandbox::~Sandbox()
 {
-	//Engine::Renderer2D::Shutdown();
+	
 }
 
 void Sandbox::OnAttach()
 {
+	Engine::Instance instance = Engine::Instance::GetInstance();
+
 	Engine::ImGuiLayer::b_ShowStatistics = true;
 	Engine::ImGuiLayer::b_ShowDemoWindow = false;
 
@@ -28,9 +29,9 @@ void Sandbox::OnAttach()
 	Engine::Entities::AddComponent(player, Engine::mesh);
 	Engine::Entities::AddComponent(player, Engine::shader);
 
-	//Engine::Entities::SetTextureComponent(player, std::string("Assets/Textures/Default_Tex.jpg"));
-	//Engine::Entities::AddMeshComponent(player, playerVertex);
-	//Engine::Entities::AddShaderComponent(player, "Assets/Shaders/vertex_basic.glsl", "Assets/Shaders/fragment_basic.glsl");
+// ---------------------------------------------------------------------
+	
+	renderer2D.Init();
 }
 
 void Sandbox::OnDetach()
@@ -40,5 +41,5 @@ void Sandbox::OnDetach()
 
 void Sandbox::OnUpdate(Engine::TimeStep ts)
 {
-
+	renderer2D.Render();
 }

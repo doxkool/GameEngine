@@ -2,16 +2,16 @@
 
 namespace Engine
 {
-	Ref<OpenGLElementBuffer> OpenGLElementBuffer::Create(std::vector<GLuint>& indices)
+	Ref<OpenGLElementBuffer> OpenGLElementBuffer::Create(std::vector<unsigned int>& indices)
 	{
 		return CreateRef<OpenGLElementBuffer>(indices);
 	}
 
-	OpenGLElementBuffer::OpenGLElementBuffer(std::vector<GLuint>& indices)
+	OpenGLElementBuffer::OpenGLElementBuffer(std::vector<unsigned int>& indices)
 	{
 		glGenBuffers(1, &ID);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ID);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(GLuint), indices.data(), GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), indices.data(), GL_STATIC_DRAW);
 	}
 
 	OpenGLElementBuffer::~OpenGLElementBuffer()

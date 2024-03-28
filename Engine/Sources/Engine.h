@@ -17,6 +17,8 @@
 #include "OpenGL/OpenGLWindow.h"
 #include "OpenGL/OpenGLInput.h"
 
+#include "Renderer/Renderer2D.h"
+
 #include "ImGui/ImGuiLayer.h"
 
 #include "Entities/Entities.h"

@@ -45,6 +45,8 @@ namespace Engine
 
 		void Run();
 
+		static Instance& GetInstance() { return *s_Instance; }
+
 		OpenGLWindow GetWindow();
 		OpenGLInput GetInput() const;
 		Ref<OpenGLVertexArray> GetVAO();

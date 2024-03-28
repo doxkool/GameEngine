@@ -6,8 +6,9 @@ namespace Engine
 	{
 		for (Layer* layer : m_Layers)
 		{
-			layer->OnDetach();
-			delete layer;
+		// TODO : Cause issue when closing the game
+			//layer->OnDetach();
+			//delete layer;
 		}
 	}
 

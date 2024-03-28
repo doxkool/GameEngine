@@ -14,5 +14,6 @@ public:
 	virtual void OnUpdate(Engine::TimeStep ts) override;
 
 private:
+	Engine::Renderer2D renderer2D;
 	
 };

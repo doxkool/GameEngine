@@ -1,4 +1,4 @@
-#include "Instance.h"
+#include "Core/Instance.h"
 
 namespace Engine
 {
@@ -66,6 +66,9 @@ namespace Engine
 			// Update.
 			Window.Update();
 			Entities.OnUpdate(ts);
+
+			for (Layer* layer : m_LayerStack)
+				layer->OnUpdate(ts);
 
 			// Render
 			//Renderer2D::DrawQuadVT(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec2(1.f, 1.f), tex);

@@ -35,6 +35,8 @@ namespace Engine
 		PushOverlay(m_ImGuiLayer);
 
 		Window.EnableVsync(1);
+
+		renderer2D.Init();
 	}
 
 	void Instance::PushLayer(Layer* layer)
@@ -73,6 +75,8 @@ namespace Engine
 			// ImGui New Frame
 			ImGuiLayer::NewFrame();
 			ImGuiLayer::Render();
+
+			renderer2D.Render();
 
 			// Swap the Buffer
 			Window.SwapBuffer();

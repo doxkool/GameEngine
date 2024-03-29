@@ -22,6 +22,8 @@
 
 #include "Entities/Entities.h"
 
+#include "Renderer/Renderer2D.h"
+
 int main();
 
 namespace Engine
@@ -66,6 +68,8 @@ namespace Engine
 		ImGuiLayer* m_ImGuiLayer;
 
 		Entities Entities;
+
+		Renderer2D renderer2D;
 
 	};
 

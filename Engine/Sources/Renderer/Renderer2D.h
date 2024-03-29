@@ -2,8 +2,6 @@
 
 #include "Core/Base.h"
 
-#include "Core/Instance.h"
-
 #include "OpenGL/OpenGL.h"
 #include "OpenGL/OpenGLVertexArray.h"
 #include "OpenGL/OpenGLVertexBuffer.h"
@@ -27,10 +25,17 @@ namespace Engine
 		uint32_t MaxIndices = MaxQuads * 6;
 		uint32_t MaxTextureSlots = 32;
 
-		std::vector<Vertex>* QuadVertices = nullptr;
+		//std::vector<Vertex>* QuadVertices = nullptr;
 
-		std::vector<float> QuadVertex;
-		std::vector<unsigned int> QuadIndex;
+		std::vector<float> QuadVertices;
+		std::vector<unsigned int> QuadIndices;
+
+		Ref<OpenGLVertexArray> QuadVAO;
+		Ref<OpenGLVertexBuffer> QuadVBO;
+		Ref<OpenGLElementBuffer> QuadEBO;
+
+		Ref<OpenGLTexture> QuadTexture;
+		Ref<OpenGLShader> QuadShader;
 	};
 
 	class Renderer2D
@@ -45,11 +50,5 @@ namespace Engine
 
 		private:
 			Renderer2DData s_data;
-
-			Ref<OpenGLVertexArray> VAO;
-			Ref<OpenGLVertexBuffer> VBO;
-			Ref<OpenGLElementBuffer> EBO;
-
-			Ref<OpenGLShader> Shader;
 	};
 }

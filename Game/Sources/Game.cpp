@@ -31,7 +31,6 @@ void Sandbox::OnAttach()
 
 // ---------------------------------------------------------------------
 	
-	renderer2D.Init();
 }
 
 void Sandbox::OnDetach()
@@ -41,5 +40,5 @@ void Sandbox::OnDetach()
 
 void Sandbox::OnUpdate(Engine::TimeStep ts)
 {
-	renderer2D.Render();
+
 }

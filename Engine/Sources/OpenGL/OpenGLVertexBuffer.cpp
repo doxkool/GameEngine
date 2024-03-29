@@ -7,7 +7,7 @@ namespace Engine
 		return CreateRef<OpenGLVertexBuffer>(size);
 	}
 
-	Ref<OpenGLVertexBuffer> OpenGLVertexBuffer::Create(std::vector<glm::vec3>& vertices, uint32_t size)
+	Ref<OpenGLVertexBuffer> OpenGLVertexBuffer::Create(std::vector<float>& vertices, uint32_t size)
 	{
 		return CreateRef<OpenGLVertexBuffer>(vertices, size);
 	}
@@ -29,11 +29,11 @@ namespace Engine
 		glBufferData(GL_ARRAY_BUFFER, size, NULL, GL_STATIC_DRAW);
 	}
 
-	OpenGLVertexBuffer::OpenGLVertexBuffer(std::vector<glm::vec3>& vertices, uint32_t size)
+	OpenGLVertexBuffer::OpenGLVertexBuffer(std::vector<float>& vertices, uint32_t size)
 	{
 		glGenBuffers(1, &ID);
 		glBindBuffer(GL_ARRAY_BUFFER, ID);
-		glBufferData(GL_ARRAY_BUFFER, size, &vertices, GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
 	}
 
 	OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size)

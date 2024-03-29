@@ -1,7 +1,7 @@
 #include "Renderer/Renderer2D.h"
 
 // Set Quad vertex position
-float QuadVertex[] = {
+float QuadVertices[] = {
 	 0.5f,  0.5f, 0.0f,  // top right
 	 0.5f, -0.5f, 0.0f,  // bottom right
 	-0.5f, -0.5f, 0.0f,  // bottom left
@@ -17,18 +17,6 @@ namespace Engine
 {
 	void Renderer2D::Init()
 	{
-		uint32_t offset = 0;
-		for (size_t i = 0; i < (sizeof(QuadVertex) / sizeof(QuadVertex[0])) / 3; i++)
-		{
-			s_data.QuadVertex.push_back({ QuadVertex[i + 0 + offset], QuadVertex[i + 1 + offset], QuadVertex[i + 2 + offset] });
-			offset += 2;
-		}
-
-		for (size_t i = 0; i < sizeof(QuadIndices) / sizeof(QuadIndices[0]); i++)
-		{
-			s_data.QuadIndices.push_back(QuadIndices[i]);
-		}
-
 		std::vector<unsigned int> indices;
 		for (size_t i = 0; i < sizeof(QuadIndices); i++)
 		{
@@ -48,9 +36,9 @@ namespace Engine
 		VAO = OpenGLVertexArray::Create();
 		VAO->Bind();
 		//VBO = OpenGLVertexBuffer::Create(s_data.QuadVertex);
-		VBO = OpenGLVertexBuffer::Create(QuadVertex, sizeof(QuadVertex));
+		VBO = OpenGLVertexBuffer::Create(QuadVertices, sizeof(QuadVertices));
 		//EBO = OpenGLElementBuffer::Create(s_data.QuadIndices);
-		EBO = OpenGLElementBuffer::Create(QuadIndices);
+		EBO = OpenGLElementBuffer::Create(indices);
 
 		// Set position
 		VAO->LinkAttribF(0, 3, 3 * sizeof(float), (void*)0);

@@ -16,9 +16,9 @@ namespace Engine
 	{
 	}
 
-	void OpenGLVertexArray::LinkAttrib(GLuint layout, GLuint numComponents, GLenum type, GLsizei stride, void* offset)
+	void OpenGLVertexArray::LinkAttribF(GLuint layout, GLuint numComponents, GLsizei stride, void* offset)
 	{
-		glVertexAttribPointer(layout, numComponents, type, GL_FALSE, stride, offset);
+		glVertexAttribPointer(layout, numComponents, GL_FLOAT, GL_FALSE, stride, offset);
 		glEnableVertexAttribArray(layout);
 	}
 

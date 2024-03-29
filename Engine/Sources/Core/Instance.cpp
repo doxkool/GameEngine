@@ -70,10 +70,6 @@ namespace Engine
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate(ts);
 
-			// Render
-			//Renderer2D::DrawQuadVT(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec2(1.f, 1.f), tex);
-			//Renderer2D::Render();
-
 			// ImGui New Frame
 			ImGuiLayer::NewFrame();
 			ImGuiLayer::Render();

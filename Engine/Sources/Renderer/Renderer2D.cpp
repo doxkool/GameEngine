@@ -1,31 +1,32 @@
 #include "Renderer/Renderer2D.h"
 
+// Set Quad vertex position
+float QuadVertex[] = {
+	 0.5f,  0.5f, 0.0f,  // top right
+	 0.5f, -0.5f, 0.0f,  // bottom right
+	-0.5f, -0.5f, 0.0f,  // bottom left
+	-0.5f,  0.5f, 0.0f   // top left 
+};
+
+unsigned int QuadIndices[] = {
+			0, 1, 3,  // first Triangle
+			1, 2, 3   // second Triangle
+};
+
 namespace Engine
 {
-	float QuadVertices[] = {
-		 0.5f,  0.5f, 0.0f,  // top right
-		 0.5f, -0.5f, 0.0f,  // bottom right
-		-0.5f, -0.5f, 0.0f,  // bottom left
-		-0.5f,  0.5f, 0.0f   // top left 
-	};
-
-	float QuadIndices[] = {
-		0, 1, 3,  // first Triangle
-		1, 2, 3   // second Triangle
-	};
-
 	void Renderer2D::Init()
 	{
-		std::vector<float> vertices;
-		for (size_t i = 0; i < sizeof(QuadVertices); i++)
+		uint32_t offset = 0;
+		for (size_t i = 0; i < (sizeof(QuadVertex) / sizeof(QuadVertex[0])) / 3; i++)
 		{
-			vertices.push_back(QuadVertices[i]);
+			s_data.QuadVertex.push_back({ QuadVertex[i + 0 + offset], QuadVertex[i + 1 + offset], QuadVertex[i + 2 + offset] });
+			offset += 2;
 		}
 
-		std::vector<unsigned int> indices;
-		for (size_t i = 0; i < sizeof(QuadIndices); i++)
+		for (size_t i = 0; i < sizeof(QuadIndices) / sizeof(QuadIndices[0]); i++)
 		{
-			indices.push_back(QuadIndices[i]);
+			s_data.QuadIndices.push_back(QuadIndices[i]);
 		}
 
 		Instance instance = Instance::GetInstance();
@@ -40,15 +41,17 @@ namespace Engine
 
 		VAO = OpenGLVertexArray::Create();
 		VAO->Bind();
-		VBO = OpenGLVertexBuffer::Create(QuadVertices, sizeof(QuadVertices));
-		EBO = OpenGLElementBuffer::Create(indices);
+		//VBO = OpenGLVertexBuffer::Create(s_data.QuadVertex);
+		VBO = OpenGLVertexBuffer::Create(QuadVertex);
+		//EBO = OpenGLElementBuffer::Create(s_data.QuadIndices);
+		EBO = OpenGLElementBuffer::Create(QuadIndices);
 
 		// Set position
-		VAO->LinkAttrib(0, 3, GL_FLOAT, 3 * sizeof(float), (void*)0);
+		VAO->LinkAttribF(0, 3, 3 * sizeof(float), (void*)0);
 		// Set color
-		VAO->LinkAttrib(1, 3, GL_FLOAT, sizeof(Vertex), (void*)(3 * sizeof(float)));
+		//VAO->LinkAttribF(1, 3, sizeof(Vertex), (void*)(3 * sizeof(float)));
 		// Set texCoord
-		VAO->LinkAttrib(2, 2, GL_FLOAT, sizeof(Vertex), (void*)(6 * sizeof(float)));
+		//VAO->LinkAttribF(2, 2, sizeof(Vertex), (void*)(6 * sizeof(float)));
 
 		VBO->Unbind();
 		VAO->Unbind();
@@ -73,7 +76,7 @@ namespace Engine
 	{
 		Shader->Activate();
 		VAO->Bind();
-
-		glDrawElements(GL_TRIANGLES, sizeof(QuadIndices), GL_UNSIGNED_INT, 0);
+		//sizeof(QuadIndices)
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 	}
 }

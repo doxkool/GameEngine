@@ -29,7 +29,7 @@ namespace Engine
 
 		std::vector<Vertex>* QuadVertices = nullptr;
 
-		std::vector<glm::vec3> QuadVertexPositions;
+		std::vector<glm::vec3> QuadVertex;
 		std::vector<unsigned int> QuadIndices;
 	};
 

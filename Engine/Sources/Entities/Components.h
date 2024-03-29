@@ -96,13 +96,13 @@ namespace Engine
 			VBO->Bind();
 
 			// Links VBO Position attributes to VAO
-			VAO->LinkAttrib(0, 3, GL_FLOAT, sizeof(Vertex), (void*)0);
+			VAO->LinkAttribF(0, 3, sizeof(Vertex), (void*)0);
 			// Links VBO Color attributes to VAO
-			VAO->LinkAttrib(1, 3, GL_FLOAT, sizeof(Vertex), (void*)(3 * sizeof(float)));
+			VAO->LinkAttribF(1, 3, sizeof(Vertex), (void*)(3 * sizeof(float)));
 			// Links VBO Texcoord attributes to VAO
-			VAO->LinkAttrib(2, 2, GL_FLOAT, sizeof(Vertex), (void*)(6 * sizeof(float)));
+			VAO->LinkAttribF(2, 2, sizeof(Vertex), (void*)(6 * sizeof(float)));
 			// Links VBO Normal attributes to VAO
-			VAO->LinkAttrib(3, 3, GL_FLOAT, sizeof(Vertex), (void*)(9 * sizeof(float)));
+			VAO->LinkAttribF(3, 3, sizeof(Vertex), (void*)(9 * sizeof(float)));
 
 			VAO->Unbind();
 			VBO->Unbind();

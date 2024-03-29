@@ -21,7 +21,7 @@ namespace Engine
 		~OpenGLVertexArray();
 
 		// Links a VBO Attribute such as a position or color to the VAO
-		void LinkAttrib(GLuint layout, GLuint numComponents, GLenum type, GLsizei stride, void* offset);
+		void LinkAttribF(GLuint layout, GLuint numComponents, GLsizei stride, void* offset);
 
 		void Bind();
 		void Unbind();

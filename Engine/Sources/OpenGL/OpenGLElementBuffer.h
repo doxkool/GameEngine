@@ -8,6 +8,7 @@ namespace Engine
 	{
 	public:
 		OpenGLElementBuffer(std::vector<unsigned int>& indices);
+		OpenGLElementBuffer(unsigned int* indices);
 		~OpenGLElementBuffer();
 
 		// Binds the EBO
@@ -16,6 +17,7 @@ namespace Engine
 		void Unbind();
 
 		static Ref<OpenGLElementBuffer> Create(std::vector<unsigned int>& indices);
+		static Ref<OpenGLElementBuffer> Create(unsigned int* indices);
 
 	private:
 		// ID reference of Elements Buffer Object

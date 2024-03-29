@@ -9,8 +9,8 @@ float QuadVertex[] = {
 };
 
 unsigned int QuadIndices[] = {
-			0, 1, 3,  // first Triangle
-			1, 2, 3   // second Triangle
+	0, 1, 3,  // first Triangle
+	1, 2, 3   // second Triangle
 };
 
 namespace Engine
@@ -29,6 +29,12 @@ namespace Engine
 			s_data.QuadIndices.push_back(QuadIndices[i]);
 		}
 
+		std::vector<unsigned int> indices;
+		for (size_t i = 0; i < sizeof(QuadIndices); i++)
+		{
+			indices.push_back(QuadIndices[i]);
+		}
+
 		Instance instance = Instance::GetInstance();
 
 		VAO = instance.GetVAO();
@@ -42,7 +48,7 @@ namespace Engine
 		VAO = OpenGLVertexArray::Create();
 		VAO->Bind();
 		//VBO = OpenGLVertexBuffer::Create(s_data.QuadVertex);
-		VBO = OpenGLVertexBuffer::Create(QuadVertex);
+		VBO = OpenGLVertexBuffer::Create(QuadVertex, sizeof(QuadVertex));
 		//EBO = OpenGLElementBuffer::Create(s_data.QuadIndices);
 		EBO = OpenGLElementBuffer::Create(QuadIndices);
 
@@ -77,6 +83,6 @@ namespace Engine
 		Shader->Activate();
 		VAO->Bind();
 		//sizeof(QuadIndices)
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		glDrawElements(GL_TRIANGLES, sizeof(QuadIndices), GL_UNSIGNED_INT, 0);
 	}
 }

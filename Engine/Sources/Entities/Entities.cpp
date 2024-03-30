@@ -11,7 +11,7 @@ namespace Engine
 		{
 			auto& [transform, sprite] = group.get<TransformComponent, Sprite2DComponent>(entity);
 
-			//model.LoadMesh(mesh, { 0.f, 0.f, 0.f }, { 0.f, 0.f, 0.f }, { 1.f, 1.f, 1.f }, m_Registry.get<Sprite2DComponent>(entity).texture);
+			Renderer2D::DrawQuad(transform.Transform);
 		}
 	}
 
@@ -83,16 +83,16 @@ namespace Engine
 			break;
 		case mesh:
 
-			if (m_Registry.any_of<MeshComponent>(entity))
-			{
-				LOG_ERROR("The entity '{}' already have a Mesh component!", m_Registry.get<TagComponent>(entity).Tag);
-				break;
-			}
-
-			Vertex ver;
-			m_Registry.emplace<MeshComponent>(entity, ver);
-
-			LOG_DEBUG("Mesh component added to : '{}'", m_Registry.get<TagComponent>(entity).Tag);
+			//if (m_Registry.any_of<MeshComponent>(entity))
+			//{
+			//	LOG_ERROR("The entity '{}' already have a Mesh component!", m_Registry.get<TagComponent>(entity).Tag);
+			//	break;
+			//}
+			//
+			//Vertex ver;
+			//m_Registry.emplace<MeshComponent>(entity, ver);
+			//
+			//LOG_DEBUG("Mesh component added to : '{}'", m_Registry.get<TagComponent>(entity).Tag);
 			break;
 		case shader:
 
@@ -119,10 +119,10 @@ namespace Engine
 		LOG_DEBUG("Texture component added to : '{}'");
 	}
 
-	void Entities::SetMeshComponent(entt::entity entity, Vertex& vertex)
-	{
-		m_Registry.emplace<MeshComponent>(entity, vertex);
-	}
+	//void Entities::SetMeshComponent(entt::entity entity, Vertex& vertex)
+	//{
+	//	//m_Registry.emplace<MeshComponent>(entity, vertex);
+	//}
 
 	void Entities::SetShaderComponent(entt::entity entity, const char* vertexShaderFile, const char* fragmentShaderFile)
 	{

@@ -36,7 +36,7 @@ namespace Engine
 
 		Window.EnableVsync(1);
 
-		renderer2D.Init();
+		Renderer2D::Init();
 	}
 
 	void Instance::PushLayer(Layer* layer)
@@ -67,7 +67,7 @@ namespace Engine
 
 			// Update.
 			Window.Update();
-			Entities.OnUpdate(ts);
+			Entities::OnUpdate(ts);
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate(ts);
@@ -76,7 +76,7 @@ namespace Engine
 			ImGuiLayer::NewFrame();
 			ImGuiLayer::Render();
 
-			renderer2D.Render();
+			Renderer2D::Render();
 
 			// Swap the Buffer
 			Window.SwapBuffer();

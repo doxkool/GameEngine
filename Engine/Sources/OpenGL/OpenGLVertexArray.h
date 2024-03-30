@@ -18,8 +18,11 @@ namespace Engine
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
 
+		virtual const Ref<OpenGLIndexBuffer>& GetIndexBuffer() const { return m_IndexBuffer; }
+
 	private:
 		uint32_t ID;
 
+		Ref<OpenGLIndexBuffer> m_IndexBuffer;
 	};
 }

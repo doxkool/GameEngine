@@ -58,7 +58,7 @@ namespace Engine
 		//Ref<OpenGLShader> GetShader();
 		//Ref<OpenGLTexture> GetTexture();
 
-		Entities& GetEntities() { return Entities; }
+		//Entities& GetEntities() { return Entities; }
 
 	private:
 		InstanceSpec m_Specification;
@@ -66,11 +66,6 @@ namespace Engine
 		LayerStack m_LayerStack;
 
 		ImGuiLayer* m_ImGuiLayer;
-
-		Entities Entities;
-
-		Renderer2D renderer2D;
-
 	};
 
 	Instance* CreateInstance(InstanceSpec);

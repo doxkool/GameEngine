@@ -81,34 +81,34 @@ namespace Engine
 		}
 	};
 
-	struct MeshComponent
-	{
-		Ref<VertexArray> VAO;
-		Ref<VertexBuffer> VBO;
-
-		MeshComponent() = default;
-		MeshComponent(const MeshComponent&) = default;
-		MeshComponent(Vertex& vertex)
-		{
-			VAO = VertexArray::Create();
-			VBO = VertexBuffer::Create(sizeof(vertex));
-
-			VAO->Bind();
-			VBO->Bind();
-
-			// Links VBO Position attributes to VAO
-			VAO->LinkAttribF(0, 3, sizeof(Vertex), (void*)0);
-			// Links VBO Color attributes to VAO
-			VAO->LinkAttribF(1, 3, sizeof(Vertex), (void*)(3 * sizeof(float)));
-			// Links VBO Texcoord attributes to VAO
-			VAO->LinkAttribF(2, 2, sizeof(Vertex), (void*)(6 * sizeof(float)));
-			// Links VBO Normal attributes to VAO
-			VAO->LinkAttribF(3, 3, sizeof(Vertex), (void*)(9 * sizeof(float)));
-
-			VAO->Unbind();
-			VBO->Unbind();
-		}
-	};
+	//struct MeshComponent
+	//{
+	//	Ref<VertexArray> VAO;
+	//	Ref<VertexBuffer> VBO;
+	//
+	//	MeshComponent() = default;
+	//	MeshComponent(const MeshComponent&) = default;
+	//	MeshComponent(Vertex& vertex)
+	//	{
+	//		VAO = VertexArray::Create();
+	//		VBO = VertexBuffer::Create(sizeof(vertex));
+	//
+	//		VAO->Bind();
+	//		VBO->Bind();
+	//
+	//		// Links VBO Position attributes to VAO
+	//		VAO->LinkAttribF(0, 3, sizeof(Vertex), (void*)0);
+	//		// Links VBO Color attributes to VAO
+	//		VAO->LinkAttribF(1, 3, sizeof(Vertex), (void*)(3 * sizeof(float)));
+	//		// Links VBO Texcoord attributes to VAO
+	//		VAO->LinkAttribF(2, 2, sizeof(Vertex), (void*)(6 * sizeof(float)));
+	//		// Links VBO Normal attributes to VAO
+	//		VAO->LinkAttribF(3, 3, sizeof(Vertex), (void*)(9 * sizeof(float)));
+	//
+	//		VAO->Unbind();
+	//		VBO->Unbind();
+	//	}
+	//};
 
 	struct ShaderComponent
 	{

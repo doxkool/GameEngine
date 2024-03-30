@@ -9,7 +9,10 @@
 	- [ ] Abstraction layer
 - [ ] OpenGL Renderer
 	- [ ] 2D Renderer
-		- [ ] Quad  (Ongoing)
+		- [ ] Primitives
+			- [ ] Quad  (Ongoing)
+			- [ ] Line
+			- [ ] Circle
 	- [ ] 3D Renderer
 - [ ] Model loading
 	  - [ ] OBJ support

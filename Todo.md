@@ -10,7 +10,7 @@
 - [ ] OpenGL Renderer
 	- [ ] 2D Renderer
 		- [ ] Quad  (Ongoing)
-		- [ ] - [ ] 3D Renderer
+	- [ ] 3D Renderer
 - [ ] Model loading
 	  - [ ] OBJ support
 	  - [ ] GLTF support

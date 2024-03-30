@@ -4,12 +4,12 @@ namespace Engine
 {
 	OpenGLWindow Window;
 	const OpenGLInput Input;
-	Ref<OpenGLVertexArray> VAO;
-	Ref<OpenGLVertexBuffer> VBO;
-	Ref<OpenGLElementBuffer> EBO;
-	Ref<OpenGLIndexBuffer> IBO;
-	Ref<OpenGLShader> Shader;
-	Ref<OpenGLTexture> Texture;
+	//Ref<VertexArray> VAO;
+	//Ref<VertexBuffer> VBO;
+	//Ref<OpenGLElementBuffer> EBO;
+	//Ref<OpenGLIndexBuffer> IBO;
+	//Ref<OpenGLShader> Shader;
+	//Ref<OpenGLTexture> Texture;
 
 	Instance* Instance::s_Instance = nullptr;
 
@@ -88,10 +88,10 @@ namespace Engine
 
 	OpenGLWindow Instance::GetWindow() { return Window; }
 	OpenGLInput Instance::GetInput() const { return Input; }
-	Ref<OpenGLVertexArray> Instance::GetVAO() { return VAO; }
-	Ref<OpenGLVertexBuffer> Instance::GetVBO() { return VBO; }
-	Ref<OpenGLElementBuffer> Instance::GetEBO() { return EBO; }
-	Ref<OpenGLIndexBuffer> Instance::GetIBO() { return IBO; }
-	Ref<OpenGLShader> Instance::GetShader() { return Shader; }
-	Ref<OpenGLTexture> Instance::GetTexture() { return Texture; }
+	//Ref<VertexArray> Instance::GetVAO() { return VAO; }
+	//Ref<VertexBuffer> Instance::GetVBO() { return VBO; }
+	//Ref<OpenGLElementBuffer> Instance::GetEBO() { return EBO; }
+	//Ref<OpenGLIndexBuffer> Instance::GetIBO() { return IBO; }
+	//Ref<OpenGLShader> Instance::GetShader() { return Shader; }
+	//Ref<OpenGLTexture> Instance::GetTexture() { return Texture; }
 }

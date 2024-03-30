@@ -4,12 +4,12 @@
 
 #include "OpenGL/OpenGL.h"
 
-#include "OpenGL/OpenGLVertexArray.h"
-#include "OpenGL/OpenGLVertexBuffer.h"
-#include "OpenGL/OpenGLIndexBuffer.h"
-#include "OpenGL/OpenGLElementBuffer.h"
-#include "OpenGL/OpenGLTexture.h"
-#include "OpenGL/OpenGLShader.h"
+//#include "OpenGL/VertexArray.h"
+//#include "OpenGL/VertexBuffer.h"
+//#include "OpenGL/OpenGLIndexBuffer.h"
+//#include "OpenGL/OpenGLElementBuffer.h"
+//#include "OpenGL/OpenGLTexture.h"
+//#include "OpenGL/OpenGLShader.h"
 #include "OpenGL/OpenGLWindow.h"
 #include "OpenGL/OpenGLInput.h"
 
@@ -51,12 +51,12 @@ namespace Engine
 
 		OpenGLWindow GetWindow();
 		OpenGLInput GetInput() const;
-		Ref<OpenGLVertexArray> GetVAO();
-		Ref<OpenGLVertexBuffer> GetVBO();
-		Ref<OpenGLElementBuffer> GetEBO();
-		Ref<OpenGLIndexBuffer> GetIBO();
-		Ref<OpenGLShader> GetShader();
-		Ref<OpenGLTexture> GetTexture();
+		//Ref<VertexArray> GetVAO();
+		//Ref<VertexBuffer> GetVBO();
+		//Ref<OpenGLElementBuffer> GetEBO();
+		//Ref<OpenGLIndexBuffer> GetIBO();
+		//Ref<OpenGLShader> GetShader();
+		//Ref<OpenGLTexture> GetTexture();
 
 		Entities& GetEntities() { return Entities; }
 

@@ -41,4 +41,10 @@ namespace Engine
 		m_FrameBuffer_Width = FrameBuffer_Width;
 		m_FrameBuffer_Height = FrameBuffer_Height;
 	}
+
+	//void OpenGL::Render(const Ref<OpenGLVertexArray>& VAO, uint32_t indexCount)
+	//{
+	//	VAO->Bind();
+	//	glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
+	//}
 }

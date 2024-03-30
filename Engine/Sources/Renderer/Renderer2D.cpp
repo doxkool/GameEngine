@@ -19,49 +19,44 @@ namespace Engine
 
 	void Renderer2D::Init()
 	{
-	// Pushing the Quad vertices.
+		SetupQuad();
+	}
+
+	void Renderer2D::SetupQuad()
+	{
+		// Pushing the Quad vertices.
 		for (size_t i = 0; i < sizeof(QuadVertices); i++)
 		{
 			s_data.QuadVertices.push_back(QuadVertices[i]);
 		}
 
-	// Pushing the Quad indices.
+		// Pushing the Quad indices.
 		for (size_t i = 0; i < sizeof(QuadIndices); i++)
 		{
 			s_data.QuadIndices.push_back(QuadIndices[i]);
 		}
 
-	// Getting the instance and then getting the VAO, VBO, EBO, Texture and Shader references.
-		Instance instance = Instance::GetInstance();
-
-		s_data.QuadVAO = instance.GetVAO();
-		s_data.QuadVBO = instance.GetVBO();
-		s_data.QuadEBO = instance.GetEBO();
-
-		s_data.QuadTexture = instance.GetTexture();
-		s_data.QuadShader = instance.GetShader();
-
-	// Creating basic shader.
+		// Creating basic shader.
 		s_data.QuadShader = OpenGLShader::Create("Game/Assets/Shaders/vertex_basic.glsl", "Game/Assets/Shaders/fragment_basic.glsl");
 
-	// Creating default texture.
+		// Creating default texture.
 
-	// Creating VAO and binding it.
-		s_data.QuadVAO = OpenGLVertexArray::Create();
+		// Creating VAO and binding it.
+		s_data.QuadVAO = VertexArray::Create();
 		s_data.QuadVAO->Bind();
 
-	// Creating the VBO and EBO.
-		s_data.QuadVBO = OpenGLVertexBuffer::Create(s_data.QuadVertices, sizeof(s_data.QuadVertices));
-		s_data.QuadEBO = OpenGLElementBuffer::Create(s_data.QuadIndices);
+		// Creating the VBO and EBO.
+		s_data.QuadVBO = VertexBuffer::Create(s_data.QuadVertices, sizeof(s_data.QuadVertices));
+		s_data.QuadEBO = ElementBuffer::Create(s_data.QuadIndices);
 
-	// Linking the Quad position to the shader.
+		// Linking the Quad position to the shader.
 		s_data.QuadVAO->LinkAttribF(0, 3, 3 * sizeof(float), (void*)0);
-	// Linking the Quad color to the shader.
-		//s_data.QuadVAO->LinkAttribF(1, 3, sizeof(Vertex), (void*)(3 * sizeof(float)));
-	// Linking the Quad TexCoord to the shader.
-		//s_data.QuadVAO->LinkAttribF(2, 2, sizeof(Vertex), (void*)(6 * sizeof(float)));
+		// Linking the Quad color to the shader.
+			//s_data.QuadVAO->LinkAttribF(1, 3, sizeof(Vertex), (void*)(3 * sizeof(float)));
+		// Linking the Quad TexCoord to the shader.
+			//s_data.QuadVAO->LinkAttribF(2, 2, sizeof(Vertex), (void*)(6 * sizeof(float)));
 
-	// Unbinding VAO and VBO.
+		// Unbinding VAO and VBO.
 		s_data.QuadVAO->Unbind();
 		s_data.QuadVBO->Unbind();
 	}
@@ -84,8 +79,10 @@ namespace Engine
 	void Renderer2D::Render()
 	{
 		s_data.QuadShader->Activate();
-		s_data.QuadVAO->Bind();
 
+		s_data.QuadVAO->Bind();
 		glDrawElements(GL_TRIANGLES, sizeof(s_data.QuadIndices), GL_UNSIGNED_INT, 0);
+		
+		//OpenGL::Render(s_data.QuadVAO, sizeof(s_data.QuadIndices));
 	}
 }

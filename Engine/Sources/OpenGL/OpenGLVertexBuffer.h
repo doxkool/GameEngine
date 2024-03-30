@@ -2,24 +2,22 @@
 
 #include "OpenGL/OpenGL.h"
 
+#include "Renderer/VertexBuffer.h"
+
 namespace Engine
 {
-	class  OpenGLVertexBuffer
+	class  OpenGLVertexBuffer : public VertexBuffer
 	{
 	public:
 		OpenGLVertexBuffer(uint32_t size);
 		OpenGLVertexBuffer(std::vector<float>& vertices, uint32_t size);
 		OpenGLVertexBuffer(float* vertices, uint32_t size);
-		~OpenGLVertexBuffer();
+		virtual ~OpenGLVertexBuffer();
 
-		void Bind();
-		void Unbind();
+		virtual void Bind() const override;
+		virtual void Unbind() const override;
 
-		void SetData(const void* data, uint32_t size);
-
-		static Ref<OpenGLVertexBuffer> Create(uint32_t size);
-		static Ref<OpenGLVertexBuffer> Create(std::vector<float>& vertices, uint32_t size);
-		static Ref<OpenGLVertexBuffer> Create(float* vertices, uint32_t size);
+		virtual void SetData(const void* data, uint32_t size)override;
 
 	private:
 		uint32_t ID;

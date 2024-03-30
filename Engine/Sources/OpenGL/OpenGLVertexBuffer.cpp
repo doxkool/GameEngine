@@ -2,21 +2,6 @@
 
 namespace Engine
 {
-	Ref<OpenGLVertexBuffer> OpenGLVertexBuffer::Create(uint32_t size)
-	{
-		return CreateRef<OpenGLVertexBuffer>(size);
-	}
-
-	Ref<OpenGLVertexBuffer> OpenGLVertexBuffer::Create(std::vector<float>& vertices, uint32_t size)
-	{
-		return CreateRef<OpenGLVertexBuffer>(vertices, size);
-	}
-
-	Ref<OpenGLVertexBuffer> OpenGLVertexBuffer::Create(float* vertices, uint32_t size)
-	{
-		return CreateRef<OpenGLVertexBuffer>(vertices, size);
-	}
-
 	OpenGLVertexBuffer::~OpenGLVertexBuffer()
 	{
 		glDeleteBuffers(1, &ID);
@@ -43,12 +28,12 @@ namespace Engine
 		glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
 	}
 
-	void OpenGLVertexBuffer::Bind()
+	void OpenGLVertexBuffer::Bind() const
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, ID);
 	}
 
-	void OpenGLVertexBuffer::Unbind()
+	void OpenGLVertexBuffer::Unbind() const
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}

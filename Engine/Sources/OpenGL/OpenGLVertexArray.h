@@ -1,35 +1,22 @@
 #pragma once
 
-#include "Core/Base.h"
-
-#include "OpenGL/OpenGL.h"
+#include "Renderer/VertexArray.h"
 
 #include <glm.hpp>
 
 namespace Engine
 {
-	struct Vertex {
-		glm::vec3 position;
-		glm::vec3 color;
-		glm::vec2 texCoords;
-	};
-
-	class OpenGLVertexArray
+	class OpenGLVertexArray : public VertexArray
 	{
 	public:
 		OpenGLVertexArray();
-		~OpenGLVertexArray();
+		virtual ~OpenGLVertexArray();
 
 		// Links a VBO Attribute such as a position or color to the VAO
-		void LinkAttribF(GLuint layout, GLuint numComponents, GLsizei stride, void* offset);
+		virtual void LinkAttribF(GLuint layout, GLuint numComponents, GLsizei stride, void* offset) override;
 
-		void Bind();
-		void Unbind();
-
-		//void AddVertexBuffer(OpenGLVertexBuffer& VBO);
-		//void SetIndexBuffer(const OpenGLIndexBuffer& indexBuffer);
-
-		static Ref<OpenGLVertexArray> Create();
+		virtual void Bind() const override;
+		virtual void Unbind() const override;
 
 	private:
 		uint32_t ID;

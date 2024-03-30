@@ -2,11 +2,6 @@
 
 namespace Engine
 {
-	Ref<OpenGLVertexArray> OpenGLVertexArray::Create()
-	{
-		return CreateRef<OpenGLVertexArray>();
-	}
-
 	OpenGLVertexArray::OpenGLVertexArray()
 	{
 		glCreateVertexArrays(1, &ID);
@@ -22,12 +17,12 @@ namespace Engine
 		glEnableVertexAttribArray(layout);
 	}
 
-	void OpenGLVertexArray::Bind()
+	void OpenGLVertexArray::Bind() const
 	{
 		glBindVertexArray(ID);
 	}
 
-	void OpenGLVertexArray::Unbind()
+	void OpenGLVertexArray::Unbind() const
 	{
 		glBindVertexArray(0);
 	}

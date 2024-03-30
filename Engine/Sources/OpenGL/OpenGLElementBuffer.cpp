@@ -2,16 +2,6 @@
 
 namespace Engine
 {
-	Ref<OpenGLElementBuffer> OpenGLElementBuffer::Create(std::vector<unsigned int>& indices)
-	{
-		return CreateRef<OpenGLElementBuffer>(indices);
-	}
-
-	//Ref<OpenGLElementBuffer> OpenGLElementBuffer::Create(unsigned int* indices)
-	//{
-	//	return CreateRef<OpenGLElementBuffer>(indices);
-	//}
-
 	OpenGLElementBuffer::OpenGLElementBuffer(std::vector<unsigned int>& indices)
 	{
 		glGenBuffers(1, &ID);
@@ -19,26 +9,19 @@ namespace Engine
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), indices.data(), GL_STATIC_DRAW);
 	}
 
-	//OpenGLElementBuffer::OpenGLElementBuffer(unsigned int* indices)
-	//{
-	//	glGenBuffers(1, &ID);
-	//	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ID);
-	//	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-	//}
-
 	OpenGLElementBuffer::~OpenGLElementBuffer()
 	{
 		glDeleteBuffers(1, &ID);
 	}
 
 	// Binds the EBO
-	void OpenGLElementBuffer::Bind()
+	void OpenGLElementBuffer::Bind() const
 	{
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ID);
 	}
 
 	// Unbinds the EBO
-	void OpenGLElementBuffer::Unbind()
+	void OpenGLElementBuffer::Unbind() const
 	{
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}

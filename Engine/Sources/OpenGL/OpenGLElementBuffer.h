@@ -1,23 +1,20 @@
 #pragma once
 
-#include "OpenGL/OpenGL.h"
+#include "Renderer/ElementBuffer.h"
 
 namespace Engine
 {
-	class OpenGLElementBuffer
+	class OpenGLElementBuffer : public ElementBuffer
 	{
 	public:
 		OpenGLElementBuffer(std::vector<unsigned int>& indices);
 		//OpenGLElementBuffer(unsigned int* indices);
-		~OpenGLElementBuffer();
+		virtual ~OpenGLElementBuffer();
 
 		// Binds the EBO
-		void Bind();
+		virtual void Bind() const override;
 		// Unbinds the EBO
-		void Unbind();
-
-		static Ref<OpenGLElementBuffer> Create(std::vector<unsigned int>& indices);
-		//static Ref<OpenGLElementBuffer> Create(unsigned int* indices);
+		virtual void Unbind() const override;
 
 	private:
 		// ID reference of Elements Buffer Object

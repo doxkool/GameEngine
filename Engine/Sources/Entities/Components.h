@@ -2,9 +2,10 @@
 
 #include "Core/Base.h"
 
-#include "OpenGL/OpenGLVertexArray.h"
-#include "OpenGL/OpenGLVertexBuffer.h"
-//#include "OpenGL/OpenGLElementBuffer.h"
+#include "Renderer/Renderer2D.h"
+#include "Renderer/VertexArray.h"
+#include "Renderer/VertexBuffer.h"
+//#include "Renderer/ElementBuffer.h"
 #include "OpenGL/OpenGLTexture.h"
 #include "OpenGL/OpenGLShader.h"
 
@@ -82,15 +83,15 @@ namespace Engine
 
 	struct MeshComponent
 	{
-		Ref<OpenGLVertexArray> VAO;
-		Ref<OpenGLVertexBuffer> VBO;
+		Ref<VertexArray> VAO;
+		Ref<VertexBuffer> VBO;
 
 		MeshComponent() = default;
 		MeshComponent(const MeshComponent&) = default;
 		MeshComponent(Vertex& vertex)
 		{
-			VAO = OpenGLVertexArray::Create();
-			VBO = OpenGLVertexBuffer::Create(sizeof(vertex));
+			VAO = VertexArray::Create();
+			VBO = VertexBuffer::Create(sizeof(vertex));
 
 			VAO->Bind();
 			VBO->Bind();

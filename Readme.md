@@ -1,21 +1,8 @@
 # My first Game Engine
-This project is only a learning exerice for now. No support is or will be provided for this project.
+This project is only a learning exercise for now. No support is or will be provided for this project.
 
 ## Disclaimer
-I'm not a programer but want to learn how game engine works. I'm learning C++ as I go so treat all this code as such.
-
-
-### Task list
-- [ ] Entities Component System using ENTT
-  - [X] ENTT integration
-  - [ ] Create the components
-  - [ ] Abstraction layer
-- [ ] Renderer
-  - [ ] 2D Renderer
-  - [ ] 3D Renderer
-- [ ] Model loading
-  - [ ] OBJ support
-  - [ ] GLTF support
+I'm not a programmer but want to learn how game engine works. I'm learning C++ as I go so treat all this code as such.
 
 ### Libraries integration
 

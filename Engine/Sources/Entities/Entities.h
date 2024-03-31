@@ -21,7 +21,6 @@ namespace Engine
 		static void AddComponent(entt::entity entity, ComponentType componentType);
 
 		static void SetTextureComponent(entt::entity entity, std::string& TexturePath);
-		//static void SetMeshComponent(entt::entity entity, Vertex& vertex);
 		static void SetShaderComponent(entt::entity entity, const char* vertexShaderFile, const char* fragmentShaderFile);
 
 		static void RemoveComponent(const entt::entity entity);

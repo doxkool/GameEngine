@@ -45,7 +45,7 @@ namespace Engine
 	{
 		switch (componentType)
 		{
-		case transform:
+		case transformComponent:
 
 			if (m_Registry.any_of<TransformComponent>(entity))
 			{
@@ -57,7 +57,7 @@ namespace Engine
 			LOG_DEBUG("Transform component added to '{}'", m_Registry.get<TagComponent>(entity).Tag);
 
 			break;
-		case sprite2D:
+		case sprite2DComponent:
 
 			if (m_Registry.any_of<Sprite2DComponent>(entity))
 			{
@@ -69,7 +69,7 @@ namespace Engine
 
 			LOG_DEBUG("Sprite2D component added to : '{}'", m_Registry.get<TagComponent>(entity).Tag);
 			break;
-		case texture:
+		case textureComponent:
 
 			if (m_Registry.any_of<TextureComponent>(entity))
 			{
@@ -81,20 +81,7 @@ namespace Engine
 
 			LOG_DEBUG("Texture component added to : '{}'", m_Registry.get<TagComponent>(entity).Tag);
 			break;
-		case mesh:
-
-			//if (m_Registry.any_of<MeshComponent>(entity))
-			//{
-			//	LOG_ERROR("The entity '{}' already have a Mesh component!", m_Registry.get<TagComponent>(entity).Tag);
-			//	break;
-			//}
-			//
-			//Vertex ver;
-			//m_Registry.emplace<MeshComponent>(entity, ver);
-			//
-			//LOG_DEBUG("Mesh component added to : '{}'", m_Registry.get<TagComponent>(entity).Tag);
-			break;
-		case shader:
+		case shaderComponent:
 
 			if (m_Registry.any_of<ShaderComponent>(entity))
 			{
@@ -118,11 +105,6 @@ namespace Engine
 
 		LOG_DEBUG("Texture component added to : '{}'");
 	}
-
-	//void Entities::SetMeshComponent(entt::entity entity, Vertex& vertex)
-	//{
-	//	//m_Registry.emplace<MeshComponent>(entity, vertex);
-	//}
 
 	void Entities::SetShaderComponent(entt::entity entity, const char* vertexShaderFile, const char* fragmentShaderFile)
 	{

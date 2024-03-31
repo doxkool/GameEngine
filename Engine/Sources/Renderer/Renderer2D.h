@@ -18,8 +18,6 @@ namespace Engine
 
 			static void Init();
 
-			static void SetupQuad();
-
 			static void SetRenderingMode(int mode);
 
 			static void DrawQuad(const glm::mat4& transform);
@@ -27,5 +25,6 @@ namespace Engine
 			static void Render();
 
 		private:
+			static void SetupQuadPtr();
 	};
 }

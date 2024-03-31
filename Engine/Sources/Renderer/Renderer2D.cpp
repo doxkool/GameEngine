@@ -23,6 +23,11 @@ namespace Engine
 		//glm::vec2 texCoords;
 	};
 
+	struct Renderer2DStats
+	{
+		uint32_t QuadCount = 0;
+	};
+
 	struct Renderer2DData
 	{
 		uint32_t MaxQuads = 100;
@@ -46,60 +51,57 @@ namespace Engine
 
 		Ref<OpenGLTexture> QuadTexture;
 		Ref<OpenGLShader> QuadShader;
+
+		Renderer2DStats Stats;
 	};
 
 	static Renderer2DData s_data;
 
 	void Renderer2D::Init()
 	{
-		SetupQuad();
+		SetupQuadPtr();
 	}
 
-	void Renderer2D::SetupQuad()
+	void Renderer2D::SetupQuadPtr()
 	{
-		// Pushing the Quad vertices.
-		for (size_t i = 0; i < sizeof(QuadVertices); i++)
-		{
-			s_data.QuadVertices.push_back(QuadVertices[i]);
-		}
-
-		// Pushing the Quad indices.
-		for (size_t i = 0; i < sizeof(QuadIndices); i++)
-		{
-			s_data.QuadIndices.push_back(QuadIndices[i]);
-		}
-
+	// Pushing the Quad vertices.
 		s_data.QuadVertexPositions[0] = { -0.5f, -0.5f, 0.0f, 1.0f };
 		s_data.QuadVertexPositions[1] = {  0.5f, -0.5f, 0.0f, 1.0f };
 		s_data.QuadVertexPositions[2] = {  0.5f,  0.5f, 0.0f, 1.0f };
 		s_data.QuadVertexPositions[3] = { -0.5f,  0.5f, 0.0f, 1.0f };
 
+	// Pushing the Quad indices.
+		for (size_t i = 0; i < sizeof(QuadIndices); i++)
+		{
+			s_data.QuadIndices.push_back(QuadIndices[i]);
+		}
+
 		s_data.QuadVertexBufferBase = new QuadVertex[s_data.MaxVertices];
 
-		// Creating basic shader.
+	// Creating basic shader.
 		s_data.QuadShader = OpenGLShader::Create("Game/Assets/Shaders/vertex_basic.glsl", "Game/Assets/Shaders/fragment_basic.glsl");
 
-		// Creating default texture.
+	// Creating default texture.
 
-		// Creating VAO and binding it.
+	// Creating VAO and binding it.
 		s_data.QuadVAO = VertexArray::Create();
 		s_data.QuadVAO->Bind();
 
 		s_data.QuadVBO = VertexBuffer::Create(s_data.MaxVertices * sizeof(QuadVertex));
-		s_data.QuadVBO->Bind();
+		//s_data.QuadVBO->Bind();
 
-		//// Creating the VBO and EBO.
+	// Creating the VBO and EBO.
 		//s_data.QuadVBO = VertexBuffer::Create(s_data.QuadVertices, sizeof(s_data.QuadVertices));
 		s_data.QuadEBO = ElementBuffer::Create(s_data.QuadIndices);
-		//
-		//// Linking the Quad position to the shader.
+		
+	// Linking the Quad position to the shader.
 		s_data.QuadVAO->LinkAttribF(0, 3, sizeof(QuadVertex), (void*)0);
-		//// Linking the Quad color to the shader.
-		//	//s_data.QuadVAO->LinkAttribF(1, 3, sizeof(Vertex), (void*)(3 * sizeof(float)));
-		//// Linking the Quad TexCoord to the shader.
-		//	//s_data.QuadVAO->LinkAttribF(2, 2, sizeof(Vertex), (void*)(6 * sizeof(float)));
-		//
-		//// Unbinding VAO and VBO.
+	// Linking the Quad color to the shader.
+			//s_data.QuadVAO->LinkAttribF(1, 3, sizeof(Vertex), (void*)(3 * sizeof(float)));
+	// Linking the Quad TexCoord to the shader.
+			//s_data.QuadVAO->LinkAttribF(2, 2, sizeof(Vertex), (void*)(6 * sizeof(float)));
+
+	// Unbinding VAO and VBO.
 		s_data.QuadVAO->Unbind();
 		s_data.QuadVBO->Unbind();
 	}
@@ -133,13 +135,12 @@ namespace Engine
 			//s_data.QuadVertexBufferPtr->texCoords = textureCoords[i];
 			//s_data.QuadVertexBufferPtr->TexIndex = textureIndex;
 			//s_data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
-			//s_data.QuadVertexBufferPtr->EntityID = entityID;
 			s_data.QuadVertexBufferPtr++;
 		}
 
 		s_data.QuadIndexCount += 6;
 
-		//s_Data.Stats.QuadCount++;
+		s_data.Stats.QuadCount++;
 	}
 
 	void Renderer2D::Render()

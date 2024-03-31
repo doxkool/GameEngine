@@ -25,9 +25,9 @@ void Sandbox::OnAttach()
 	//playerVertex.position = glm::vec3(0.0f);
 	//playerVertex.texCoords = glm::vec3(0.0f);
 	
-	//Engine::Entities::AddComponent(player, Engine::texture);
-	Engine::Entities::AddComponent(player, Engine::sprite2D);
-	//Engine::Entities::AddComponent(player, Engine::shader);
+	//Engine::Entities::AddComponent(player, Engine::textureComponent);
+	Engine::Entities::AddComponent(player, Engine::sprite2DComponent);
+	//Engine::Entities::AddComponent(player, Engine::shaderComponent);
 
 // ---------------------------------------------------------------------
 	

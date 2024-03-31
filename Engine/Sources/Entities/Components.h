@@ -3,9 +3,6 @@
 #include "Core/Base.h"
 
 #include "Renderer/Renderer2D.h"
-#include "Renderer/VertexArray.h"
-#include "Renderer/VertexBuffer.h"
-//#include "Renderer/ElementBuffer.h"
 #include "OpenGL/OpenGLTexture.h"
 #include "OpenGL/OpenGLShader.h"
 
@@ -15,11 +12,10 @@ namespace Engine
 {
 	enum ComponentType
 	{
-		transform,
-		sprite2D,
-		texture,
-		mesh,
-		shader
+		transformComponent,
+		sprite2DComponent,
+		textureComponent,
+		shaderComponent
 	};
 
 	struct IDComponent
@@ -80,35 +76,6 @@ namespace Engine
 			texture = OpenGLTexture::Create(texturePath);
 		}
 	};
-
-	//struct MeshComponent
-	//{
-	//	Ref<VertexArray> VAO;
-	//	Ref<VertexBuffer> VBO;
-	//
-	//	MeshComponent() = default;
-	//	MeshComponent(const MeshComponent&) = default;
-	//	MeshComponent(Vertex& vertex)
-	//	{
-	//		VAO = VertexArray::Create();
-	//		VBO = VertexBuffer::Create(sizeof(vertex));
-	//
-	//		VAO->Bind();
-	//		VBO->Bind();
-	//
-	//		// Links VBO Position attributes to VAO
-	//		VAO->LinkAttribF(0, 3, sizeof(Vertex), (void*)0);
-	//		// Links VBO Color attributes to VAO
-	//		VAO->LinkAttribF(1, 3, sizeof(Vertex), (void*)(3 * sizeof(float)));
-	//		// Links VBO Texcoord attributes to VAO
-	//		VAO->LinkAttribF(2, 2, sizeof(Vertex), (void*)(6 * sizeof(float)));
-	//		// Links VBO Normal attributes to VAO
-	//		VAO->LinkAttribF(3, 3, sizeof(Vertex), (void*)(9 * sizeof(float)));
-	//
-	//		VAO->Unbind();
-	//		VBO->Unbind();
-	//	}
-	//};
 
 	struct ShaderComponent
 	{
